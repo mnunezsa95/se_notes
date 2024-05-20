@@ -1,0 +1,205 @@
+{
+  "main": {
+    "id": "35e3fde91c728e89",
+    "type": "split",
+    "children": [
+      {
+        "id": "4dc6759a5b6cafa9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7bc49d2ce2bba53",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "49436980133a84cd",
+    "type": "split",
+    "children": [
+      {
+        "id": "39ac3ec403e9e330",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fd05b274a79e2ec1",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          },
+          {
+            "id": "3c104444d1505abc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "EXTRACT",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a80eb04947d9c22a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 392.51103591918945
+  },
+  "right": {
+    "id": "b25286fe059f358b",
+    "type": "split",
+    "children": [
+      {
+        "id": "31780db4873ba249",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "156d815555b9b3e0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "afd5a304a4d6c9bc",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9b81005972518641",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2d8f82a9965c7cd4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          },
+          {
+            "id": "66de03d65b26c211",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "a7bc49d2ce2bba53",
+  "lastOpenFiles": [
+    "Z. Images/Python/PySpark/scaling-types.png",
+    "Z. Images/Python/PySpark/pyspark-nodes.png",
+    "Z. Images/Python/PySpark",
+    "Z. Images/HTML/tag-image.png",
+    "Z. Images/HTML/HTML-tree.jpg",
+    "Z. Images/SQL/where-subquery.png",
+    "Z. Images/SQL/union-table-example.png",
+    "Z. Images/SQL/table-record.png",
+    "Z. Images/SQL/table-field.png",
+    "Z. Images/SQL/table-cell.png",
+    "Z. Images/SQL/right-join-table-example.png",
+    "Z. Images/SQL/primary-key-table.png",
+    "Z. Images/Python",
+    "Z. Images/HTML",
+    "Z. Images/SQL",
+    "Z. Images/Statistics",
+    "Z. Images/RegExp",
+    "Z. Images/Machine Learning",
+    "Z. Images",
+    "README.md",
+    "10. Resources",
+    "9. Data Science/Machine Learning/ML - Supervised Learning.md",
+    "9. Data Science/Machine Learning/ML - Machine Learning in Business.md",
+    "9. Data Science/Machine Learning/ML - Machine Learning Basics.md",
+    "9. Data Science/Machine Learning/ML - Linear Algebra.md",
+    "9. Data Science/Descriptive Statistics/DS - Quantitative Variables.md",
+    "9. Data Science/Descriptive Statistics/DS - Correlation.md",
+    "9. Data Science/Machine Learning",
+    "9. Data Science/DS - Dealing with Missing Values.md",
+    "9. Data Science/DS - What is Data Science?.md",
+    "7. Additional Materials/Public APIs.md",
+    "6. Code Exercises/HackerRank -> Time Conversion.md",
+    "6. Code Exercises/HackerRank -> PlusMinus.md",
+    "6. Code Exercises/HackerRank -> Mini-Max Sum.md",
+    "6. Code Exercises/HackerRank -> Divisible Sum Pairs.md",
+    "6. Code Exercises/HackerRank -> Grading Students.md",
+    "6. Code Exercises/HackerRank --> Sparse Arrays.md",
+    "6. Code Exercises/Coding Exercises.md",
+    "5. Data Structures & Algorithms/Complexity Functions.md",
+    "5. Data Structures & Algorithms/Complex Operations.md",
+    "5. Data Structures & Algorithms/Algorithms & Data Structures - Likely Tasks.md",
+    "5. Data Structures & Algorithms/Asymptotic Analysis.md",
+    "5. Data Structures & Algorithms/Algorithms & Data Structures - Code Quality.md",
+    "5. Data Structures & Algorithms/Algorithm Interviews.md",
+    "4. Tools/vsCode/vsCode - Using Jupyter Notebooks in vsCode.md",
+    "4. Tools/vsCode/vsCode - Key Features & Components.md",
+    "Untitled.canvas"
+  ]
+}
