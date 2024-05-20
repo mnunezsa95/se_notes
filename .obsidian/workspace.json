@@ -11,8 +11,12 @@
             "id": "a7bc49d2ce2bba53",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -82,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "README.md"
+              }
             }
           },
           {
@@ -154,6 +162,18 @@
   },
   "active": "a7bc49d2ce2bba53",
   "lastOpenFiles": [
+    "Y. Resources",
+    "8. Data Science/Descriptive Statistics/DS - Quantitative Variables.md",
+    "8. Data Science/Descriptive Statistics/DS - Correlation.md",
+    "8. Data Science/Machine Learning/ML - Supervised Learning.md",
+    "8. Data Science/Machine Learning/ML - Machine Learning in Business.md",
+    "8. Data Science/Machine Learning/ML - Machine Learning Basics.md",
+    "8. Data Science/Machine Learning/ML - Linear Algebra.md",
+    "8. Data Science/Machine Learning",
+    "8. Data Science/Descriptive Statistics",
+    "8. Data Science/DS - What is Data Science?.md",
+    "8. Data Science/DS - Dealing with Missing Values.md",
+    "8. Data Science",
     "Z. Images/Python/PySpark/scaling-types.png",
     "Z. Images/Python/PySpark/pyspark-nodes.png",
     "Z. Images/Python/PySpark",
@@ -165,23 +185,19 @@
     "Z. Images/SQL/table-field.png",
     "Z. Images/SQL/table-cell.png",
     "Z. Images/SQL/right-join-table-example.png",
-    "Z. Images/SQL/primary-key-table.png",
     "Z. Images/Python",
     "Z. Images/HTML",
     "Z. Images/SQL",
     "Z. Images/Statistics",
     "Z. Images/RegExp",
     "Z. Images/Machine Learning",
-    "Z. Images",
     "README.md",
-    "10. Resources",
     "9. Data Science/Machine Learning/ML - Supervised Learning.md",
     "9. Data Science/Machine Learning/ML - Machine Learning in Business.md",
     "9. Data Science/Machine Learning/ML - Machine Learning Basics.md",
     "9. Data Science/Machine Learning/ML - Linear Algebra.md",
     "9. Data Science/Descriptive Statistics/DS - Quantitative Variables.md",
     "9. Data Science/Descriptive Statistics/DS - Correlation.md",
-    "9. Data Science/Machine Learning",
     "9. Data Science/DS - Dealing with Missing Values.md",
     "9. Data Science/DS - What is Data Science?.md",
     "7. Additional Materials/Public APIs.md",
@@ -192,14 +208,6 @@
     "6. Code Exercises/HackerRank -> Grading Students.md",
     "6. Code Exercises/HackerRank --> Sparse Arrays.md",
     "6. Code Exercises/Coding Exercises.md",
-    "5. Data Structures & Algorithms/Complexity Functions.md",
-    "5. Data Structures & Algorithms/Complex Operations.md",
-    "5. Data Structures & Algorithms/Algorithms & Data Structures - Likely Tasks.md",
-    "5. Data Structures & Algorithms/Asymptotic Analysis.md",
-    "5. Data Structures & Algorithms/Algorithms & Data Structures - Code Quality.md",
-    "5. Data Structures & Algorithms/Algorithm Interviews.md",
-    "4. Tools/vsCode/vsCode - Using Jupyter Notebooks in vsCode.md",
-    "4. Tools/vsCode/vsCode - Key Features & Components.md",
     "Untitled.canvas"
   ]
 }
