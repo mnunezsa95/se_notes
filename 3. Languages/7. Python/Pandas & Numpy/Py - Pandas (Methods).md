@@ -4,12 +4,53 @@ See:
 * [[Py - Pandas (DataFrame Object)]]
 * [[Py - Pandas (Series Object)]]
 Resources:
-* [Pandas Documentation](https://pandas.pydata.org/docs/)
-* [Pandas API reference](https://pandas.pydata.org/docs/reference/index.html)
+* Documentation: [Pandas](https://pandas.pydata.org/docs/)
+* Documentation: [NumPy](https://numpy.org/doc/stable/index.html)
+* Documentation: [Matplotlib](https://matplotlib.org/)
 
 ---
 
 # Pandas Methods
+
+##### `df.plot()` 
+* Creates a figure where all of the numeric columns in a DataFrame are plotted on the same axes
+* Arguments
+	* `title=` -> string to specify the title name
+	* `style=` -> a string specifying the style of the plot marker; see options [here](https://matplotlib.org/stable/api/markers_api.html)
+	* `x=` -> a string specifying the data to plot on x-axis
+	* `y=` -> a string specifying the data to plot on y-axis
+	* `xlabel=` -> a string specifying the label of the x-axis
+	* `ylabel=` -> a string specifying the label of the y-axis
+	* `legend=` -> a boolean to display the legend or not (`True` by default)
+	* `xlim=` -> a number or list of two numbers specifying either the max (or min and max) value(s) to display on x-axis
+	* `ylim=` -> a number or list of two numbers specifying either the max (or min and max) value(s) to display on y-axis
+	* `grid=` -> a boolean that specifies whether to add grid-lines to the plot (`False` by default)
+	* `figsize=` -> a list specifying the `[width and height]` of the figure
+	* `color=` -> a string to specify the marker color
+* Example
+```Python
+import pandas as pd
+from matplotlib import pyplot as plt
+
+df = pd.DataFrame({'a':[2, 3, 4, 5], 'b':[4, 9, 16, 25]})
+
+df.plot(
+    title='A vs C',
+    x="c",
+    y="a",
+    style="*",
+    color="hotpink",
+    figsize=[5, 5],
+    xlim=[0, 12],
+    ylim=[1, 6],
+    xlabel="C",
+    ylabel="A"
+    grid=True
+    legend=False
+)
+plt.show()
+```
+
 
 ##### `get_dummies()`
 * Convert categorical variable into dummy/indicator variables

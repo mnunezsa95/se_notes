@@ -2,8 +2,9 @@ See:
 * [[Py - Introduction to Python]]
 * [[Py - Numpy (Installing & Importing Numpy)]] 
 Documentation
-* [Pandas Documentation](https://pandas.pydata.org/docs/)
-* [Numpy Documentation](https://numpy.org/doc/stable/index.html)
+* Documentation: [Pandas](https://pandas.pydata.org/docs/)
+* Documentation: [NumPy](https://numpy.org/doc/stable/index.html)
+* Documentation: [Matplotlib](https://matplotlib.org/)
 
 
 ---
@@ -99,4 +100,20 @@ import numpy as np
 
 variance = 2.9166666666666665 # the variance
 standard_deviation = np.sqrt(variance) # # 1.707825127659933
+```
+
+##### `np.exp()`
+* Calculates the exponential of all elements in the input array
+	* Arguments
+		* `x` -- input values
+		* `out` -- a location into which the result is stored
+		* `where` -- this condition is broadcast over the input. At locations where the condition is True, the out array will be set to the ufunc result. 
+```Python
+import numpy as np
+
+def logistic_transform(values):
+    return 1 / (1 + np.exp(-values))
+    
+our_values = np.array([-20, 0, 0.5, 80, -1])
+print(logistic_transform(our_values))
 ```

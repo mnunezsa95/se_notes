@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "4dc6759a5b6cafa9",
+        "id": "cbc8243d0ffb70e8",
         "type": "tabs",
         "children": [
           {
-            "id": "a7bc49d2ce2bba53",
+            "id": "38da360e9d292917",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,9 +119,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "README.md"
-              }
+              "state": {}
             }
           },
           {
@@ -160,54 +152,53 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "a7bc49d2ce2bba53",
+  "active": "38da360e9d292917",
   "lastOpenFiles": [
+    "3. Languages/7. Python/Pandas & Numpy/Numpy/Py - Numpy (Vectors).md",
+    "3. Languages/7. Python/Pandas & Numpy/Numpy/Py - Numpy (Methods).md",
+    "Z. Images/Python/Numpy/plotting-mean-value-example2.png",
+    "Z. Images/Python/Numpy/plotting-mean-value-example1.png",
+    "Z. Images/Python/Numpy/plotting-mean-vector.png",
+    "Z. Images/Python/Numpy/table-adding-subtracting-vectors.png",
+    "Z. Images/Python/Numpy/table-multiplying-vectors.png",
+    "Z. Images/Python/Numpy/plotting-vector-negative-direction.png",
+    "Z. Images/Python/Numpy/plotting-addition-subtraction-vectors.png",
+    "3. Languages/4. React.js/React.js - Methods.md",
+    "3. Languages/4. React.js/Basics/React.js - React Basics.md",
+    "3. Languages/4. React.js/Untitled.md",
+    "3. Languages/7. Python/Pandas & Numpy/Py - Pandas (Plotting).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Graphing).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Installing and Importing).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Methods).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Scatter Matrix).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Histograms).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Line Plots).md",
+    "3. Languages/7. Python/Pandas & Numpy/Py - Pandas (Methods).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Scatterplots).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Bar Charts).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Plots).md",
+    "Z. Images/Python/Numpy/plotting-vector-arrow2.png",
+    "Z. Images/Python/Numpy/plotting-vector-arrow.png",
+    "Z. Images/Python/Numpy/plotting-vector-point.png",
+    "Z. Images/Python/Numpy",
+    "3. Languages/7. Python/Pandas & Numpy/Numpy",
+    "3. Languages/3. JavaScript/Asynchronous JavaScript/JS - Async & Await.md",
+    "3. Languages/3. JavaScript/Asynchronous JavaScript/JS - Async JavaScript Behind the Scenes.md",
+    "6. Data Structures & Algorithms/Algorithms & Data Structures - Code Quality.md",
+    "6. Data Structures & Algorithms/Algorithm Interviews.md",
+    "README.md",
     "Y. Resources",
-    "8. Data Science/Descriptive Statistics/DS - Quantitative Variables.md",
-    "8. Data Science/Descriptive Statistics/DS - Correlation.md",
-    "8. Data Science/Machine Learning/ML - Supervised Learning.md",
-    "8. Data Science/Machine Learning/ML - Machine Learning in Business.md",
-    "8. Data Science/Machine Learning/ML - Machine Learning Basics.md",
-    "8. Data Science/Machine Learning/ML - Linear Algebra.md",
-    "8. Data Science/Machine Learning",
-    "8. Data Science/Descriptive Statistics",
-    "8. Data Science/DS - What is Data Science?.md",
-    "8. Data Science/DS - Dealing with Missing Values.md",
-    "8. Data Science",
-    "Z. Images/Python/PySpark/scaling-types.png",
-    "Z. Images/Python/PySpark/pyspark-nodes.png",
+    "4. Data Science/Descriptive Statistics/DS - Quantitative Variables.md",
+    "4. Data Science/Descriptive Statistics/DS - Correlation.md",
+    "4. Data Science/Machine Learning/ML - Supervised Learning.md",
+    "4. Data Science/Machine Learning/ML - Machine Learning in Business.md",
+    "4. Data Science/Machine Learning",
+    "4. Data Science/Descriptive Statistics",
+    "4. Data Science",
     "Z. Images/Python/PySpark",
-    "Z. Images/HTML/tag-image.png",
-    "Z. Images/HTML/HTML-tree.jpg",
-    "Z. Images/SQL/where-subquery.png",
-    "Z. Images/SQL/union-table-example.png",
-    "Z. Images/SQL/table-record.png",
-    "Z. Images/SQL/table-field.png",
-    "Z. Images/SQL/table-cell.png",
-    "Z. Images/SQL/right-join-table-example.png",
     "Z. Images/Python",
     "Z. Images/HTML",
     "Z. Images/SQL",
-    "Z. Images/Statistics",
-    "Z. Images/RegExp",
-    "Z. Images/Machine Learning",
-    "README.md",
-    "9. Data Science/Machine Learning/ML - Supervised Learning.md",
-    "9. Data Science/Machine Learning/ML - Machine Learning in Business.md",
-    "9. Data Science/Machine Learning/ML - Machine Learning Basics.md",
-    "9. Data Science/Machine Learning/ML - Linear Algebra.md",
-    "9. Data Science/Descriptive Statistics/DS - Quantitative Variables.md",
-    "9. Data Science/Descriptive Statistics/DS - Correlation.md",
-    "9. Data Science/DS - Dealing with Missing Values.md",
-    "9. Data Science/DS - What is Data Science?.md",
-    "7. Additional Materials/Public APIs.md",
-    "6. Code Exercises/HackerRank -> Time Conversion.md",
-    "6. Code Exercises/HackerRank -> PlusMinus.md",
-    "6. Code Exercises/HackerRank -> Mini-Max Sum.md",
-    "6. Code Exercises/HackerRank -> Divisible Sum Pairs.md",
-    "6. Code Exercises/HackerRank -> Grading Students.md",
-    "6. Code Exercises/HackerRank --> Sparse Arrays.md",
-    "6. Code Exercises/Coding Exercises.md",
     "Untitled.canvas"
   ]
 }
