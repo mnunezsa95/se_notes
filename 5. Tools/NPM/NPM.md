@@ -1,4 +1,4 @@
-Node Package Manager (NPM) is used to handle and install packages and modules for JavaScript (see [[Node - Introduction to Node.js?]])
+Node Package Manager (NPM) is used to handle and install packages and modules for JavaScript (see [[Node - Introduction to Node.js]])
 
 ### Initializing NPM
 * If NPM is needed in a project, it must be initialized

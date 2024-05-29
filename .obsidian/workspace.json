@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "cbc8243d0ffb70e8",
+        "id": "3f6daa3e6e93e002",
         "type": "tabs",
         "children": [
           {
-            "id": "38da360e9d292917",
+            "id": "ede58dd52a7a203b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "3. Languages/7. Python/Numpy/Py - NumPy (Vectors).md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -42,7 +46,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "EXTRACT",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -82,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "3. Languages/7. Python/Numpy/Py - NumPy (Vectors).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "3. Languages/7. Python/Numpy/Py - NumPy (Vectors).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "3. Languages/7. Python/Numpy/Py - NumPy (Vectors).md"
+              }
             }
           },
           {
@@ -152,10 +160,29 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "38da360e9d292917",
+  "active": "a80eb04947d9c22a",
   "lastOpenFiles": [
-    "3. Languages/7. Python/Pandas & Numpy/Numpy/Py - Numpy (Vectors).md",
-    "3. Languages/7. Python/Pandas & Numpy/Numpy/Py - Numpy (Methods).md",
+    "Z. Images/Machine Learning/knn-algorithm.png",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Methods).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Vectors).md",
+    "3. Languages/5. Node.js & Express.js/Node.js/Node.js - The Crypto Module.md",
+    "3. Languages/5. Node.js & Express.js/Node.js/Node.js - Crypto Methods.md",
+    "3. Languages/5. Node.js & Express.js/Modules/Node.js - Module - dotenv.md",
+    "3. Languages/5. Node.js & Express.js/Modules/Node.js - Module - crypto.md",
+    "1. General/Node - Introduction to Node.js.md",
+    "2. Knowledge/Backend Authentication & Authorization/Creating and Storing Secret Keys.md",
+    "3. Languages/5. Node.js & Express.js/Node.js",
+    "3. Languages/7. Python/0. Resources/python_basic_to_intermediate.pdf",
+    "3. Languages/7. Python/0. Resources/python_mastery_made_simple.pdf",
+    "3. Languages/7. Python/0. Resources/python_140_basic_programs.pdf",
+    "3. Languages/7. Python/Untitled.md",
+    "3. Languages/7. Python/0. Resources",
+    "3. Languages/4. React.js/0. Resources/react_conditional_rendering.pdf",
+    "3. Languages/7. Python/SciPy/Py - SciPy (Methods).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Methods).md",
+    "3. Languages/7. Python/Pandas/Py - NumPy (Installing & Importing Numpy).md",
+    "3. Languages/7. Python/SciPy",
     "Z. Images/Python/Numpy/plotting-mean-value-example2.png",
     "Z. Images/Python/Numpy/plotting-mean-value-example1.png",
     "Z. Images/Python/Numpy/plotting-mean-vector.png",
@@ -166,14 +193,12 @@
     "3. Languages/4. React.js/React.js - Methods.md",
     "3. Languages/4. React.js/Basics/React.js - React Basics.md",
     "3. Languages/4. React.js/Untitled.md",
-    "3. Languages/7. Python/Pandas & Numpy/Py - Pandas (Plotting).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Plotting).md",
     "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Graphing).md",
     "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Installing and Importing).md",
-    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Methods).md",
     "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Scatter Matrix).md",
     "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Histograms).md",
     "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Line Plots).md",
-    "3. Languages/7. Python/Pandas & Numpy/Py - Pandas (Methods).md",
     "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Scatterplots).md",
     "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Bar Charts).md",
     "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Plots).md",
@@ -181,24 +206,8 @@
     "Z. Images/Python/Numpy/plotting-vector-arrow.png",
     "Z. Images/Python/Numpy/plotting-vector-point.png",
     "Z. Images/Python/Numpy",
-    "3. Languages/7. Python/Pandas & Numpy/Numpy",
-    "3. Languages/3. JavaScript/Asynchronous JavaScript/JS - Async & Await.md",
-    "3. Languages/3. JavaScript/Asynchronous JavaScript/JS - Async JavaScript Behind the Scenes.md",
-    "6. Data Structures & Algorithms/Algorithms & Data Structures - Code Quality.md",
-    "6. Data Structures & Algorithms/Algorithm Interviews.md",
-    "README.md",
+    "3. Languages/7. Python/Numpy",
     "Y. Resources",
-    "4. Data Science/Descriptive Statistics/DS - Quantitative Variables.md",
-    "4. Data Science/Descriptive Statistics/DS - Correlation.md",
-    "4. Data Science/Machine Learning/ML - Supervised Learning.md",
-    "4. Data Science/Machine Learning/ML - Machine Learning in Business.md",
-    "4. Data Science/Machine Learning",
-    "4. Data Science/Descriptive Statistics",
-    "4. Data Science",
-    "Z. Images/Python/PySpark",
-    "Z. Images/Python",
-    "Z. Images/HTML",
-    "Z. Images/SQL",
     "Untitled.canvas"
   ]
 }

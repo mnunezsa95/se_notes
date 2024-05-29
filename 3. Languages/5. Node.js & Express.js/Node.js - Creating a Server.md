@@ -1,10 +1,10 @@
-See: [[Node - Introduction to Node.js?]]
+See: [[Node - Introduction to Node.js]]
 
 --- 
 
 ## Connecting the HTTP API
 * HTTP API --> built-in Node.js API
-	* Handles incoming requests from an NIC  (see: [[Node - Introduction to Node.js?]])
+	* Handles incoming requests from an NIC  (see: [[Node - Introduction to Node.js]])
 * Connecting the HTTP API
 	1) Import the http module using the require() method (see [[Node.js - Methods]])
 ```js

@@ -1,6 +1,6 @@
 Frontend code & Backend code
 * Frontend code is also known as client-side code 
-* Backend code is also known as server-side code (see [[Server-Side Development]], [[Node - Introduction to Node.js?]])
+* Backend code is also known as server-side code (see [[Server-Side Development]], [[Node - Introduction to Node.js]])
 
 Understanding Programming Langauges 
 * Domain-Specific Languages (SDL)

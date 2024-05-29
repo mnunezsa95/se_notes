@@ -5,7 +5,7 @@ See:
 * [[Py - Math (Hypothesis Testing)]]
 * [[Py - Math (Confidence Intervals)]]
 * [[Py - Pandas (Methods)]]
-* [[Py - Numpy (Methods)]]
+* [[Py - NumPy (Methods)]]
 Resources
 * 
 

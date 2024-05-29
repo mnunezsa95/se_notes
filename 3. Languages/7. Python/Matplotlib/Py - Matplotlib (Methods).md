@@ -1,12 +1,14 @@
 See:
 * [[Py - Introduction to Python]]
 * [[Py - Pandas (Methods)]]
-* [[Py - Numpy (Methods)]]
+* [[Py - NumPy (Methods)]]
+* [[Py - SciPy (Methods)
 
 Resources
 * Documentation: [Pandas](https://pandas.pydata.org/docs/)
 * Documentation: [NumPy](https://numpy.org/doc/stable/index.html)
 * Documentation: [Matplotlib](https://matplotlib.org/)
+* Documentation: [SciPy](https://docs.scipy.org/doc/scipy/index.html)
 
 ---
 

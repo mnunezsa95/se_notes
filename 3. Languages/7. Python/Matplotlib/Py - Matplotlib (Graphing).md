@@ -1,7 +1,7 @@
 See:
 * [[Py - Introduction to Python]]
 * [[Py - Pandas (Methods)]]
-* [[Py - Numpy (Methods)]]
+* [[Py - NumPy (Methods)]]
 
 Resources
 * Documentation: [Pandas](https://pandas.pydata.org/docs/)
