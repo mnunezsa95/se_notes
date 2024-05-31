@@ -4,8 +4,11 @@ See:
 * [[Py - Pandas (Methods)]]
 * [[Py - Matplotlib (Methods)]]
 * [[Py - SciPy (Methods)]]
-Resources
+Resources:
+* Documentation: [Pandas](https://pandas.pydata.org/docs/)
 * Documentation: [NumPy](https://numpy.org/doc/stable/index.html)
+* Documentation: [Matplotlib](https://matplotlib.org/)
+* Documentation: [SciPy](https://docs.scipy.org/doc/scipy/index.html)
 
 ---
 # Creating Vectors
@@ -124,7 +127,7 @@ plt.show()
 
 # Adding and Subtracting Vectors
 * Vectors of the same size can be added or subtracted
-* When adding or subtracting vectors, the operation is performed for each element of the vectors
+- When performing an operation with a number and a vector, each element in the array undergoes the same operation, resulting in a new array of identical size.
 	![[table-adding-subtracting-vectors.png]]
 
 ```Python
@@ -263,7 +266,6 @@ vector3 = 2 * vector1
 print(vector3) # [4, 6]
 ```
 
-* Performing an operation with a number and an array, each item in the array undergoes the same operation, creating a new array of the same size.
 ```Python
 import numpy as np
 

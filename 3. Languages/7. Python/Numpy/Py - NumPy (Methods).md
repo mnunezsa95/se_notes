@@ -4,8 +4,7 @@ See:
 * [[Py - Pandas (Methods)]]
 * [[Py - Matplotlib (Methods)]]
 * [[Py - SciPy (Methods)]]
-
-Documentation
+Resources:
 * Documentation: [Pandas](https://pandas.pydata.org/docs/)
 * Documentation: [NumPy](https://numpy.org/doc/stable/index.html)
 * Documentation: [Matplotlib](https://matplotlib.org/)
@@ -13,7 +12,27 @@ Documentation
 
 
 ---
-# Numpy Classes
+
+# NumPy Attributes
+##### `np.shape`
+* Returns the shape of an array or matrix
+```Python
+import numpy as np
+
+A = np.array([
+    [1, 2, 3], 
+    [2, 3, 4]
+])
+
+print('Size:', A.shape) # Size: (2, 3) 
+```
+
+##### `numpy.matrix.T`
+* Returns the transpose of a matrix
+```
+```
+
+# NumPy Classes
 ##### `RandomState()`
 * A class in the `numpy.random` module that generates a pseudo-random state number
 	* Arguments
@@ -24,7 +43,7 @@ import numpy.random
 state = random.RandomState() # Creating a pseudo-random state
 ```
 
-# Numpy Methods
+# NumPy Methods
 
 ##### `np.arange()`
 * Returns evenly spaced values within a given interval
@@ -35,6 +54,15 @@ state = random.RandomState() # Creating a pseudo-random state
 		* `dtype=` -- the type of the output array
 		* `like=` -- references object to allow the creation of arrays which are not NumPy arrays
 ```Python
+import numpy as np
+
+matrix = np.array([
+    [1, 2], 
+    [4, -4], 
+    [0, 17]
+])
+
+matrix.T
 ```
 
 ##### `np.array()`
@@ -175,4 +203,25 @@ for i in range(df_realty.shape[0]):
     distances.append(value)
 
 best_index = np.array(distances).argsort()[1]
+```
+
+##### `np.multiply()`
+* Multiply arguments element-wise.
+	* Arguments
+		* `x1` -- first element, must have same shape as `x2`
+		* `x2` -- second element, must have same shape as `x1`
+		* `out=` -- A location into which the result is stored. 
+		* `where=` -- This condition is broadcast over the input.
+```Python
+import numpy as np
+
+matrix1 = np.array([
+    [1, 2], 
+    [3, 4]])
+
+matrix2 = np.array([
+    [5, 6], 
+    [7, 8]])
+
+np.multiply(matrix1, matrix2)
 ```

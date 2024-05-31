@@ -14,6 +14,24 @@ Resources:
 
 ---
 
+# Pandas Attributes
+##### `df.shape`
+* Returns a tuple representing the dimensionality of the DataFrame.
+```Python
+df = pd.DataFrame({'col1': [1, 2], 'col2': [3, 4]})
+print(df.shape) # (2, 2)
+```
+
+##### `df.values`
+* Returns a Numpy representation of the DataFrame (as an array/vector)
+```Python
+import pandas as pd
+
+df = pd.DataFrame({'a': [120, 60, 75], 'b': [42, 50, 90]})
+matrix = df.values
+```
+
+
 # Pandas Methods
 
 ##### `df.idxmin()`
