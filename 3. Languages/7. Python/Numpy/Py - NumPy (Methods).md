@@ -225,3 +225,16 @@ matrix2 = np.array([
 
 np.multiply(matrix1, matrix2)
 ```
+
+##### `np.linalg.inv()`
+* Computes the inverse of a matrix
+	* Arguments
+		* `matrix` -- the matrix to be inverted
+```Python
+a = np.array([[1., 2.], [3., 4.]])
+
+# Invert the matrix
+inverse_a = linalg.inv(a)
+np.allclose(np.dot(a, inverse_a), np.eye(2)) # True
+np.allclose(np.dot(inverse_a, a), np.eye(2)) # True
+```

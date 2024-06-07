@@ -685,3 +685,29 @@ print(pd.DataFrame([materials], index=[''], columns=materials_names))
   Board   Pipe  Screws
    26.8  100.8   632.0
 ```
+
+
+# Inverse & Identity Matrix
+#### Identity Matrix
+* **Identity Matrix (Unit Matrix)** -- a square matrix with 1s across the main diagonal and 0s everywhere else
+	![[identity-matrix.png]]
+* Multiplying any matrix by an identity matrix (or vise versa) results in Matrix A
+$$ Matrix(A) * Matrix(E) = Matrix(E) *  Matrix(A) = Matrix(A) $$
+
+#### Inverse Matrix
+* **Inverse Matrix** -- is the matrix whose product with Matrix A is equal to the identity matrix; denoted by $^-1$ $$Matrix(A) * Matrix(A)^-1 = Matrix(A)^-1 *  Matrix(A) = Matrix(E)$$
+* Only square matrixes can have an inverse
+```Python
+# Example -- Finding the inverse Matrix
+
+a = np.array([[1., 2.], [3., 4.]])
+inverse_a = linalg.inv(a)
+np.allclose(np.dot(a, inverse_a), np.eye(2)) # True
+np.allclose(np.dot(inverse_a, a), np.eye(2)) # True
+```
+
+#### Invertible Matrices vs Non-Invertible Matrices
+* **Invertible Matrix** -- a matrix that does have an inverse
+* **Non-Invertible Matrix** -- a matrix that does not have an inverse
+	* Example: A square matrix consisting of only zeros
+

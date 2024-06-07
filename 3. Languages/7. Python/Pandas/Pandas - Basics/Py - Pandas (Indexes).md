@@ -1,14 +1,10 @@
-See [[Py - Introduction to Python]], [[Py - Pandas (Installing & Importing Pandas)]], [[Py - Pandas (Data Structures)]], [[Py - Pandas (DataFrame Object)]], [[Py - Pandas (Series Object)]], 
+See [[Py - Introduction to Python]], [[Py - Pandas (Installing & Importing Pandas)]], [[Py - Pandas (Data Structures)]], 
 Documentation
 * [Installing Pandas](https://pandas.pydata.org/docs/getting_started/install.html)
 * [Pandas Documentation](https://pandas.pydata.org/docs/)
 * [Pandas API reference](https://pandas.pydata.org/docs/reference/index.html)
 
 ---
-
-#### Index vs Indexing 
-- **Index**: A component of a Series or DataFrame, accessed using the `index` attribute
-- **Indexing**: The process of accessing values in a Series or DataFrame using their indexes
 
 #### The `index` Attribute
 * Series and DataFrame objects in pandas always have indexes, which are stored in the `index` attribute

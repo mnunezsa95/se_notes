@@ -4,18 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "0a816c340d7d7eae",
+        "id": "325e778773713852",
         "type": "tabs",
         "children": [
           {
-            "id": "c77507aea22048d3",
+            "id": "3e5572ffed71a8b8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ea80bae630596cb1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -42,7 +59,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "class python",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -82,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3. Languages/7. Python/Numpy/Py - NumPy (Linear Regression).md",
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3. Languages/7. Python/Numpy/Py - NumPy (Linear Regression).md",
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. Languages/7. Python/Numpy/Py - NumPy (Linear Regression).md"
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md"
               }
             }
           },
@@ -156,51 +173,51 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "a80eb04947d9c22a",
+  "active": "ea80bae630596cb1",
   "lastOpenFiles": [
-    "Z. Images/Python/Numpy/improve-equation-for-model-prediction.png",
-    "Z. Images/Python/Numpy/prediction-model.png",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Linear Regression).md",
-    "Z. Images/Python/Numpy/adjust-w0.png",
-    "Z. Images/Python/Numpy/matrix-notation-features.png",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Matrices).md",
-    "Z. Images/Python/Numpy/matrix-matrix-multiplication.png",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Methods).md",
-    "Z. Images/Python/Numpy/transposed-matrix.png",
-    "Z. Images/Python/Numpy/matrix-times-vector-3.png",
-    "Z. Images/Python/Numpy/matrix-times-vector-2.png",
-    "Z. Images/Python/Numpy/matrix-times-vector-1.png",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Vectors).md",
-    "Z. Images/Python/Numpy/matrix-operations-example.png",
     "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
-    "Z. Images/Python/Numpy/denoting-matrices.png",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
-    "3. Languages/7. Python/OOP/Py - Creating Classes in Python.md",
-    "3. Languages/7. Python/OOP/Py - What is OOP?.md",
-    "3. Languages/7. Python/OOP/Py - Class Inheritance in Python.md",
-    "3. Languages/7. Python/OOP/Py - Creating Classes with **kwargs.md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Basics).md",
+    "4. Data Science/DS - Dealing with Missing Values.md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Indexes).md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Processing Missing Values).md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Renaming Columns).md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Coordinate Indexing).md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Combining DataFrames & Series).md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Logical Indexing).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Correlations).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Plotting).md",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Installing & Importing Numpy).md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Series Object).md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (DataFrame Object).md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Importing & Coverting Data).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Installing & Importing Pandas).md",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Linear Regression).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Algorithm Analysis.md",
+    "4. Data Science/Machine Learning/ML - Supervised Learning.md",
+    "Z. Images/Python/Numpy/plotting-vector-point.png",
+    "Z. Images/Python/Numpy/linear-regression-weights.png",
+    "Z. Images/Python/Numpy/linear-regression-training-objective.png",
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Models & Model Comparison).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn Code Examples.md",
-    "3. Languages/5. Node.js & Express.js/Node.js/Node.js - The Crypto Module.md",
-    "3. Languages/5. Node.js & Express.js/Node.js/Node.js - Crypto Methods.md",
-    "3. Languages/5. Node.js & Express.js/Modules/Node.js - Module - dotenv.md",
-    "3. Languages/5. Node.js & Express.js/Modules/Node.js - Module - crypto.md",
-    "1. General/Node - Introduction to Node.js.md",
-    "2. Knowledge/Backend Authentication & Authorization/Creating and Storing Secret Keys.md",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Matrices).md",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Methods).md",
+    "Z. Images/Python/Numpy/identity-matrix.png",
+    "Z. Images/Python/Numpy/improve-equation-for-model-prediction.png",
+    "Z. Images/Python/Numpy/prediction-model.png",
+    "Z. Images/Python/Numpy/adjust-w0.png",
+    "Z. Images/Python/Numpy/matrix-notation-features.png",
+    "Z. Images/Python/Numpy/matrix-matrix-multiplication.png",
+    "Z. Images/Python/Numpy/transposed-matrix.png",
     "3. Languages/5. Node.js & Express.js/Node.js",
     "3. Languages/7. Python/0. Resources/python_basic_to_intermediate.pdf",
     "3. Languages/7. Python/0. Resources/python_mastery_made_simple.pdf",
     "3. Languages/7. Python/0. Resources/python_140_basic_programs.pdf",
-    "3. Languages/7. Python/Untitled.md",
     "3. Languages/7. Python/0. Resources",
     "3. Languages/4. React.js/0. Resources/react_conditional_rendering.pdf",
-    "3. Languages/7. Python/SciPy/Py - SciPy (Methods).md",
-    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Methods).md",
-    "3. Languages/7. Python/Pandas/Py - NumPy (Installing & Importing Numpy).md",
     "3. Languages/7. Python/SciPy",
-    "3. Languages/4. React.js/React.js - Methods.md",
-    "3. Languages/4. React.js/Basics/React.js - React Basics.md",
     "Z. Images/Python/Numpy",
     "3. Languages/7. Python/Numpy",
     "Y. Resources",
