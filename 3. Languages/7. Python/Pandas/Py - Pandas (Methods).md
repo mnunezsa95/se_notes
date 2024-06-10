@@ -244,22 +244,6 @@ cholera = pd.read_csv('/datasets/cholera_short.csv')
 print(cholera.isna().sum())
 ```
 
-##### `df.value_counts()`
-* Return a Series containing counts of unique values
-	* Arguments
-		- `normalize=` -- When set to `True`, the resulting object will include the relative frequencies of the unique values.
-		- `sort=` -- Sorting by frequencies occurs if set to `True`. Data order preservation is maintained when set to `False`.
-		- `ascending=` -- Specifies sorting in ascending order.
-		- `bins=` -- Instead of counting values individually, groups them into half-open bins, which is particularly useful for `pd.cut`. This parameter exclusively works with numeric data.
-		- `dropna=` -- If set to `True`, counts of `NaN` values are excluded.
-```Python
-# Use value_counts() on the source column to include None and NaN in the count
-import pandas as pd
-df_logs = pd.read_csv('/datasets/visit_log.csv')
-df_logs['source'].value_counts(dropna=False)
-```
-
-
 ##### `df.dropna()`
 * Removes missing values
 	* Arguments
@@ -285,7 +269,6 @@ df.dropna()
 df.dropna(axis='columns')
 ```
 
-
 ##### `df.fillna()`
 * Fill `NA`/`NaN` values using the specified method
 	* Arguments
@@ -306,6 +289,109 @@ df.fillna(value=values)
 
 # Fill Missing Values
 df.fillna(0)
+```
+
+##### `df.duplicated()`
+* Returns a boolean Series denoting duplicate rows
+	* Arguments
+		- `subset=` -- Considers only specific columns for identifying duplicates; by default, it uses all columns.
+		- `keep=` -- Specifies which duplicates (if any) to label.
+		    - `first` -- Labels duplicates as `True` except for the first occurrence.
+		    - `last` -- Labels duplicates as `True` except for the last occurrence.
+		    - `False` -- Labels all duplicates as `True`.
+```Python
+import pandas as pd
+
+df = pd.read_csv('/datasets/music_log.csv')
+first_5_rows = df[0:5] # Extract first five rows of df
+duplicates = first_5_rows.duplicated() # Produce series with duplicated()
+
+print(duplicates) 
+```
+
+##### `df.drop_duplicate()`
+
+##### `df.reset_index()`
+
+##### `df.unique()`
+
+##### `df.nunique()`
+
+##### `Series.str.replace()`
+
+##### `Series.str.lower()`
+* Converts strings in the Series/Index to lowercase
+	* Arguments
+		* n/a
+```Python
+s = pd.Series(['lower', 'CAPITALS', 'this is a sentence', 'SwApCaSe'])
+s.str.lower()
+
+'''Result 
+0                 lower
+1              capitals
+2    this is a sentence
+3              swapcase
+'''
+```
+
+##### `df.value_counts()`
+* Return a Series containing counts of unique values
+	* Arguments
+		- `normalize=` -- When set to `True`, the resulting object will include the relative frequencies of the unique values.
+		- `sort=` -- Sorting by frequencies occurs if set to `True`. Data order preservation is maintained when set to `False`.
+		- `ascending=` -- Specifies sorting in ascending order.
+		- `bins=` -- Instead of counting values individually, groups them into half-open bins, which is particularly useful for `pd.cut`. This parameter exclusively works with numeric data.
+		- `dropna=` -- If set to `True`, counts of `NaN` values are excluded.
+```Python
+# Use value_counts() on the source column to include None and NaN in the count
+import pandas as pd
+df_logs = pd.read_csv('/datasets/visit_log.csv')
+df_logs['source'].value_counts(dropna=False)
+```
+
+##### `df.groupby()`
+* Groups DataFrame using a mapper or by a Series of columns
+	* Arguments
+		* `by=` -- Specifies the condition by which to group the data.
+		- `axis=` -- Specifies whether to split along rows (`0`) or columns (`1`).
+	- `level=` -- If the axis is a MultiIndex (hierarchical), groups by a particular level or levels.
+	- `as_index=` -- Returns the object with group labels as the index.
+	    - `as_index=False` is effectively "SQL-style" grouped output.
+	- `sort=` -- Sorts the group keys.
+	- `group_keys=` -- When calling apply and the `by` argument produces a like-indexed result, adds group keys to the index to identify pieces.
+	- `observed=` -- If `True`, only shows observed values for categorical groupers. If `False`, shows all values for categorical groupers.
+	- `dropna=` -- If `True` and if group keys contain `NA` values, `NA` values together with row/column will be dropped. If `False`, `NA` values will also be treated as keys in groups.
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+df.dropna(inplace=True)
+
+grp = df.groupby(['platform', 'genre']) # Split the data into groups
+mean_scores = grp['critic_score'].mean() # Apply function & combine the results
+```
+
+##### `df.agg()`
+* Aggregate using one or more operations over the specified axis
+- Arguments:
+    - `func` — Function to use for aggregating the data. Acceptable combinations include:
+        - function
+        - string function name
+        - list of functions and/or function names
+        - dictionary of axis labels — functions, function names, or lists of such
+    - `axis` — If `0` or `index`, applies the function to each column. If `1` or `columns`, applies the function to each row.
+    - `*args` — Positional arguments to pass to `func`.
+    - `**kwargs` — Keyword arguments to pass to `func`.
+```Python
+import pandas as pd
+df = pd.read_csv('/stats/vg_sales.csv')
+df.dropna(inplace=True)
+
+# Create a dict (key = col names, values = aggregate fns)
+agg_dict = {'critic_score': 'mean', 'jp_sales': 'sum'}
+
+# Group by two platform and genre & call agg function to apply different aggregate function
+grp = df.groupby(['platform', 'genre']).agg(agg_dict)
 ```
 
 

@@ -36,6 +36,7 @@ celestial = celestial.rename(
 ```
 
 
+---
 # Working with Missing Values
 
 ## Introduction to Missing Values
@@ -130,17 +131,289 @@ mobile_avg = mobile_data['time'].mean()
 # Fill in missing values with the average time
 desktop_data['time'] = desktop_data['time'].fillna(desktop_avg)
 mobile_data['time'] = mobile_data['time'].fillna(mobile_avg)
-
 ```
 
 
+---
+# Working with Duplicate Values
+* There are two types of duplicate values:
+	* Explicit Duplicates
+	* Implicit Duplicates
 
-# Obtain Value Counts
-* `df.value_counts()` -- Returns a Series containing counts of unique values.
-	* `dropna=` -- set to `True` by default. If set to `False` it will include `None` or `NaN` values in the count
+## Finding Duplicate Rows
+* The `df.duplicated()` function creates a boolean series with the same length as the DataFrame, indicating whether each corresponding row in the DataFrame is a duplicate. 
+	* By default, the first occurrence is marked as `False`, while subsequent duplicates are marked as `True`.
+* The `df.value_counts()` function produces a Series that enumerates the occurrences of unique values.
+	- By default, `dropna=True`. If set to `False`, it includes `None` or `NaN` values in the count.
+```python
+import pandas as pd
+
+df = pd.read_csv('/datasets/music_log.csv')
+
+# Extract first five rows of df
+first_5_rows = df[0:5] 
+
+# Produce series with duplicated()
+duplicates = first_5_rows.duplicated()
+print(duplicates.sum()) # Prints the number of duplicates
+
+# Produces a dataframe containing duplicates
+duplicated_first_5_rows = first_5_rows[first_5_rows.duplicated()] 
+```
+
 ```Python
+# Example -- Using value_counts()
+
 # Use value_counts() on the source column to include None and NaN in the count
 import pandas as pd
 df_logs = pd.read_csv('/datasets/visit_log.csv')
 df_logs['source'].value_counts(dropna=False)
+```
+
+```python
+# Example -- Using value_counts()
+
+import pandas as pd
+stock = pd.read_csv('/datasets/phone_stock.csv')
+
+stock['item'].value_counts()
+```
+
+## Removing Duplicate Rows
+- The `drop_duplicates()` function eliminates duplicate entries from a DataFrame; Removing duplicates does not rearrange the indices to accommodate the removed index entries.
+    - The `subset=` parameter focuses solely on particular columns for duplicate identification; by default, it involves all columns.
+- The `reset_index()` function constructs a fresh DataFrame with renumbered indices; the indices are stored in a new column named `index`.
+    - The `drop=` parameter specifies whether the original index should be discarded (no new index column created).
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/music_log.csv')
+first_5_rows = df[0:5]
+
+first_5_rows = first_5_rows.drop_duplicates() # Remove duplicates
+first_5_rows = first_5_rows.reset_index(drop=True) # Call the reset_index() method and drop old index
+```
+
+![[duplicate-values.png]]
+
+```Python
+import pandas as pd
+df = pd.DataFrame({'col_1': ['A', 'B', 'A', 'A'], 'col_2': [1, 2, 2, 1]})
+
+# Drop duplicates only in column 'col_1'
+df.drop_duplicates(subset='col_1')
+```
+
+## Finding Implicit Duplicates
+* When identifying duplicates within string data, focus on columns and search for subtle variations in string data that result in implicit duplicates.
+    - The `pd.unique()` function generates an array containing implicit duplicates within a column.
+    - The `pd.nunique()` function calculates the count of implicit duplicates within a column.
+```python
+import pandas as pd
+
+rating = ['date', 'name', 'points']
+players = [
+    ['2018.01.01',  'Rafael Nadal', 10645],
+    ['2018.01.08',  'Rafael Nadal', 10600],
+    ['2018.01.29',  'Rafael Nadal', 9760],
+	['2018.02.19',  'Roger Federer', 10105], 
+	['2018.03.05',  'Roger Federer', 10060],
+	['2018.03.19',  'Roger Federerr', 9660],
+	['2018.04.02',  'Rafael Nadal Parera', 8770],
+	['2018.06.18',  'Roger Fedrer', 8920],
+	['2018.06.25',  'Rafael Nadal Parera', 8770],
+	['2018.07.16',  'Rafael Nadal Parera', 9310],
+	['2018.08.13',  'Rafael Nadal Parera', 10220],
+	['2018.08.20',  'Rafael Nadal Parera', 10040],
+	['2018.09.10',  'Rafael Nadal Parera', 8760],
+	['2018.10.08',  'Rafael Nadal Parera', 8260],
+	['2018.10.15',  'Rafael Nadal Parera', 7660],
+	['2018.11.05',  'Novak Djokovic', 8045],
+	['2018.11.19',  'Novak Djokovic', 9045]
+]
+tennis = pd.DataFrame(data=players, columns=rating)
+
+# Call the unique() method and printing the result
+print(tennis['name'].unique()) 
+# ['Rafael Nadal' 'Roger Federer' 'Roger Federerr' 'Rafael Nadal Parera' 'Roger Fedrer' 'Novak Djokovic']
+
+# Call the nunique() method and printing the result
+print(tennis['name'].nunique()) # 6
+```
+
+## Removing Implicit Duplicates
+* When removing implicit duplicates, its important to focus on the strings within the columns that lead to implicit duplicates
+* The `Series.str.replace()` method substitutes an undesired string value with a replacement string value. This function uses the `pat` and `repl` parameters to replace a string.
+	- `pat` — the string(s) to be replaced (accepts a string to encompass multiple values)
+	- `repl` — the string to be used as the replacement
+```Python
+import pandas as pd
+
+rating = ['date', 'name', 'points']
+players = [
+    ['2018.01.01',  'Rafael Nadal', 10645],
+    ['2018.01.08',  'Rafael Nadal', 10600],
+    ['2018.01.29',  'Rafael Nadal', 9760],
+	['2018.02.19',  'Roger Federer', 10105], 
+	['2018.03.05',  'Roger Federer', 10060],
+	['2018.03.19',  'Roger Federerr', 9660],
+	['2018.04.02',  'Rafael Nadal Parera', 8770],
+	['2018.06.18',  'Roger Fedrer', 8920],
+	['2018.06.25',  'Rafael Nadal Parera', 8770],
+	['2018.07.16',  'Rafael Nadal Parera', 9310],
+	['2018.08.13',  'Rafael Nadal Parera', 10220],
+	['2018.08.20',  'Rafael Nadal Parera', 10040],
+	['2018.09.10',  'Rafael Nadal Parera', 8760],
+	['2018.10.08',  'Rafael Nadal Parera', 8260],
+	['2018.10.15',  'Rafael Nadal Parera', 7660],
+	['2018.11.05',  'Novak Djokovic', 8045],
+	['2018.11.19',  'Novak Djokovic', 9045]
+]
+
+# Create a DataFrame
+tennis = pd.DataFrame(data=players, columns=rating)
+
+# Use replace() to get rid of wrong versions of Federer's name
+tennis['name'] = tennis['name'].replace(['Roger Federerr','Roger Fedrer'], 'Roger Federer')
+
+print(tennis) 
+```
+
+```Result
+'''
+          date                 name  points
+0   2018.01.01         Rafael Nadal   10645
+1   2018.01.08         Rafael Nadal   10600
+2   2018.01.29         Rafael Nadal    9760
+3   2018.02.19        Roger Federer   10105
+4   2018.03.05        Roger Federer   10060
+5   2018.03.19        Roger Federer    9660
+6   2018.04.02  Rafael Nadal Parera    8770
+7   2018.06.18        Roger Federer    8920
+8   2018.06.25  Rafael Nadal Parera    8770
+9   2018.07.16  Rafael Nadal Parera    9310
+10  2018.08.13  Rafael Nadal Parera   10220
+11  2018.08.20  Rafael Nadal Parera   10040
+12  2018.09.10  Rafael Nadal Parera    8760
+13  2018.10.08  Rafael Nadal Parera    8260
+14  2018.10.15  Rafael Nadal Parera    7660
+15  2018.11.05       Novak Djokovic    8045
+16  2018.11.19       Novak Djokovic    9045
+'''
+```
+
+```python
+import pandas as pd
+df_stock = pd.read_csv('/datasets/phone_stock.csv')
+
+# Generate a new column with lowercase versions; Utilize the str.lower() function to convert values
+df_stock['item_lowercase'] = df_stock['item'].str.lower()
+
+# Calculate the total count of 'apple' and 'samsung' devices in the 'count' column for each respective brand
+apple_total = df_stock[df_stock['item_lowercase'] == 'apple iphone xr 64gb']['count'].sum()
+samsung_total = df_stock[df_stock['item_lowercase'] == 'samsung galaxy a30 32gb']['count'].sum()
+
+# Remove duplicates from the item_lowercase column
+df_stock = df_stock.drop_duplicates(subset='item_lowercase').reset_index(drop=True)
+
+# Update the count values for apple and samsung devices in the count column
+df_stock.loc[0, 'count'] = apple_total
+df_stock.loc[3, 'count'] = samsung_total
+```
+
+
+
+---
+# Grouping Data
+* Grouping helps provide a more detailed look at the data before moving on to searching for dependencies and similarities between different groups.
+* Grouping is warranted when the data logically clusters based on specific features and when these groups are pertinent to the task at hand.
+- Stages of Grouping
+    1. **Split:** Divide the data into groups based on a given condition.
+    2. **Apply:** Apply data aggregation techniques to each group.
+    3. **Combine:** Compile and store the results from each group.
+
+## Grouping in Pandas
+- The `df.groupby()` method is used to group data.
+    - Accepts the name of the column(s) to group by and returns a Series with the `DataFrameGroupBy` class.
+        - Multiple grouping results in a multi-index Series with 2 or more index values for each resulting value.
+- The `DataFrameGroupBy` object, resulting from grouping, is part of a data processing framework called split-apply-combine.
+```Python
+# Example -- Grouping 
+
+import pandas as pd
+
+df = pd.read_csv('/datasets/vg_sales.csv')
+df.dropna(inplace=True)
+
+grp = df.groupby(['platform', 'genre']) # Split the data into groups
+mean_scores = grp['critic_score'].mean() # Apply function & combine the results
+```
+
+```Python
+# Example -- Grouping 
+
+import pandas as pd
+exoplanet = pd.read_csv("/datasets/exoplanets.csv")
+
+# Create a new DataFrame grouped by the 'discovered' column & count the values
+exoplanet.groupby('discovered').count()
+
+# Create a new DataFrame grouped by the 'discovered' column & count the values for the 'radius' column ONLY
+exo_number = exoplanet.groupby('discovered')['radius'].count()
+
+# Create a new DataFrame grouped by the 'discovered' column & sum the values for the 'radius' column ONLY
+exo_radius_sum = exoplanet.groupby('discovered')['radius'].sum()
+
+# Find the average 
+exo_radius_mean = exo_radius_sum / exo_number
+```
+
+```Python
+# Example -- Group by Multiple Columns
+
+import pandas as pd
+
+df = pd.read_csv('/datasets/vg_sales.csv')
+df.dropna(inplace=True)
+
+grp = df.groupby(['platform', 'genre'])
+print(grp['critic_score'].mean())
+```
+
+#### Performing Multiple Functions to a Grouped Data
+- The `agg()` method uses a dictionary as input where the keys are column names and the values are the aggregate functions to be applied.
+```Python
+# Example -- Applying multiple functions to grouped data
+import pandas as pd
+
+df = pd.read_csv('/stats/vg_sales.csv')
+df.dropna(inplace=True)
+
+# Create a dict (key = col names, values = aggregate fns)
+agg_dict = {'critic_score': 'mean', 'jp_sales': 'sum'}
+
+# Group by two platform and genre & call agg function to apply different aggregate function
+grp = df.groupby(['platform', 'genre']).agg(agg_dict)
+```
+
+```Python
+# Example -- Applying multiple functions to grouped data
+
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+df['total_sales'] = df['na_sales'] + df['eu_sales'] + df['jp_sales']
+
+# Group data
+grp = df.groupby('genre')
+
+# Define a dictionary to hold operations
+agg_dict = {
+    'total_sales': 'sum',
+    'na_sales': 'mean',
+    'eu_sales': 'mean',
+    'jp_sales': 'mean'
+}
+
+# Apply operations
+genre = grp.agg(agg_dict)
 ```
