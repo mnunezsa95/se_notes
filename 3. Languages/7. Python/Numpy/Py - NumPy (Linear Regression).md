@@ -13,17 +13,15 @@ Resources:
 
 # Linear Regression Model - Basics
 * **Linear Regression** -- a method used to predict a target based on a set of features
-	* LR evaluates the model's prediction performance (MSE)
 * In matrix notation, the features are represented by a matrix of observations denoted as $𝑋$. 
 	* Columns -- Features
 	* Rows -- Observations
 	![Matrix Notation Features](matrix-notation-features.png) 
 * The prediction of a model ($𝑎$) is calculated by multiplying the feature matrix $X$ by the weight vector ($𝑤$), and adding the bias value ($𝑤_0$). 
-	* $𝑤$ -- a vector that is a parameter of the model 
-	* $𝑤_0$ -- a scalar that is a parameter of the model $$𝑎 = (X * 𝑤) + 𝑤_0$$
-	* When the feature matrix $X$ has only one feature, the model equation resembles that of a straight line: $$y = mx + b$$
-		![[prediction-model.png]]
-		
+	* $X$ -- matrix X
+	* $𝑤$ -- the weight vector
+	* $𝑤_0$ -- the bias scalar value 
+$$𝑎 = (X * 𝑤) + 𝑤_0$$
 * The number of model parameters is one more than the length of the features vector. 
 	* Adjusting the parameters $w$ and $w_0$ results in a different straight line. 
 		* Changing $w_0$ shifts the line vertically (see below)
@@ -38,38 +36,38 @@ Resources:
 * The objective of training is to discover the optimal values for parameters ($w$ and $w_0$)
 
 #### The Objective Function
-- **Objective Function** -- a function aimed to minimize or maximize to solve optimization problems
-    - Inputs: Data and model parameters
-    - Output: Numeric value
+- **Objective Function** -- a function that should be minimized or maximized in order to solve optimization problems
+    - **Inputs:** Data and model parameters
+    - **Output:** Numeric value
 - Objective Function of Linear Regression:
-    - In Linear Regression, the objective function is the loss function, calculating the MSE (Mean Square Error).
-        - Linear Regression performs optimally when the MSE is at its minimum.
+    - **MSE (Mean Square Error)** is the objective 'loss' function of linear regression that measures the model's prediction performance.
+        - Linear Regression performs best when the MSE is at its minimum
+
 
 ### Prediction Process
-* Obtaining the prediction vector $a$ involves the following steps:
-	1. Add a column consisting only of ones to the beginning of matrix $X$.
-	2. Add $w_0$ to the beginning of the $w$ vector.
-	   ![Image](improve-equation-for-model-prediction.png)
-	3. Take the dot product of the $X$ matrix and the $w$ vector.
-		* Formula: $$ a = X \cdot w $$
-	4. Find the optimal values for the weights using Mean Squared Error (MSE) minimization.
-		* Formula: $$ w = \text{argmin}(MSE(Xw, y)) $$
-		     - $y$ -- the target vector from the data
-		     - `argmin()` -- returns the values for the minimized result.
-		     
-		 - Formula: Can be expressed in Matrix form $$w = (X^T X)^-1 X^Ty$$
-			 - 𝑤 -- the vector of regression weights
-			 - 𝑋 -- the matrix of observations with the features
-			 - 𝑦 -- the column vector of observations with the target
+* To obtain the prediction vector $𝑎$ follow these steps:
+	1. Append a column of 1s to the start of matrix $X$.
+	2. Append $w_0$​ to the start of vector $w$.
+		   ![Image](improve-equation-for-model-prediction.png)
+	3. Find the optimal values for the weights using Mean Squared Error (MSE) minimization.
+		* Formula: in regular form
+			* $y$ -- the target vector from the data
+		     - `argmin()` -- returns the values for the minimized result $$ w = argmin_w(MSE(Xw, y)) $$
+		 - Understanding the Formula in Matrix Form
+			- Overall Formula:
+				- 𝑤 -- vector of regression weights
+				 - 𝑋 -- matrix of observations with the features
+				 - 𝑦 -- vector of the target values $$w = (X^T X)^-1 X^Ty$$
+			- Steps:
+			        1. Multiply the transposed feature matrix by the feature matrix:
+			            $w = (X^TX)$
+			        2. Calculate the inverse of the resulting matrix:
+				        $w = (X^TX)^−1$
+			        3. Multiply the inverse matrix by the transposed feature matrix:
+			            $w = (X^TX)^−1X^T$
+			        4. Multiply the resulting matrix by the vector of target values:
+			            $w = (X^TX)^−1X^Ty$
 
-
-# Training Linear Regression
-* Understanding the Formula in Matrix Form 
-	* Formula: $$w = (X^T X)^-1 X^Ty$$
-		* The transposed feature matrix is multiplied by itself. $$(X^TX)$$
-		* The matrix inverse to that result is calculated  $$(X^TX)^-1$$
-		* The inverse matrix is multiplied by the transposed feature matrix $$(X^TX)^-1 X^T$$
-		* The result is multiplied by the vector of the target values $$ (X^T X)^-1 X^Ty $$
 ```Python
 # Example -- Manually creating Linear Regression Model
 import numpy as np
@@ -91,9 +89,19 @@ target = data['price']
 
 class LinearRegression:
     def fit(self, train_features, train_target):
+	    # Step 1: Append a column of 1s to the start of matrix X
         X = np.concatenate((np.ones((train_features.shape[0], 1)), 
 	        train_features), axis=1)
         y = train_target
+        
+        # Step 3.1: X.T.dot(X) 
+	        # -- Multiply the transposed feature matrix by the feature matrix
+        # Step 3.2: np.linalg.inv()
+	        # -- Calculate the inverse of the resulting matrix
+	    # Step 3.3: .dot(X.T)
+		    # -- Multiply the inverse matrix by the transposed feature matrix
+		# Step 3.4: .dot(y)
+			# -- Multiply the resulting matrix by the vector of target values
         w = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
         self.w = w[1:]
         self.w0 = w[0]
