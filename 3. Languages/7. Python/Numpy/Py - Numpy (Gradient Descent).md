@@ -9,9 +9,10 @@ Resources:
 * Documentation: [NumPy](https://numpy.org/doc/stable/index.html)
 * Documentation: [SK-Learn](https://scikit-learn.org/stable/)
 * Documentation: [SciPy](https://docs.scipy.org/doc/scipy/index.html)
+* Documentation: [CatBoostClassifier](https://catboost.ai/en/docs/concepts/python-reference_catboostclassifier)
 
 ---
-# Loss Function Minimization
+# 1. Loss Function Minimization
 
 * Formula: 
 	* $y$ -- the number of correct answers
@@ -41,7 +42,9 @@ result = -1 * (log10(1 - 0.2) + log10(1 - 0.4) + log10(0.6) + log10(0.8) + log10
 print(result)
 ```
 
-# Function Gradient
+# 2. Function Gradient
+## What is a Function Gradient?
+* Function Gradient is a fancy word for derivative 
 * The gradient of a vector-valued function is a vector consisting of derivatives of the answer for each argument.
 * The gradient shows the direction in which the function increases the fastest
 	* Formula: 
@@ -51,7 +54,7 @@ $$∇f(x) = ((∂f)/(∂x_i), (∂f)/(∂x_2), ..., (∂f)/(∂x_n))$$
 	* Formula:
 $$-∇f(x)$$
 
-##### Examples:
+### Examples: Finding the Function Derivative (Gradient)
 * Example: The function gradient for one argument is the derivative:
 $$f(x)=(x-5)^2$$
 $$∇f(x) = ∇(x^2 -10x+25) = 2x-10$$
@@ -74,35 +77,31 @@ $$(∂f(x,y,z))/(∂y) = (∂(3x^2))/(∂y) + (∂(2y^2))/(∂y) + (∂(5xy))/(�
 $$(∂f(x,y,z))/(∂z) = (∂(3x^2))/(∂z) + (∂(2y^2))/(∂z) + (∂(5xy))/(∂x) - (3z)/(∂z) = 0 + 0 - 0 -3$$
 $$∇f(x,y,z) = (6x+3y, 4y+3x, -3)$$
 
-# Calculating Gradient Descent
+# 3. Calculating Gradient Descent
+## What is Gradient Descent?
 * **Gradient descent** is an iterative method used to pinpoint the minimum of a loss function. This approach involves consistently moving in the direction opposite to the gradient, gradually moving closer to the minimum value.
 	- The process of the gradient descent algorithm can be likened to a continuous descent towards the bottom, achieved through repetitive actions.
 	- Reaching the minimum in a single iteration is challenging, as the negative gradient vector guides the descent towards decreasing values rather than directly pinpointing the precise minimum point of the loss function.
 	
-- How to Perform a Gradient Descent
-	- Select the **initial value** for the argument (vector _x_), denoted as x⁰.
-	- Incorporate the negative gradient scaled by the gradient descent magnitude, represented by $mu$.
-	    - The parameter μ regulates the magnitude of the gradient descent step.
-	        - When $mu$ is small, the descent progresses through numerous steps, with each bringing the solution closer to the minimum of the loss function.
-	        - Conversely, if $mu$ is large, there's a risk of overshooting the minimum.
-$$X^1 - X^0 + mu*(-∇f(x))$$
-	- Iterate to derive the argument values for subsequent steps. 
-		- The number of iterations is denoted by $t$.
-	- Scale the negative gradient by the step size and add the resulting product to the previous point.
-	$$x^t=x^(t-1)-mu*∇f(x^(t-1))$$
+## How to Perform a Gradient Descent
+- Select the **initial value** for the argument (vector _x_), denoted as x⁰.
+- Incorporate the negative gradient scaled by the gradient descent magnitude, represented by $mu$.
+	- The parameter μ regulates the magnitude of the gradient descent step.
+		- When $mu$ is small, the descent progresses through numerous steps, with each bringing the solution closer to the minimum of the loss function.
+		- Conversely, if $mu$ is large, there's a risk of overshooting the minimum. $$X^1 - X^0 + mu*(-∇f(x))$$
+- Iterate to derive the argument values for subsequent steps. 
+	- The number of iterations is denoted by $t$.
+- Scale the negative gradient by the step size and add the resulting product to the previous point. $$x^t=x^(t-1)-mu*∇f(x^(t-1))$$
 * The gradient descent is complete when:
 	* The algorithm completes the required number of iterations
 	* The value of $x$ stops changing
 
-##### Examples
+## Examples: Finding the Gradient Descent
 * Example 1: Calculate the x value and the loss function value after four iterations of gradient descent.
 	* $u$ = 0.4
 	* $x^0$ = 0 
-	* $t$ = 4
-$$f(x) = (x-10)^2$$
-
+	* $t$ = 4 $$f(x) = (x-10)^2$$
 	* Find the Derivative of $f(x)$: $$f'(x) = 2(x-10)$$
-
 	* Iteration 0: 
 		* Set Initial Value:$$x^0 = 0 $$
 		* Calculate Iteration: $$f'(x) - 2(0-10) = -20$$
@@ -126,15 +125,15 @@ $$f(x) = (x-10)^2$$
 	- Result
 	$$x=9.984, f(x)=0.000256$$
 
-# Calculating Gradient Descent in Python
-* Steps to create gradient descent in Python
-	1) 1. In the arguments of the algorithm, set the initial value, x⁰.
-	2. Calculate the gradient of the loss function (this is the vector of partial derivatives with respect to each argument that takes vector _x_ as input).
-	3. Find the new value using the formula: 
-		* Where $μ$ is the step size, and set in the argument of the algorithm.$$𝑥^1=𝑥^0+𝜇 * (−∇𝑓(𝑥))$$
-	4. Perform the number of iterations specified in the arguments.
+# 4. Calculating Gradient Descent in Python
+## Steps to create gradient descent in Python
+1) In the arguments of the algorithm, set the initial value, x⁰.
+2. Calculate the gradient of the loss function (this is the vector of partial derivatives with respect to each argument that takes vector _x_ as input).
+3. Find the new value using the formula: 
+	* Where $μ$ is the step size, and set in the argument of the algorithm.$$𝑥^1=𝑥^0+𝜇 * (−∇𝑓(𝑥))$$
+4. Perform the number of iterations specified in the arguments.
 * Example
-* Minimize the function: $f(x1​,x2​)=(x_1​+x_2​ - 1)^2+(x_1​ -x_2​ - 2)^2$
+	* Minimize the function: $f(x1​,x2​)=(x_1​+x_2​ - 1)^2+(x_1​ -x_2​ - 2)^2$
 ```Python
 import numpy as np
 
@@ -156,7 +155,7 @@ print(gradient_descent(np.array([0, 0]), 0.1, 5))
 print(gradient_descent(np.array([0, 0]), 0.1, 100))
 ```
 
-# Gradient Descent for Linear Regression
+# 5. Gradient Descent for Linear Regression
 * Identify Linear Regression Training Task
 $$w = arg\;min_w\;MSE(Xw,y)$$
 
@@ -174,8 +173,8 @@ $$MSE(Xw,y) = 1/n(Xw-y)^T(Xw-y)$$
 * Find the function gradient for parameter vector $w$. 
 $$∇MSE(Xw,y) = 2/nX^T(Xw-y)$$
 
-# Stochastic Gradient Descent
-### Mini-Batch Stochastic Gradient Descent (SGD) and Stochastic Gradient Descent (SGD)
+# 6. Stochastic Gradient Descent
+### Mini-Batch Stochastic Gradient Descent (SGD) & Stochastic Gradient Descent (SGD)
 * **Mini-Batch Stochastic Gradient Descent (SGD)** and **Stochastic Gradient Descent (SGD)** are variations of the gradient descent that optimize algorithms used to minimize the loss function in machine learning models
 
 ### Mini-Batches
@@ -209,7 +208,7 @@ $$∇MSE(Xw,y) = 2/nX^T(Xw-y)$$
 	* For one batch:$$T(n,b,) ~ bp$$
 	* One epoch if the set is divided into batches integrally: $$T(n,b,p) ~ np$$
 
-# SGD in Python
+# 7. SGD in Python
 * Creating a SGD Gradient in Python requires the use of Python classes
 ```Python
 # Example - Creating SGD in Python
@@ -268,7 +267,7 @@ print(r2_score(target_test, pred_test).round(5)) # 0.06296
 ```
 
 
-# Linear Regression Regularization 
+# 8. Linear Regression Regularization 
 * **Regularization** -- Reduces the overfitting by fining the model if the parameter values complicate the algorithm operation
 	* For Linear Regression, regularization implies the limitation of weights
 	
@@ -381,4 +380,149 @@ Regularization: 1.0
 Regularization: 10.0
 0.03945
 0.02412
+```
+
+
+# 9. Ensembles and Boosting
+#### Ensemble
+- An ensemble is a set of models for solving the same problem.
+	-  The results of **base** or **weak** learners (the models comprising the ensemble) are averaged
+- Ensembles are strong because:
+    - The mean error of a group of models is less significant than their individual errors.
+- Examples of Ensembles:
+	- The Random Forest
+		- Base --> decision tree
+
+#### Boosting
+* **Boosting** -- an approach to ensemble building
+- In boosting:
+    - Each subsequent model takes into account the errors of the previous one.
+    - The final prediction combines the forecasts of basic learners. 
+- Formula:
+	- $a_N(X)$ -- the ensemble prediction
+	- $N$ -- the number of base learners
+	- $b_k(X)$ -- the base learner prediction
+	- $y_k$ -- the model weight $$a_N(X) = sum^N_(k=1)y_kb_k(X)$$
+* Example: Dealing with Regression Task 
+	* Important takeaways:
+		* What does the base learner predict at each step of the gradient boost?
+			* Residuals at previous step $N-1$
+		* What are ensemble residuals at step $N$?
+			* The difference between the ensemble at current step N and the actual answers
+		* What is minimized at step $N$?
+			* The value of the error function to predict the residuals at the previous step
+	* Starting Formula: $$MSE(y,a) = 1/n sum^n_(i=1)(a(x_i)-y_i)^2 --> min_(a(x))$$
+	* Equate the model weights to unity: $$y_k = 1, \text{for all}\; k =1,...,N $$
+	* Results in: $$a_N(X) = sum^N_(k=1)b_k(X)$$
+	* Now, create an ensemble of sequential models
+		* First build the base learner $b_1$ by solving the minimization task: $$b_1=arg min_b1/n sum^n_(i=1)(b(x_i)-y_i)^2$$
+	* The result is this ensemble: $$a_1(X)=b_1(X)$$
+	* Indicate the **residual** -- the difference between the prediction at the first step and the correct answers $$e_(1,i) = y_i -b_1(x_i)$$
+	* Build a model like this: $$b_2 = argmin_b 1/n sum^n_(i=1)(b(x_i)-e_(1,i))^2$$
+	* The ensemble takes the following form: $$a_2(X) = sum^2_(k=1)b_k(X)=b_1(X)+b_2(X)$$
+	* Find the residual for each observation $i$: $$e_(2,i) = y_i -a_2(X_i) = y_i - sum^2_(k=1)b_k(X_i)$$
+	* At each subsequent step, the algorithm minimizes the ensemble error from the preceding step.
+		* At step _N-1_, the residual is calculated as follows: $$e_(N-1,i)=y_i - a_(N-1)(X_i)$$
+	* The ensemble itself is represented as the sum of predictions of all the base learners combined up to this step: $$a_(N-1)(X) = sum^(N-1)_(k=1)b_k(X)$$
+	* So, at step N, the algorithm will pick the model with the ensemble error at step N-1: $$b_N(X)=argmin_b1/nsum^n_(i=1)(b(x_i)-e_(N-1,i))^2$$
+
+---
+# 10. Gradient Boosting
+## Introduction to Gradient Boosting?
+* Gradient Boosting makes the process minimizing the loss function, even more effective! 
+* Gradient boosting is suitable for different loss functions that have derivatives such as:
+	* Mean Square in Regression Tasks
+	* Logarithmic in Binary Classification Tasks
+
+## Formulas: Gradient Boosting
+* Start with the ensemble formula: $$a_N(x) = a_(N-1) + y_Nb_N(x)$$
+* At each step, select the answers that will minimize the function: $$L(y,a(x)) --> min_a $$
+* Minimize the function with gradient descent, by calculating the negative gradient of the loss function for prediction $g_N$ at each step. $$g_N(x)=-∇L(y,a_(N-1)(x) + a)$$
+* To push the predictions towards correct answers, the base learner learns to predict $g_N$: $$b_N(x) arg min_b 1/n sum^N_(i=1)(b(x_i)+g_N(x_i))^2$$
+*  Obtain the weight for $y_N$ from the minimization task by iterating various numbers: $$y_N= argmin_yL(y,a_(N-1)(x) + yb_N(x))$$
+
+# 11. Gradient Boosting Regularization
+## Introduction to Gradient Boosting Regularization
+* Regularization can be used to reduce overfitting during gradient boosting
+* If the weights in a linear regression have been reduced, then the gradient boosting regularization is:
+	1. Reduce step size
+	2. Adjust tree parameters
+	3. Subsample randomization for base learners $b_i$
+
+### Reduce Step Size
+* Revise the formula for calculating predictions at step N:
+	* When the algorithm takes steps too large, it remembers the training set  
+	* Formula: $$a_N(x)=a_(N-1)(x) + y_Nb_N(x)$$
+* Introduce the $η$ coefficient to control the learning rate and reduce the step size
+	* The $η$ coefficient is picked by iterating over different values in the range from 0 to 1.
+		* A smaller value means a smaller step towards the negative gradient (derivative) and a higher accuracy of the ensemble
+		* If the value is too small, then the training process takes too long
+	* Formula: $$a_N(x)=a_(N-1)+η + y_Nb_N(x)$$
+### Adjust Tree Parameters
+* Limit the tree depth or number of elements in each node to see how it affects the result
+* Try different values for the tree depth.
+
+### Subsample Randomization for Base Learners $b_i$
+* The algorithm works by training with random subsamples instead of the whole set. 
+	* This algorithm version is similar to SGD and is called stochastic gradient boosting.
+
+
+# 12. Libraries for Gradient Boosting
+## Libraries
+* There are three popular libraries for gradient boosting
+	* XGBoost (extreme gradient boosting) -- a popular gradient boosting library on Kaggle
+	* [LightGBM](https://lightgbm.readthedocs.io/en/latest/Experiments.html) (light gradient boosting machine) -- a popular gradient boosting library developed by Microsoft
+		* Fast and accurate gradient boost training
+		* Directly works with categorical features
+	* [CatBoost](https://catboost.ai/#benchmark) (categorical boosting) -- a gradient boosting library developed by Yandex
+		* Superior to other algorithms in terms of evaluation metrics
+		* Applies various encoding techniques for categorical features (LabelEncoding, One-Hot Encoding)
+## Library Comparison
+
+| Library  | Processing of Categorical Features | Rate |
+| -------- | ---------------------------------- | ---- |
+| XGBoost  | No                                 | Low  |
+| LightGBM | Yes                                | High |
+| CatBoost | Yes                                | High |
+
+## Working with CatBoost Library
+* CatBoost must be installed and imported before use
+	* The `CatBoostClassifier()` class has methods similar to sklearn classes for fitting and predicting 
+		* Hyperparameters
+			* `loss_function=` -- the loss function to use
+				* `'Logloss'`
+			* `iterations=` -- the number of operations to run
+			* `random_seed=` -- the random seed used for training
+			* `learning_rate` -- the learning rate used for training
+			* `depth` -- the depth to use 
+	* Methods:
+		* `model.fit()` -- trains the model
+			* Arguments
+				* `X` -- the train features
+				* `y` -- the train target
+				* `cat_features=` -- a list of the category features
+				* `verbose=` -- specifies the step at which to print information
+		* `model.predict()`
+			* Arguments
+				* `X` -- the valid or test features 
+			* Returns 
+				* The predictions
+```Python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from catboost import CatBoostClassifier
+
+data = pd.read_csv('travel_insurance_us.csv')
+
+features_train, features_valid, target_train, target_valid = train_test_split(
+	data.drop('Claim', axis=1), data.Claim, test_size=0.25, random_state=12345
+)
+
+model = CatBoostClassifier(loss_function="Logloss", iterations=10)
+
+cat_features = ['Agency', 'Agency Type', 'Distribution Channel', 'Product Name',
+	'Destination', 'Gender']
+
+model.fit(features_train, target_train, cat_features=cat_features, verbose=10)
+pred_valid = model.predict(features_valid)
 ```

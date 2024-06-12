@@ -40,7 +40,7 @@ celestial = celestial.rename(
 # Working with Missing Values
 
 ## Introduction to Missing Values
-Missing values can arise from various factors, significantly affecting data analysis. They can be represented in different ways:
+* Missing values can arise from various factors, significantly affecting data analysis. They can be represented in different ways:
 - Expected representations, automatically handled in Python:
     - `None`: A `NoneType` object in Python, which cannot be used in arithmetic operations.
     - `NaN`: Treated as a decimal (`float` type) and can be used in arithmetic operations.
@@ -136,11 +136,13 @@ mobile_data['time'] = mobile_data['time'].fillna(mobile_avg)
 
 ---
 # Working with Duplicate Values
+## Introduction to Duplicate Values
 * There are two types of duplicate values:
 	* Explicit Duplicates
 	* Implicit Duplicates
 
-## Finding Duplicate Rows
+## Dealing with Explicit Duplicates
+### Finding Duplicate Rows
 * The `df.duplicated()` function creates a boolean series with the same length as the DataFrame, indicating whether each corresponding row in the DataFrame is a duplicate. 
 	* By default, the first occurrence is marked as `False`, while subsequent duplicates are marked as `True`.
 * The `df.value_counts()` function produces a Series that enumerates the occurrences of unique values.
@@ -179,7 +181,7 @@ stock = pd.read_csv('/datasets/phone_stock.csv')
 stock['item'].value_counts()
 ```
 
-## Removing Duplicate Rows
+### Removing Duplicate Rows
 - The `drop_duplicates()` function eliminates duplicate entries from a DataFrame; Removing duplicates does not rearrange the indices to accommodate the removed index entries.
     - The `subset=` parameter focuses solely on particular columns for duplicate identification; by default, it involves all columns.
 - The `reset_index()` function constructs a fresh DataFrame with renumbered indices; the indices are stored in a new column named `index`.
@@ -203,10 +205,12 @@ df = pd.DataFrame({'col_1': ['A', 'B', 'A', 'A'], 'col_2': [1, 2, 2, 1]})
 df.drop_duplicates(subset='col_1')
 ```
 
-## Finding Implicit Duplicates
+
+## Dealing with Implicit Duplicates
+### Finding Implicit Duplicates
 * When identifying duplicates within string data, focus on columns and search for subtle variations in string data that result in implicit duplicates.
-    - The `pd.unique()` function generates an array containing implicit duplicates within a column.
-    - The `pd.nunique()` function calculates the count of implicit duplicates within a column.
+    - The `Series.unique()` function generates an array containing implicit duplicates within a column.
+    - The `Series.nunique()` function calculates the count of implicit duplicates within a column.
 ```python
 import pandas as pd
 
@@ -240,7 +244,7 @@ print(tennis['name'].unique())
 print(tennis['name'].nunique()) # 6
 ```
 
-## Removing Implicit Duplicates
+### Removing Implicit Duplicates
 * When removing implicit duplicates, its important to focus on the strings within the columns that lead to implicit duplicates
 * The `Series.str.replace()` method substitutes an undesired string value with a replacement string value. This function uses the `pat` and `repl` parameters to replace a string.
 	- `pat` — the string(s) to be replaced (accepts a string to encompass multiple values)
@@ -416,4 +420,430 @@ agg_dict = {
 
 # Apply operations
 genre = grp.agg(agg_dict)
+```
+
+
+# Custom Filtering (Single Conditions)
+* There are several ways to filter a DataFrame
+	* Using built-in methods
+		* `df.query()`
+		* `df.isin()` 
+	* Using external objects
+		* Lists
+		* Dictionaries
+		* Series
+		* DataFrames
+
+## Using Built-in Methods to Filter Single Conditions
+* The `df.query()` method uses a query string as an input to filter data 
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+# Filter where jp_sales are greater than 1, and return the 'name' and 'jp_sales' columns
+df.query("jp_sales > 1")[['name', 'jp_sales']]
+
+# Filter where only where the publisher column is equal to Nintendo and return the 'name' and 'publisher columns'
+df.query("publisher == 'Nintendo'")[['name', 'publisher']].head()
+```
+
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+handhelds = ['3DS', 'DS', 'GB', 'GBA', 'PSP']
+
+# Check if the value of 'platform' is in the handhelds array and return the 'name' and 'platform' values only
+df.query("platform in @handhelds")[['name', 'platform']]
+```
+
+* The `isin()` method checks if values in a column match any of the values in another array such as a list, dictionary, DataFrame or Series.
+	*  If `values` is a Series, it will be match on index
+	* If `values` is a dict, it will match on keys
+	* If `values` is a df, it will match on both index and column labels
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+handhelds = ['3DS', 'DS', 'GB', 'GBA', 'PSP']
+
+# Checks if the value for 'platform' is in the handheld array and returns the name and platform columsn only
+df[df['platform'].isin(handhelds)][['name', 'platform']]
+```
+
+```Python
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+# Define the columns to keep and the genres to exclude
+columns_to_keep = ['name', 'genre']
+excluded_genres = ['Shooter', 'Simulation', 'Sports', 'Strategy']
+
+# Filter the data to retain only the rows where the genre does not start with the letter "S" and return the values for 'genre' and 'name' only
+filtered_df = df[~df['genre'].isin(excluded_genres)][columns_to_keep]
+
+print(filtered_df)
+```
+
+
+## Using External Objects
+### Using an External List
+* Useful for checking the existence of specific values within a DataFrame
+* Useful for checking if specific values from a particular column are present in a list
+```Python
+import pandas as pd
+
+# Define a list of values to filter the DataFrame
+our_list = [2, 5, 10]
+
+# Create a DataFrame with three columns 'a', 'b', and 'c'
+df = pd.DataFrame(
+    {
+        'a': [2, 3, 10, 11, 12],  # Column 'a' with integer values
+        'b': [5, 4, 3, 2, 1],     # Column 'b' with integer values
+        'c': ['X', 'Y', 'Y', 'Y', 'Z'],  # Column 'c' with string values
+    }
+)
+
+# Print the list used for filtering
+print(our_list)  # [2, 5, 10]
+
+# Filter the DataFrame to only include rows where the values in column 'a' are in 'our_list'
+print(df.query("a in @our_list")) # See result below
+```
+
+```Result
+    a  b  c
+0   2  5  X
+2  10  3  Y
+```
+
+### Using an External Dictionary
+* Useful for checking if specific values from a particular column are present in a dictionary
+```Python
+import pandas as pd
+
+# Define a dictionary with some key-value pairs
+our_dict = {0: 10, 3: 11, 12: 12}
+
+# Create a DataFrame with three columns 'a', 'b', and 'c'
+df = pd.DataFrame(
+    {
+        'a': [2, 3, 10, 11, 12],  # Column 'a' with integer values
+        'b': [5, 4, 3, 2, 1],     # Column 'b' with integer values
+        'c': ['X', 'Y', 'Y', 'Y', 'Z'],  # Column 'c' with string values
+    }
+)
+
+# Print the dictionary used for filtering
+print(our_dict)  # {0: 10, 3: 11, 12: 12}
+
+# Check for the presence of values from column 'a' among the dictionary values in 'our_dict'
+print(df.query("a in @our_dict.values()")) # See results below
+```
+
+```
+    a  b  c
+2  10  3  Y
+3  11  2  Y
+4  12  1  Z
+```
+
+* Useful for checking if specific keys from a particular column are present in a dictionary
+```Python
+import pandas as pd
+
+# Define a dictionary with specific keys and values
+our_dict = {0: 10, 3: 11, 12: 12}
+
+# Create a DataFrame with columns 'a', 'b', and 'c'
+df = pd.DataFrame(
+    {
+        'a': [2, 3, 10, 11, 12],
+        'b': [5, 4, 3, 2, 1],
+        'c': ['X', 'Y', 'Y', 'Y', 'Z'],
+    }
+)
+
+# Print the dictionary
+print(our_dict)  # Output: {0: 10, 3: 11, 12: 12}
+
+# Query the DataFrame to filter rows where column 'a' has keys present in our_dict
+print(df.query("a in @our_dict.keys()"))
+```
+
+### Using an External Series
+* Series objects store data using index-value pairs.
+	* Values are checked by default.
+	* To check for an index, utilize the `index` attribute.
+```Python
+import pandas as pd
+
+# Create a pandas Series named our_series with values [10, 11, 12]
+our_series = pd.Series([10, 11, 12])
+
+# Create a DataFrame df with columns 'a', 'b', and 'c'
+df = pd.DataFrame(
+    {
+        'a': [2, 3, 10, 11, 12],
+        'b': [5, 4, 3, 2, 1],
+        'c': ['X', 'Y', 'Y', 'Y', 'Z'],
+    }
+)
+
+# Print the content of our_series
+print(our_series)  # Output: see result below
+
+# Query the DataFrame df to filter rows where column 'a' values are in our_series
+print(df.query("a in @our_series"))  # Output: see result 2 below
+
+# Query the DataFrame df to filter rows where column 'c' values are in our_series index
+print(df.query("c in @our_series.index"))
+```
+
+```Result
+0    10
+1    11
+2    12
+```
+
+```Result 
+    a  b  c
+2  10  3  Y
+3  11  2  Y
+4  12  1  Z
+```
+
+```Result
+Empty DataFrame
+Columns: [a, b, c]
+Index: []
+```
+
+### Using an External DataFrame
+* An external DataFrame offers two methods for data filtration:
+	1. Filtering based on its `index` values
+	    - This method utilizes the `index` attribute.
+	2. Filtering based on values within designated columns
+	    - This approach involves specifying columns using dot notation.
+```Python
+import pandas as pd
+
+# Create the main DataFrame 'df' with columns 'a', 'b', and 'c'
+df = pd.DataFrame(
+    {
+        'a': [2, 3, 10, 11, 12],
+        'b': [5, 4, 3, 2, 1],
+        'c': ['X', 'Y', 'Y', 'Y', 'Z'],
+    }
+)
+
+# Create our external DataFrame 'our_df' with columns 'a1', 'b1', and 'c1', and specify custom index values 'Z', 'X', 'P'
+our_df = pd.DataFrame(
+    {
+        'a1': [2, 4, 6],
+        'b1': [3, 2, 2],
+        'c1': ['A', 'B', 'C'],
+    },
+    index=['Z', 'X', 'P']
+)
+
+# Filter 'df' based on the condition where 'c' values are found in 'our_df' index
+filtered_df = df.query("c in @our_df.index")
+
+# Print the filtered DataFrame
+print(filtered_df)  # See results below
+```
+
+```Result
+    a  b  c
+0   2  5  X
+4  12  1  Z
+```
+
+```Python
+import pandas as pd
+
+# Create the main DataFrame 'df' with columns 'a', 'b', and 'c'
+df = pd.DataFrame(
+    {
+        'a': [2, 3, 10, 11, 12],
+        'b': [5, 4, 3, 2, 1],
+        'c': ['X', 'Y', 'Y', 'Y', 'Z'],
+    }
+)
+
+# Create our external DataFrame 'our_df' with columns 'a1', 'b1', and 'c1', and specify custom index values 'Z', 'X', 'P'
+our_df = pd.DataFrame(
+    {
+        'a1': [2, 4, 6],
+        'b1': [3, 2, 2],
+        'c1': ['A', 'B', 'C'],
+    },
+    index=['Z', 'X', 'P']
+)
+
+# Query 'df' to filter rows where 'a' values are found in 'our_df.b1' '@' symbol is used to reference variables from the current namespace, which allows 'our_df.b1' to be used directly in the query string
+filtered_df = df.query('a in @our_df.b1')
+
+# Print the filtered DataFrame
+print(filtered_df)  # See results below
+```
+
+```Result
+   a  b  c
+0  2  5  X
+1  3  4  Y
+```
+
+
+
+---
+# Custom Filtering (Multiple Conditions)
+
+#### Filtering Multiple Conditions using Bitwise Operators
+* Pandas uses bitwise operators for filtering based on Multiple Conditions
+	* `&` = and
+	* `|` = or
+	* `~` = not
+		* Precedes the condition it negates
+* Syntax for Filtering Multiple Conditions
+	* Each individual condition MUST be separated by parentheses
+```Python
+new_df = df[(df['column_1'] <op> 'condition_1') <op> (...) <op> (...)]
+```
+* Examples
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+df['user_score'] = pd.to_numeric(df['user_score'], errors='coerce')
+
+# Printing a new DataFrame's first five rows, where the platform is Wii and the genre is not in the sports genre
+print(df[(df['platform'] == 'Wii') & ~(df['genre'] == 'Sports')].head())
+
+# Printing a new DataFrame where the north america sales or europe or japan sales are larger than or equal to 1 million
+print(df[(df['na_sales'] >= 1) | (df['eu_sales'] >= 1) | (df['jp_sales'] >= 1)])
+```
+
+
+#### Filtering Multiple Conditions using `query()`
+* Since the query argument is a string, traditional python logical operators OR bitwise operators can be used
+	* `&` = and
+	* `|` = or
+	* `~` = not`
+* Example
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+df['user_score'] = pd.to_numeric(df['user_score'], errors='coerce')
+
+# Querying where platform column is Wii and genre column is NOT sports
+print(df.query("platform == 'Wii' and genre != 'Sports'").head())
+```
+
+```Python
+import pandas as pd
+
+df = pd.read_csv('/datasets/vg_sales.csv')
+df['user_score'] = pd.to_numeric(df['user_score'], errors='coerce')
+
+q_string = str('na_sales >= 1 or eu_sales >= 1 or jp_sales >= 1')
+
+print(df.query(q_string).head())
+```
+
+
+#### Example From Exercise (2 Solutions)
+Solution 1:
+* Sold in all 3 regions (North America, Europe, and Japan)
+- The Japanese sales were greater than the combined sales from North America and Europe
+- The game developer is one of the companies in the `developers` list
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+df['user_score'] = pd.to_numeric(df['user_score'], errors='coerce')
+
+developers = ['SquareSoft', 'Enix Corporation', 'Square Enix']
+cols = ['name', 'developer', 'na_sales', 'eu_sales', 'jp_sales']
+
+# Creating a DataFrame and filtering the values of the developer column for values found in the developers list. 
+df_filtered = df[df['developer'].isin(developers)] 
+
+# Filtering the new DataFrame where sales for all three regions are NOT zero
+df_filtered = df_filtered[(df_filtered['na_sales'] != 0) & (df_filtered['eu_sales'] != 0) & (df_filtered['jp_sales'] != 0)] 
+
+# Fitering the new DataFrame where sales in japan were higher than sales in north america and europe combined
+df_filtered = df_filtered[df_filtered['jp_sales'] > (df_filtered['na_sales'] + df_filtered['eu_sales'])]  
+
+# Printing specific columns
+df_filtered = df_filtered[cols]
+
+print(df_filtered)
+```
+
+Solution 2:
+* Sold in all 3 regions (North America, Europe, and Japan)
+- The Japanese sales were greater than the combined sales from North America and Europe
+- The game developer is one of the companies in the `developers` list
+```Python
+import pandas as pd
+
+df = pd.read_csv('/datasets/vg_sales.csv')
+df['user_score'] = pd.to_numeric(df['user_score'], errors='coerce')
+
+developers = ['SquareSoft', 'Enix Corporation', 'Square Enix']
+cols = ['name', 'developer', 'na_sales', 'eu_sales', 'jp_sales']
+
+df_filtered = df[(df['na_sales'] != 0) & 
+                 (df['eu_sales'] != 0) & 
+                 (df['jp_sales'] != 0) & 
+                 (df['jp_sales'] > (df['na_sales'] + df['eu_sales'])) & 
+                 (df['developer'].isin(developers))]
+
+# Select specified columns
+df_filtered = df_filtered[cols]
+
+print(df_filtered)
+```
+
+#### Replacing Values Using `where()`
+* `where()` -> checks the condition, passed as an argument, for each value in the column. 
+	* If the condition is true, `where()` does nothing
+	* if the condition is false, `where()` replaces the current value with the new one.
+* Arguments
+	* `condition` -> a logical condition
+	* `new_value` -> a new value to replace in the column for which the condition is false
+* Example
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+df['user_score'] = pd.to_numeric(df['user_score'], errors='coerce')
+
+df['platform'] = df['platform'].where(df['platform'] != 'NES', 'Nintendo Entertainment System')
+
+print(df.iloc[:, :2].head())
+```
+
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+df['user_score'] = pd.to_numeric(df['user_score'], errors='coerce')
+
+df[['na_sales', 'eu_sales']] = df[['na_sales', 'eu_sales']].where((df['na_sales'] > 0) | (df['eu_sales'] > 0), None)
+
+print(df[['name', 'na_sales', 'eu_sales']])
+```
+
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+df['user_score'] = pd.to_numeric(df['user_score'], errors='coerce')
+
+genres = ['Puzzle', 'Strategy']
+df['genre'] = df['genre'].where(~df['genre'].isin(genres), "Misc")
+
+print(df['genre'].value_counts(ascending=True))
 ```

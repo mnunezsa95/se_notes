@@ -4,15 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "64c31d5e135d330a",
+        "id": "80b39b4a3a81b98f",
         "type": "tabs",
         "children": [
           {
-            "id": "43c4d842d0cfb688",
+            "id": "c807024d7a8c1037",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "44dff79df5ae3e2b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -66,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 392.51103591918945
+    "width": 276.51103591918945
   },
   "right": {
     "id": "b25286fe059f358b",
@@ -82,10 +98,11 @@
             "state": {
               "type": "backlink",
               "state": {
-                "collapseAll": false,
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
@@ -98,6 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +137,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md"
+              }
             }
           },
           {
@@ -134,12 +154,12 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -152,9 +172,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "43c4d842d0cfb688",
+  "active": "c807024d7a8c1037",
   "lastOpenFiles": [
+    "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+    "3. Languages/7. Python/Pandas/Pandas - Filtering, Sorting, Grouping/Py - Pandas (Custom Filtering).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Basics).md",
+    "3. Languages/7. Python/PySpark/Py - PySpark (Basics).md",
+    "3. Languages/7. Python/PySpark/Py - PySpark (Distributed Systems).md",
     "3. Languages/7. Python/Numpy/Py - Numpy (Gradient Descent).md",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Neural Networks).md",
+    "Z. Images/Python/Numpy/neural-network-example-3.png",
+    "Z. Images/Python/Numpy/neural-network-example-2.png",
+    "Z. Images/Python/Numpy/neural-network-example.png",
     "3. Languages/7. Python/Numpy/Py - NumPy (Linear Regression).md",
     "3. Languages/7. Python/Numpy/Py - NumPy (Matrices).md",
     "Z. Images/Python/Numpy/prediction-model.png",
@@ -165,31 +195,22 @@
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
     "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Combining DataFrames & Series).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
     "Z. Images/Python/Pandas/duplicate-values.png",
     "Z. Images/Python/Pandas",
     "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Processing Duplicate Values).md",
-    "3. Languages/7. Python/Pandas/Pandas - Filtering, Sorting, Grouping/Py - Pandas (Sorting Data).md",
+    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Sorting Data).md",
     "3. Languages/7. Python/Pandas/Pandas - Filtering, Sorting, Grouping/Py - Pandas (Grouping Data).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Basics).md",
     "4. Data Science/DS - Dealing with Missing Values.md",
     "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Indexes).md",
     "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Processing Missing Values).md",
     "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Renaming Columns).md",
     "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Coordinate Indexing).md",
     "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Logical Indexing).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Correlations).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Plotting).md",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Installing & Importing Numpy).md",
     "Z. Images/Python/Numpy/plotting-vector-point.png",
     "Z. Images/Python/Numpy/linear-regression-weights.png",
     "Z. Images/Python/Numpy/linear-regression-training-objective.png",
     "Z. Images/Python/Numpy/identity-matrix.png",
     "Z. Images/Python/Numpy/improve-equation-for-model-prediction.png",
-    "Z. Images/Python/Numpy/adjust-w0.png",
-    "Z. Images/Python/Numpy/matrix-notation-features.png",
-    "Z. Images/Python/Numpy/matrix-matrix-multiplication.png",
     "3. Languages/5. Node.js & Express.js/Node.js",
     "3. Languages/7. Python/0. Resources/python_basic_to_intermediate.pdf",
     "3. Languages/7. Python/0. Resources/python_mastery_made_simple.pdf",

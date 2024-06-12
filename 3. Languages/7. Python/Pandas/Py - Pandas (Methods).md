@@ -310,14 +310,70 @@ print(duplicates)
 ```
 
 ##### `df.drop_duplicate()`
+* Returns a DataFrame with duplicate rows removed
+	* Arguments
+		* `subset=` -- Only considers certain columns for identifying duplicates, by default use all of the columns
+		* `keep=` -- Determines which duplicates (if any) to keep.
+			* `‘first’` -- Drops duplicates except for the first occurrence
+			* `‘last’` -- Drops duplicates except for the last occurrence
+			* `False` -- Drops all duplicates
+		* `inplace=` -- Specifies whether to modify the DataFrame rather than creating a new one
+		* `ignore_index=` -- If `True`, the resulting axis will be labeled 0, 1, …, n - 1
+```Python
+# Creating the initial DataFrame 'df' with columns 'brand', 'style', and 'rating'
+df = pd.DataFrame({
+    'brand': ['Yum Yum', 'Yum Yum', 'Indomie', 'Indomie', 'Indomie'],
+    'style': ['cup', 'cup', 'cup', 'pack', 'pack'],
+    'rating': [4, 4, 3.5, 15, 5]
+})
+
+# Drop duplicate rows from 'df' based on all columns
+df.drop_duplicates()
+
+# Drop duplicate rows based on the 'brand' column
+df.drop_duplicates(subset=['brand'])
+
+# Drop duplicate rows based on both 'brand' and 'style' columns, and keep the last occurrence of each duplicated set
+df.drop_duplicates(subset=['brand', 'style'], keep='last')
+```
 
 ##### `df.reset_index()`
+* Reset the index, or a level of it.
+	* `level=` -- Used to only remove the given levels from the index. Removes all levels by default.
+	* `drop=` -- (`False`); Resets the index to the default integer index.
+	* `inplace=` -- Specifies whether to modify the DataFrame rather than creating a new one.
+	* `col_level=` -- If the columns have multiple levels, determines which level the labels are inserted into. By default it is inserted into the first level.
+	* `col_fill=` -- If the columns have multiple levels, determines how the other levels are named. If `None` then the index name is repeated.
+	* `allow_duplicates=` -- Specifies whether or not to allow duplicate column labels to be created.
 
-##### `df.unique()`
+##### `Series.unique()`
+* Return unique values of Series object.
+```Python
+series = pd.Series([2, 1, 3, 3], name='A')
+series.unique() # array([2, 1, 3])
+```
 
-##### `df.nunique()`
+##### `Series.nunique()`
+* Return number of unique elements in the object.
+```Python
+s = pd.Series([1, 3, 5, 7, 7])
+s.nunique() # 4 
+```
 
 ##### `Series.str.replace()`
+* Replaces each occurrence of pattern/regex in the Series/Index.
+	* `pat` -- the search string
+	* `repl` -- the replacement string 
+	* `n=` -- the number of replacements to make from start
+	* `case=` -- Determines if replace is case sensitive:
+		- If `True`, case sensitive (the default if pat is a string)
+		- Set to `False` for case insensitive
+		- Cannot be set if pat is a compiled regex.
+	- `flags=` -- Regex module flags, e.g. re.IGNORECASE. Cannot be set if pat is a compiled regex.
+	- `regex=` -- Determines if the passed-in pattern is a regular expression:
+		- If `True`, assumes the passed-in pattern is a regular expression.
+		- If `False`, treats the pattern as a literal string
+		- Cannot be set to False if pat is a compiled regex or repl is a callable.
 
 ##### `Series.str.lower()`
 * Converts strings in the Series/Index to lowercase
@@ -394,6 +450,66 @@ agg_dict = {'critic_score': 'mean', 'jp_sales': 'sum'}
 grp = df.groupby(['platform', 'genre']).agg(agg_dict)
 ```
 
+##### `df.query()`
+* Queries the columns of a DataFrame with a boolean expression.
+	* Arguments
+		* `expr` -- The query string to evaluate
+			* Use the `@` when referencing an external variable (list, object, etc)
+		* `inplace=` -- Specifies whether to modify the DataFrame rather than creating a new one
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+# Filter where jp_sales are greater than 1, and return the 'name' and 'jp_sales' columns
+df.query("jp_sales > 1")[['name', 'jp_sales']]
+
+# Filter where only where the publisher column is equal to Nintendo and return the 'name' and 'publisher columns'
+df.query("publisher == 'Nintendo'")[['name', 'publisher']].head()
+```
+
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+handhelds = ['3DS', 'DS', 'GB', 'GBA', 'PSP']
+
+# Check if the value of 'platform' is in the handhelds array and return the 'name' and 'platform' values only
+df.query("platform in @handhelds")[['name', 'platform']]
+```
+
+
+##### `df.isin()`
+* Determines whether each element in the DataFrame is contained in values.
+	* Arguments
+		* `values` -- an iterable, Series, DataFrame or dictionary containing the values to search the DataFrame
+			* If `values` is a Series, it will be match on index
+			* If `values` is a dict, it will match on keys
+			* If `values` is a df, it will match on both index and column labels
+```Python
+import pandas as pd
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+handhelds = ['3DS', 'DS', 'GB', 'GBA', 'PSP']
+
+# Checks if the value for 'platform' is in the handheld array and returns the name and platform columsn only
+df[df['platform'].isin(handhelds)][['name', 'platform']]
+```
+
+```Python
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('/datasets/vg_sales.csv')
+
+# Define the columns to keep and the genres to exclude
+columns_to_keep = ['name', 'genre']
+excluded_genres = ['Shooter', 'Simulation', 'Sports', 'Strategy']
+
+# Filter the data to retain only the rows where the genre does not start with the letter "S" and return the values for 'genre' and 'name' only
+filtered_df = df[~df['genre'].isin(excluded_genres)][columns_to_keep]
+
+print(filtered_df)
+```
 
 ##### `pd.df.to_dict()` 
 * Converts the DataFrame to a dictionary
