@@ -8,24 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c807024d7a8c1037",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "44dff79df5ae3e2b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
+                "file": "1. General/CSS - Introduction to CSS.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+                "file": "1. General/CSS - Introduction to CSS.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+                "file": "1. General/CSS - Introduction to CSS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md"
+                "file": "1. General/CSS - Introduction to CSS.md"
               }
             }
           },
@@ -174,9 +162,13 @@
   },
   "active": "a80eb04947d9c22a",
   "lastOpenFiles": [
-    "3. Languages/2. CSS/Basics",
     "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
+    "1. General/HTML - Introduction to HTML.md",
+    "1. General/Express - Introduction to Express.js.md",
+    "1. General/CSS - Introduction to CSS.md",
+    "3. Languages/2. CSS/CSS - Basics.md",
     "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+    "3. Languages/2. CSS/Basics",
     "3. Languages/7. Python/Pandas/Pandas - Filtering, Sorting, Grouping/Py - Pandas (Custom Filtering).md",
     "3. Languages/7. Python/Pandas/Py - Pandas (Basics).md",
     "3. Languages/7. Python/PySpark/Py - PySpark (Basics).md",
@@ -203,9 +195,6 @@
     "3. Languages/7. Python/Pandas/Pandas - Filtering, Sorting, Grouping/Py - Pandas (Grouping Data).md",
     "4. Data Science/DS - Dealing with Missing Values.md",
     "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Indexes).md",
-    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Processing Missing Values).md",
-    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Renaming Columns).md",
-    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Coordinate Indexing).md",
     "Z. Images/Python/Numpy/plotting-vector-point.png",
     "Z. Images/Python/Numpy/linear-regression-weights.png",
     "Z. Images/Python/Numpy/linear-regression-training-objective.png",
@@ -219,7 +208,6 @@
     "3. Languages/4. React.js/0. Resources/react_conditional_rendering.pdf",
     "3. Languages/7. Python/SciPy",
     "Z. Images/Python/Numpy",
-    "3. Languages/7. Python/Numpy",
     "Untitled.canvas"
   ]
 }
