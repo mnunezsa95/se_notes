@@ -1,7 +1,5 @@
 See:
 * [[Py - Introduction to Python]]
-* [[Py - Pandas (DataFrame Object)]]
-* [[Py - Pandas (Series Object)]]
 * [[Py - NumPy (Methods)]]
 * [[Py - Matplotlib (Methods)]]
 * [[Py - SciPy (Methods)]]
@@ -73,6 +71,17 @@ df.loc['cobra':'viper', 'max_speed']
 df.loc[df['shield'] > 6]
 ```
 
+##### `Series.is_monotonic`
+* Returns boolean if values in the object are monotonically increasing
+```Python
+import pandas as pd
+
+data = pd.read_csv(
+    '/datasets/energy_consumption.csv', index_col=[0], parse_dates=[0]
+)
+print(data.index.is_monotonic) # False
+```
+
 
 ---
 
@@ -81,12 +90,14 @@ df.loc[df['shield'] > 6]
 ##### `pd.read_csv()`
 * Reads a comma-separated values (csv) file into DataFrame.
 	* Arguments
-		* - `sep=` — specifies the delimiter character to use when reading the CSV file.
+		* `sep=` — specifies the delimiter character to use when reading the CSV file.
 		- `header=` — specifies whether headers should be used (default is `infer`).
 		- `names=` — sets the column names when reading data.
 		- `decimal=` — sets the character to use for decimals when importing data (default is a period `.`).
 		- `keep_default_na=` — indicates whether to include the default `NaN` values when parsing data. The behavior varies depending on whether `na_values` is specified:
 		    - Setting to `False` — reads empty strings instead of `NaN`.
+		- `parse_dates=` -- parses a date column during an import; the column must be specified in list
+		- `index_col=` -- specifies which column from the import to use as index 
 ```Python
 import pandas as pd
 
@@ -96,7 +107,14 @@ data = pd.read_csv('/datasets/gpp_modified.csv', sep='|', header=None,
 	names=column_names, decimal=',')
 ```
 
-##### `read_excel()` 
+```Python
+import pandas as pd
+
+data = pd.read_csv('/datasets/energy_consumption.csv', parse_dates=[0])
+print(data.info())
+```
+
+##### `pd.read_excel()` 
 * Reads an Excel file into a pandas DataFrame.
 	* Arguments
 		* `sheet_name=` -- specifies which sheet to use for data import (imports the first sheet by default). The sheet index or sheet name can be used in this parameter.
@@ -152,6 +170,36 @@ series = pd.Series(data, index=index)
 print(series)
 ```
 
+##### `pd.get_dummies()`
+* Convert categorical variable into dummy/indicator variables
+	* Arguments
+		1) `data` -- Array, Series or DataFrame for the data of which to get dummy indicators
+		2) `drop_first=` -- boolean (`False` by default); specifies whether to drop the first dummy column created
+```Python
+import pandas as pd
+data = pd.read_csv('/datasets/travel_insurance_us.csv')
+
+data_ohe = pd.get_dummies(data, drop_first=True)
+```
+
+##### `pd.concat()`
+* Concatenate pandas objects along a particular axis
+	* Arguments
+		1) `objs` -- a sequence or mapping of Series or DataFrame objects
+		2) `axis=` -- (default is `0`); the axis to concatenate the string along 
+			1) `0` or `index`
+			2) `1` or `columns`
+```Python
+features_zeros = features[target == 0]
+features_ones = features[target == 1]
+
+# Duplicate and create new dataset
+features_upsampled = pd.concat([features_zeros] + [features_ones] * repeat)
+```
+
+
+---
+# DataFrame Methods
 ##### `df.head()`
 * Returns the first n rows
 	* Arguments
@@ -346,50 +394,44 @@ df.drop_duplicates(subset=['brand', 'style'], keep='last')
 	* `col_fill=` -- If the columns have multiple levels, determines how the other levels are named. If `None` then the index name is repeated.
 	* `allow_duplicates=` -- Specifies whether or not to allow duplicate column labels to be created.
 
-##### `Series.unique()`
-* Return unique values of Series object.
-```Python
-series = pd.Series([2, 1, 3, 3], name='A')
-series.unique() # array([2, 1, 3])
-```
-
-##### `Series.nunique()`
-* Return number of unique elements in the object.
-```Python
-s = pd.Series([1, 3, 5, 7, 7])
-s.nunique() # 4 
-```
-
-##### `Series.str.replace()`
-* Replaces each occurrence of pattern/regex in the Series/Index.
-	* `pat` -- the search string
-	* `repl` -- the replacement string 
-	* `n=` -- the number of replacements to make from start
-	* `case=` -- Determines if replace is case sensitive:
-		- If `True`, case sensitive (the default if pat is a string)
-		- Set to `False` for case insensitive
-		- Cannot be set if pat is a compiled regex.
-	- `flags=` -- Regex module flags, e.g. re.IGNORECASE. Cannot be set if pat is a compiled regex.
-	- `regex=` -- Determines if the passed-in pattern is a regular expression:
-		- If `True`, assumes the passed-in pattern is a regular expression.
-		- If `False`, treats the pattern as a literal string
-		- Cannot be set to False if pat is a compiled regex or repl is a callable.
-
-##### `Series.str.lower()`
-* Converts strings in the Series/Index to lowercase
+##### `df.set_index()`
+* Set the DataFrame index using existing columns.
 	* Arguments
-		* n/a
+		* `keys` -- a list specifying the column(s) to be used for setting the index
+		* `drop=` --  (`True`); Delete columns to be used as the new index
+		* `append=` -- (`False`); Whether to append columns in existing index
+		* `inplace=` (`False`); Whether to modify the DataFrame rather than create a new one
+		* `verify_integrity=` -- (`False`); Check the new index for duplicates
 ```Python
-s = pd.Series(['lower', 'CAPITALS', 'this is a sentence', 'SwApCaSe'])
-s.str.lower()
+import pandas as pd
 
-'''Result 
-0                 lower
-1              capitals
-2    this is a sentence
-3              swapcase
-'''
+data = pd.read_csv('/datasets/energy_consumption.csv', parse_dates=[0])
+data = data.set_index('Datetime', drop=True)
+
+print(data.info())
 ```
+
+##### `df.sort_index()`
+* Sorts object by labels (along an axis) and returns a new DataFrame
+	* Arguments
+		* `axis=` -- The axis along which to sort. The value `0` identifies the rows, and `1` identifies the columns.
+		* `level=` -- If not `None`, sort on values in specified index level(s).
+		* `ascending=` -- (`True`); Sort ascending vs. descending. When the index is a MultiIndex the sort direction can be controlled for each level individually.
+		* `inplace=` -- (`False`); Whether to modify the DataFrame rather than creating a new one.
+		* `kind=` -- Choice of sorting algorithm
+		* `na_position=` -- Puts NaNs at the beginning if first; last puts NaNs at the end. Not implemented for MultiIndex.
+		* `sort_remaining=` -- (`True`); If `True` and sorting by level and index is multilevel, sort by other levels too (in order) after sorting by specified level.
+		* `ignore_index=` -- (`False`); If `True`, the resulting axis will be labeled 0, 1, …, n - 1.
+		* `key=` -- If not `None`, apply the key function to the index values before sorting.
+```Python
+import pandas as pd
+
+data = pd.read_csv(
+    '/datasets/energy_consumption.csv', index_col=[0], parse_dates=[0]
+)
+data.sort_index(inplace=True)
+```
+
 
 ##### `df.value_counts()`
 * Return a Series containing counts of unique values
@@ -511,7 +553,7 @@ filtered_df = df[~df['genre'].isin(excluded_genres)][columns_to_keep]
 print(filtered_df)
 ```
 
-##### `pd.df.to_dict()` 
+##### `df.to_dict()` 
 * Converts the DataFrame to a dictionary
 	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_dict.html) for complete list)
 		* `orient=` -- determines the type of the values of the dictionary.'
@@ -526,153 +568,6 @@ df = pd.DataFrame({'col1': [1, 2], 'col2': [0.5, 0.75]}, index=['row1', 'row2'])
 
 df.to_dict()
 ```
-
-
-##### `pd.Series.to_excel()`
-* Convert Series to {label -> value} dict or dict-like object.
-	* Arguments
-		* `into=` -- The collections.abc.MutableMapping subclass to use as the return object.
-```python
-s = pd.Series([1, 2, 3, 4])
-s.to_dict() # {0: 1, 1: 2, 2: 3, 3: 4}
-```
-
-
-##### `pd.df.to_csv()`          `pd.Series.to_csv()` 
-* Writes object to a comma-separated values (csv) file
-	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html) for complete list)
-		* `path_or_buf=` -- string, path object, or file-like object implementing a `write()` function 
-		* `sep=` -- field delimiter for the output file
-		* `na_rep=` -- missing data representation
-		* `float_format` -- format string for floating point numbers
-		* `columns=` -- columns to write
-		* `header=` -- Write out the column names. If a list of string is given it is assumed to be aliases for the column names
-		* `index=` -- write row names (index)
-```python
-df = pd.DataFrame({'name': ['Raphael', 'Donatello'], 'mask': ['red', 'purple'], 'weapon': ['sai', 'bo staff']})
-
-df.to_csv('out.csv', index=False)  
-```
-
-##### `pd.df.to_excel()`          `pd.Series.to_excel()`
-* Writes object to an Excel sheet
-	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html) for complete list) 
-		* `excel_writer` -- file path or existing ExcelWriter
-		* `sheet_name=` -- name of sheet which will contain the DataFrame
-		* `na_rep=` -- missing data representation
-		* `float_format` -- format string for floating point numbers
-		* `columns=` -- columns to write
-		* `header=` -- Write out the column names. If a list of string is given it is assumed to be aliases for the column names
-		* `index=` -- write row names (index)
-		* `startrow` -- row to dump data frame.
-		* `startcol` -- column to dump data frame.
-```Python
-df1 = pd.DataFrame([['a', 'b'], ['c', 'd']], index=['row 1', 'row 2'],
-	columns=['col 1', 'col 2'])
-	
-df1.to_excel("output.xlsx")  
-```
-
-
-##### `pd.df.to_json()`          `pd.Series.to_json()`
-* Converts the object to a JSON string 
-	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_json.html) for complete list)
-		* `path_or_buf=` -- string, path object, or file-like object implementing a `write()` function 
-		* `orient=` -- indication of expected JSON string format.
-```Python
-from json import loads, dumps
-df = pd.DataFrame(
-    [["a", "b"], ["c", "d"]],
-    index=["row 1", "row 2"],
-    columns=["col 1", "col 2"],
-)
-```
-
-##### `pd.df.to_html()`          
-* Renders a DataFrame as an HTML table.
-	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_html.html) for complete list)
-		* `buf=` -- Buffer to write to. If None, the output is returned as a string.
-		* `columns=` -- The subset of columns to write. Writes all columns by default.
-		* `col_space=` -- The minimum width of each column in CSS length units. An int is assumed to be px units..
-```Python
-
-df = pd.DataFrame(data={'col1': [1, 2], 'col2': [4, 3]})
-html_string = '''
-<table border="1" class="dataframe">
-	<thead>
-	    <tr style="text-align: right;">
-	      <th></th>
-		  <th>col1</th>
-	      <th>col2</th>
-	    </tr>
-	 </thead>
-	 <tbody>
-	    <tr>
-		    <th>0</th>
-			<td>1</td>
-		    <td>4</td>
-		</tr>
-	    <tr>
-	      <th>1</th>
-	      <td>2</td>
-	      <td>3</td>
-	    </tr>
-	</tbody>
-</table>'''
-
-assert html_string == df.to_html()
-```
-
-##### `pd.df.to_sql()`          `pd.Series.to_sql()`
-* Writes records stored in a DataFrame to a SQL database.
-	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html) for complete list)
-		* `name` -- Name of the SQL table
-		* `con` -- Using SQLAlchemy makes it possible to use any DB supported by that library.
-		* `schema` -- Specify the schema (if supported). If `None`, use default schema.
-```Python
-df2 = pd.DataFrame({'name' : ['User 6', 'User 7']})
-df2.to_sql(name='users', con=engine, if_exists='append')
-with engine.connect() as conn:
-   conn.execute(text("SELECT * FROM users")).fetchall()
-```
-
-##### `pd.df.to_stata()`
-* Exports DataFrame object to Stata dta format
-	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_stata.html) for complete list)
-		* `path` -- the path/filename for the file
-		* `convert_dates` -- Dictionary mapping columns containing datetime types to stata internal format to use when writing the dates.
-		* `write_index=` - Write the index to Stata dataset.
-```Python
-df = pd.DataFrame({'animal': ['falcon', 'parrot', 'falcon', 'parrot'],
-	'speed': [350, 18, 361, 15]})
-df.to_stata('animals.dta')
-```
-
-##### `pd.df.to_numpy()`          `pd.Series.to_numpy()`
-* Converts the DataFrame to a NumPy array.
-	* Arguments
-		* `dtype=` -- The dtype to pass to `numpy.asarray()`
-		* `copy=` -- Whether to ensure that the returned value is not a view on another array.
-		* `na_value` -- The value to use for missing values
-```Python
-df = pd.DataFrame({"A": [1, 2], "B": [3.0, 4.5]})
-df.to_numpy()
-```
-
-##### `pd.Series.to_list()`
-* Return a list of the values.
-```Python
-s = pd.Series([1, 2, 3])
-s.to_list() # [1, 2, 3]
-```
-
-##### `pd.Series.to_markdown()`
-* Prints Series in Markdown-friendly format.
-	* Arguments
-		* `buf=` -- Buffer to write to. If None, the output is returned as a string.
-		* `mode=` -- Mode in which file is opened, “wt” by default.
-		* `index=` -- add index (row)m labels
-		* `storage_options=` -- Extra options that make sense for a particular storage connection, e.g. host, port, username, password, etc.
 
 ##### `df.idxmin()`
 * Returns the index of first occurrence of minimum over requested axis.
@@ -727,68 +622,7 @@ df.plot(
 plt.show()
 ```
 
-
-##### `get_dummies()`
-* Convert categorical variable into dummy/indicator variables
-	* Arguments
-		1) `data` -- Array, Series or DataFrame for the data of which to get dummy indicators
-		2) `drop_first` -- boolean (`False` by default); specifies whether to drop the first dummy column created
-```Python
-import pandas as pd
-data = pd.read_csv('/datasets/travel_insurance_us.csv')
-
-data_ohe = pd.get_dummies(data, drop_first=True)
-```
-
-##### `map()`
-* Maps (substitutes) each value in a Series with another value, that may be derived from a function, a `dict` or a `Series`.
-	* Arguments
-		1) `arg` -- the `dict` or `Series` to use for mapping
-```Python
-temperature_dict = {'cold': 0, 'warm': 1, 'hot': 2}
-
-df['temperature'] = df['temperature'].map(temp_dict)
-```
-
-##### `value_counts()`
-* Return a Series (in descending order) containing counts of unique values
-	* `normalize=` -- (default is `False`); If `True` then the object returned will contain the relative frequencies of the unique values.
-	* `sort=` -- (default is `True`); Sorts by frequency when `True`; preserves order when `False`
-	* `ascending=` -- (default is `True`); sorts in ascending order
-	* `bins=` -- Rather than counting values, groups them into half-open bins
-	* `dropna` -- (default is `True`); specifies to include counts of `NaN`
-```python
-import pandas as pd
-
-data = pd.read_csv('/datasets/travel_insurance_us_preprocessed.csv')
-
-class_frequency = data['Claim'].value_counts(normalize=True)
-print(class_frequency)
-
-class_frequency.plot(kind='bar')
-```
-
-```Result
-0    0.985136
-1    0.014864
-```
-
-##### `pd.concat()`
-* Concatenate pandas objects along a particular axis
-	* Arguments
-		1) `objs` -- a sequence or mapping of Series or DataFrame objects
-		2) `axis=` -- (default is `0`); the axis to concatenate the string along 
-			1) `0` or `index`
-			2) `1` or `columns`
-```Python
-features_zeros = features[target == 0]
-features_ones = features[target == 1]
-
-# Duplicate and create new dataset
-features_upsampled = pd.concat([features_zeros] + [features_ones] * repeat)
-```
-
-##### `sample()`
+##### `df.sample()`
 * Returns a random sample of items from an axis of object
 	* Arguments
 		* `n=` -- Number of items from axis to return. Cannot be used with `frac`
@@ -799,6 +633,283 @@ features_upsampled = pd.concat([features_zeros] + [features_ones] * repeat)
 df.sample(frac=0.5, random_state=1)
 ```
 
+##### `df.resample()`
+* Resamples time-series data
+	* Arguments (see [documentation](https://pandas.pydata.org/pandas-docs/version/1.5/reference/api/pandas.DataFrame.resample.html?highlight=resample#pandas.DataFrame.resample) for complete list)
+		* `rule` -- The offset string or object representing target conversion
+		* `axis=` -- Which axis to use for up- or down-sampling, `0` for index or `1` for columns
+		* `closed=` -- Which side of bin interval is closed. The default is `‘left’` for all frequency offsets except for ‘M’, ‘A’, ‘Q’, ‘BM’, ‘BA’, ‘BQ’, and ‘W’ which all have a default of `‘right’`.
+		* `label=` -- Which bin edge label to label bucket with. The default is `‘left’` for all frequency offsets except for ‘M’, ‘A’, ‘Q’, ‘BM’, ‘BA’, ‘BQ’, and ‘W’ which all have a default of `‘right’`.
+		* `convention=` - -For `PeriodIndex` only, controls whether to use the start or end of rule.
+		* `kind=` -- Pass `‘timestamp’` to convert the resulting index to a `DateTimeIndex` or `'period’ `to convert it to a PeriodIndex. By default the input representation is retained.
+```Python
+import pandas as pd
+
+data = pd.read_csv(
+    '/datasets/energy_consumption.csv', index_col=[0], parse_dates=[0]
+)
+data.sort_index(inplace=True)
+data = data.resample('1Y').mean()
+data.plot()
+```
+
+##### `df.rolling()`
+* Provides rolling window calculations.
+	* Arguments
+		* `window` -- Sets the size of the moving window.
+		* `min_periods=` -- (`None`); Sets the minimum number of observations in window required to have a value; otherwise, result is `np.nan`.
+		* `center=` -- (`False`); 
+			* If `False`, set the window labels as the right edge of the window index. 
+			* If `True`, set the window labels as the center of the window index.
+		* `win_type=` -- (`None`); 
+			* If `None`, all points are evenly weighted.
+		* `on=` -- For a DataFrame, a column label or Index level on which to calculate the rolling window, rather than the DataFrame’s index.
+		* `axis=` -- (`0`)
+			* If `0` or `'index'`, roll across the rows. 
+			* If `1` or `'columns'`, roll across the columns.
+		* `closed=` -- (`None`)
+			* If `'right'`, the first point in the window is excluded from calculations.
+			* If `'left'`, the last point in the window is excluded from calculations.
+			* If `'both'`, the no points in the window are excluded from calculations.
+			* If `'neither'`, the first and last points in the window are excluded from
+		* `step=` -- (`None`); Evaluate the window at every `step` result, equivalent to slicing as `[::step]`. `window` must be an integer.
+		* `method=` -- Execute the rolling operation per single column or row (`'single'`) or over the entire object (`'table'`).
+```Python
+import pandas as pd
+
+data = pd.read_csv(
+    '/datasets/energy_consumption.csv', index_col=[0], parse_dates=[0]
+)
+data.sort_index(inplace=True)
+data = data['2018-01':'2018-06'].resample('1D').sum()
+data['rolling_mean'] = data['2018-01':'2018-06'].rolling(10).mean()
+data.plot()
+```
+
+##### `df.shift()`
+* Shift index by desired number of periods with an optional time freq.
+	* Arguments
+		* `periods=` -- Number of periods to shift. Can be positive or negative. If an iterable of ints, the data will be shifted once by each int.
+		* `freq=` -- Offset to use from the tseries module or time rule (e.g. ‘EOM’). If freq is specified then the index values are shifted but the data is not realigned.
+		* `axis=` -- (`None`); Specifies the shift direction. `0` or `'index'` for index, `1` or `'column` for column
+			* For Series this parameter is unused and defaults to `0`.
+		* `fill_value=` -- The scalar value to use for newly introduced missing values. the default depends on the dtype of self.
+		* `suffix=` -- If str and periods is an iterable, this is added after the column name and before the shift value for each shifted column name.
+```Python
+import pandas as pd
+
+data = pd.Series([0.5, 0.7, 2.4, 3.2])
+print(data.shift(fill_value=0))
+```
+
+##### `df.to_stata()`
+* Exports DataFrame object to Stata dta format
+	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_stata.html) for complete list)
+		* `path` -- the path/filename for the file
+		* `convert_dates` -- Dictionary mapping columns containing datetime types to stata internal format to use when writing the dates.
+		* `write_index=` - Write the index to Stata dataset.
+```Python
+df = pd.DataFrame({'animal': ['falcon', 'parrot', 'falcon', 'parrot'],
+	'speed': [350, 18, 361, 15]})
+df.to_stata('animals.dta')
+```
+
+##### `df.to_html()`          
+* Renders a DataFrame as an HTML table.
+	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_html.html) for complete list)
+		* `buf=` -- Buffer to write to. If None, the output is returned as a string.
+		* `columns=` -- The subset of columns to write. Writes all columns by default.
+		* `col_space=` -- The minimum width of each column in CSS length units. An int is assumed to be px units..
+```Python
+
+df = pd.DataFrame(data={'col1': [1, 2], 'col2': [4, 3]})
+html_string = '''
+<table border="1" class="dataframe">
+	<thead>
+	    <tr style="text-align: right;">
+	      <th></th>
+		  <th>col1</th>
+	      <th>col2</th>
+	    </tr>
+	 </thead>
+	 <tbody>
+	    <tr>
+		    <th>0</th>
+			<td>1</td>
+		    <td>4</td>
+		</tr>
+	    <tr>
+	      <th>1</th>
+	      <td>2</td>
+	      <td>3</td>
+	    </tr>
+	</tbody>
+</table>'''
+
+assert html_string == df.to_html()
+```
+
+
+---
+# Series Methods
+
+##### `Series.to_list()`
+* Return a list of the values.
+```Python
+s = pd.Series([1, 2, 3])
+s.to_list() # [1, 2, 3]
+```
+
+##### `Series.map()`
+* Maps (substitutes) each value in a Series with another value, that may be derived from a function, a `dict` or a `Series`.
+	* Arguments
+		1) `arg` -- the `dict` or `Series` to use for mapping
+```Python
+temperature_dict = {'cold': 0, 'warm': 1, 'hot': 2}
+
+df['temperature'] = df['temperature'].map(temp_dict)
+```
+
+##### `Series.to_markdown()`
+* Prints Series in Markdown-friendly format.
+	* Arguments
+		* `buf=` -- Buffer to write to. If None, the output is returned as a string.
+		* `mode=` -- Mode in which file is opened, “wt” by default.
+		* `index=` -- add index (row)m labels
+		* `storage_options=` -- Extra options that make sense for a particular storage connection, e.g. host, port, username, password, etc.
+
+##### `Series.to_excel()`
+* Convert Series to {label -> value} dict or dict-like object.
+	* Arguments
+		* `into=` -- The collections.abc.MutableMapping subclass to use as the return object.
+```python
+s = pd.Series([1, 2, 3, 4])
+s.to_dict() # {0: 1, 1: 2, 2: 3, 3: 4}
+```
+
+##### `Series.unique()`
+* Return unique values of Series object.
+```Python
+series = pd.Series([2, 1, 3, 3], name='A')
+series.unique() # array([2, 1, 3])
+```
+
+##### `Series.nunique()`
+* Return number of unique elements in the object.
+```Python
+s = pd.Series([1, 3, 5, 7, 7])
+s.nunique() # 4 
+```
+
+##### `Series.str.replace()`
+* Replaces each occurrence of pattern/regex in the Series/Index.
+	* `pat` -- the search string
+	* `repl` -- the replacement string 
+	* `n=` -- the number of replacements to make from start
+	* `case=` -- Determines if replace is case sensitive:
+		- If `True`, case sensitive (the default if pat is a string)
+		- Set to `False` for case insensitive
+		- Cannot be set if pat is a compiled regex.
+	- `flags=` -- Regex module flags, e.g. re.IGNORECASE. Cannot be set if pat is a compiled regex.
+	- `regex=` -- Determines if the passed-in pattern is a regular expression:
+		- If `True`, assumes the passed-in pattern is a regular expression.
+		- If `False`, treats the pattern as a literal string
+		- Cannot be set to False if pat is a compiled regex or repl is a callable.
+
+##### `Series.str.lower()`
+* Converts strings in the Series/Index to lowercase
+	* Arguments
+		* n/a
+```Python
+s = pd.Series(['lower', 'CAPITALS', 'this is a sentence', 'SwApCaSe'])
+s.str.lower()
+
+'''Result 
+0                 lower
+1              capitals
+2    this is a sentence
+3              swapcase
+'''
+```
+
+
+# DataFrame & Series Methods
+##### `df.to_csv()`  |  `Series.to_csv()` 
+* Writes object to a comma-separated values (csv) file
+	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html) for complete list)
+		* `path_or_buf=` -- string, path object, or file-like object implementing a `write()` function 
+		* `sep=` -- field delimiter for the output file
+		* `na_rep=` -- missing data representation
+		* `float_format` -- format string for floating point numbers
+		* `columns=` -- columns to write
+		* `header=` -- Write out the column names. If a list of string is given it is assumed to be aliases for the column names
+		* `index=` -- write row names (index)
+```python
+df = pd.DataFrame({'name': ['Raphael', 'Donatello'], 'mask': ['red', 'purple'], 'weapon': ['sai', 'bo staff']})
+
+df.to_csv('out.csv', index=False)  
+```
+
+##### `df.to_excel()`  |  `Series.to_excel()`
+* Writes object to an Excel sheet
+	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html) for complete list) 
+		* `excel_writer` -- file path or existing ExcelWriter
+		* `sheet_name=` -- name of sheet which will contain the DataFrame
+		* `na_rep=` -- missing data representation
+		* `float_format` -- format string for floating point numbers
+		* `columns=` -- columns to write
+		* `header=` -- Write out the column names. If a list of string is given it is assumed to be aliases for the column names
+		* `index=` -- write row names (index)
+		* `startrow` -- row to dump data frame.
+		* `startcol` -- column to dump data frame.
+```Python
+df1 = pd.DataFrame([['a', 'b'], ['c', 'd']], index=['row 1', 'row 2'],
+	columns=['col 1', 'col 2'])
+	
+df1.to_excel("output.xlsx")  
+```
+
+
+##### `df.to_json()`  |  `Series.to_json()`
+* Converts the object to a JSON string 
+	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_json.html) for complete list)
+		* `path_or_buf=` -- string, path object, or file-like object implementing a `write()` function 
+		* `orient=` -- indication of expected JSON string format.
+```Python
+from json import loads, dumps
+df = pd.DataFrame(
+    [["a", "b"], ["c", "d"]],
+    index=["row 1", "row 2"],
+    columns=["col 1", "col 2"],
+)
+```
+
+
+##### `df.to_sql()`  |  `Series.to_sql()`
+* Writes records stored in a DataFrame to a SQL database.
+	* Arguments (see [documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html) for complete list)
+		* `name` -- Name of the SQL table
+		* `con` -- Using SQLAlchemy makes it possible to use any DB supported by that library.
+		* `schema` -- Specify the schema (if supported). If `None`, use default schema.
+```Python
+df2 = pd.DataFrame({'name' : ['User 6', 'User 7']})
+df2.to_sql(name='users', con=engine, if_exists='append')
+with engine.connect() as conn:
+   conn.execute(text("SELECT * FROM users")).fetchall()
+```
+
+##### `df.to_numpy()`  |  `Series.to_numpy()`
+* Converts the DataFrame to a NumPy array.
+	* Arguments
+		* `dtype=` -- The dtype to pass to `numpy.asarray()`
+		* `copy=` -- Whether to ensure that the returned value is not a view on another array.
+		* `na_value` -- The value to use for missing values
+```Python
+df = pd.DataFrame({"A": [1, 2], "B": [3.0, 4.5]})
+df.to_numpy()
+```
+
+
 ##### `quantile()`
 * Return values at the given quantile over requested axis
 	* Arguments
@@ -807,3 +918,6 @@ df.sample(frac=0.5, random_state=1)
 			* `0` -- index (row)
 			* `1` -- columns
 		* `numerical_only=` -- (default is `True`) ; boolean value to specify whether to include only float, int or boolean data
+```Python
+
+```

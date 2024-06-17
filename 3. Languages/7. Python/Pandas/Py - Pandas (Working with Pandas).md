@@ -2,7 +2,7 @@ See
 * [[Py - Introduction to Python]] 
 * [[Py - Modular Python]]
 * [[Py - Installing Packages, Modules, and Libraries]]
-* [[Py - Pandas (Working with DataFrames)]]
+* [[Py - Pandas (Working with Pandas)]]
 * [[Py - Pandas (Methods)]]
 Documentation
 * [Installing Pandas](https://pandas.pydata.org/docs/getting_started/install.html)
@@ -423,7 +423,8 @@ genre = grp.agg(agg_dict)
 ```
 
 
-# Custom Filtering (Single Conditions)
+# Custom Filtering 
+## Filtering Single Conditions
 * There are several ways to filter a DataFrame
 	* Using built-in methods
 		* `df.query()`
@@ -434,7 +435,7 @@ genre = grp.agg(agg_dict)
 		* Series
 		* DataFrames
 
-## Using Built-in Methods to Filter Single Conditions
+### Using Built-in Methods to Filter Single Conditions
 * The `df.query()` method uses a query string as an input to filter data 
 ```Python
 import pandas as pd
@@ -488,8 +489,8 @@ print(filtered_df)
 ```
 
 
-## Using External Objects
-### Using an External List
+### Using External Objects
+#### Using an External List
 * Useful for checking the existence of specific values within a DataFrame
 * Useful for checking if specific values from a particular column are present in a list
 ```Python
@@ -520,7 +521,7 @@ print(df.query("a in @our_list")) # See result below
 2  10  3  Y
 ```
 
-### Using an External Dictionary
+#### Using an External Dictionary
 * Useful for checking if specific values from a particular column are present in a dictionary
 ```Python
 import pandas as pd
@@ -574,7 +575,7 @@ print(our_dict)  # Output: {0: 10, 3: 11, 12: 12}
 print(df.query("a in @our_dict.keys()"))
 ```
 
-### Using an External Series
+#### Using an External Series
 * Series objects store data using index-value pairs.
 	* Values are checked by default.
 	* To check for an index, utilize the `index` attribute.
@@ -622,7 +623,7 @@ Columns: [a, b, c]
 Index: []
 ```
 
-### Using an External DataFrame
+#### Using an External DataFrame
 * An external DataFrame offers two methods for data filtration:
 	1. Filtering based on its `index` values
 	    - This method utilizes the `index` attribute.
@@ -701,7 +702,7 @@ print(filtered_df)  # See results below
 
 
 ---
-# Custom Filtering (Multiple Conditions)
+# Filtering Multiple Conditions
 
 #### Filtering Multiple Conditions using Bitwise Operators
 * Pandas uses bitwise operators for filtering based on Multiple Conditions

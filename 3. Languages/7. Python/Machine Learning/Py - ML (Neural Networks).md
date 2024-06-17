@@ -1,11 +1,13 @@
 See:
+* [[Py - Introduction to Python]]
 * [[Py - NumPy (Vectors)]]
 * [[Py - NumPy (Matrices)]]
 * [[Py - NumPy (Methods)]]
-* [[Py - Algorithm Analysis]]
+* [[Py - ML (Algorithm Analysis)]]
 * [[Py - Creating Classes in Python]]
-* [[Py - NumPy (Neural Networks)]]
+* [[Py - ML (Neural Networks)]]
 Resources:
+* TripleTen Knowledge Base: [Data Science](https://tripleten.netlify.app/)
 * Documentation: [Pandas](https://pandas.pydata.org/docs/)
 * Documentation: [NumPy](https://numpy.org/doc/stable/index.html)
 * Documentation: [SK-Learn](https://scikit-learn.org/stable/)

@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "80b39b4a3a81b98f",
+        "id": "92bcff8340777228",
         "type": "tabs",
         "children": [
           {
-            "id": "44dff79df5ae3e2b",
+            "id": "a9c331b4e6481ee9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1. General/CSS - Introduction to CSS.md",
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1. General/CSS - Introduction to CSS.md",
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1. General/CSS - Introduction to CSS.md",
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1. General/CSS - Introduction to CSS.md"
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md"
               }
             }
           },
@@ -160,54 +160,53 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "a80eb04947d9c22a",
+  "active": "a9c331b4e6481ee9",
   "lastOpenFiles": [
-    "3. Languages/7. Python/Pandas/Py - Pandas (Working with DataFrames).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Algorithm Analysis).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Linear Regression).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Neural Networks).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+    "Z. Images/Python/Pandas/shift-time-series-to-stationary.png",
+    "Z. Images/Python/Pandas/non-stationary-series-1.png",
+    "Z. Images/Python/Pandas/non-stationary-series-2.png",
+    "Z. Images/Python/Pandas/stationary-series-1.png",
+    "3. Languages/7. Python/statsmodels/Py - statsmodels (Methods).md",
+    "3. Languages/7. Python/statsmodels/Py - statsmodels (Basics).md",
+    "3. Languages/7. Python/statsmodels",
+    "Z. Images/Python/Pandas/trends-seasonality-residuals-example.png",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Working with Pandas).md",
+    "Z. Images/Python/Pandas/resampling-visual-example.png",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Correlations).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Basics).md",
+    "3. Languages/7. Python/Py - Powerful Python One-Liners.md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Models & Model Comparison).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Matrices).md",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Methods).md",
+    "3. Languages/7. Python/Numpy/Py - NumPy (Vectors).md",
+    "3. Languages/7. Python/Machine Learning",
+    "1. General/CSS - Introduction to CSS.md",
     "1. General/HTML - Introduction to HTML.md",
     "1. General/Express - Introduction to Express.js.md",
-    "1. General/CSS - Introduction to CSS.md",
     "3. Languages/2. CSS/CSS - Basics.md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
     "3. Languages/2. CSS/Basics",
     "3. Languages/7. Python/Pandas/Pandas - Filtering, Sorting, Grouping/Py - Pandas (Custom Filtering).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Basics).md",
     "3. Languages/7. Python/PySpark/Py - PySpark (Basics).md",
     "3. Languages/7. Python/PySpark/Py - PySpark (Distributed Systems).md",
-    "3. Languages/7. Python/Numpy/Py - Numpy (Gradient Descent).md",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Neural Networks).md",
     "Z. Images/Python/Numpy/neural-network-example-3.png",
     "Z. Images/Python/Numpy/neural-network-example-2.png",
     "Z. Images/Python/Numpy/neural-network-example.png",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Linear Regression).md",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Matrices).md",
     "Z. Images/Python/Numpy/prediction-model.png",
-    "3. Languages/7. Python/SciKit-Learn/Py - Algorithm Analysis.md",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Vectors).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Models & Model Comparison).md",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Methods).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
-    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Combining DataFrames & Series).md",
-    "Z. Images/Python/Pandas/duplicate-values.png",
     "Z. Images/Python/Pandas",
-    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Processing Duplicate Values).md",
-    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Sorting Data).md",
-    "3. Languages/7. Python/Pandas/Pandas - Filtering, Sorting, Grouping/Py - Pandas (Grouping Data).md",
-    "4. Data Science/DS - Dealing with Missing Values.md",
-    "3. Languages/7. Python/Pandas/Pandas - Basics/Py - Pandas (Indexes).md",
-    "Z. Images/Python/Numpy/plotting-vector-point.png",
-    "Z. Images/Python/Numpy/linear-regression-weights.png",
-    "Z. Images/Python/Numpy/linear-regression-training-objective.png",
-    "Z. Images/Python/Numpy/identity-matrix.png",
-    "Z. Images/Python/Numpy/improve-equation-for-model-prediction.png",
     "3. Languages/5. Node.js & Express.js/Node.js",
     "3. Languages/7. Python/0. Resources/python_basic_to_intermediate.pdf",
     "3. Languages/7. Python/0. Resources/python_mastery_made_simple.pdf",
     "3. Languages/7. Python/0. Resources/python_140_basic_programs.pdf",
     "3. Languages/7. Python/0. Resources",
     "3. Languages/4. React.js/0. Resources/react_conditional_rendering.pdf",
-    "3. Languages/7. Python/SciPy",
-    "Z. Images/Python/Numpy",
     "Untitled.canvas"
   ]
 }

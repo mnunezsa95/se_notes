@@ -4,6 +4,7 @@ See:
 * [[Py - NumPy (Matrices)]]
 * [[Py - NumPy (Methods)]]
 Resources:
+* TripleTen Knowledge Base: [Data Science](https://tripleten.netlify.app/)
 * Documentation: [Pandas](https://pandas.pydata.org/docs/)
 * Documentation: [NumPy](https://numpy.org/doc/stable/index.html)
 * Documentation: [Matplotlib](https://matplotlib.org/)

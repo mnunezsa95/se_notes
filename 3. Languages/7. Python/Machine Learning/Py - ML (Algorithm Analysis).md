@@ -4,8 +4,8 @@ See:
 * [[Py - Sklearn (Models & Model Comparison)]]
 * [[ML - Supervised Learning]]
 Resources
+* TripleTen Knowledge Base: [Data Science](https://tripleten.netlify.app/)
 * Documentation: [SK-Learn](https://scikit-learn.org/stable/)
-
 
 ---
 # Computational Complexity
