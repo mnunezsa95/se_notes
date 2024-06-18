@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "92bcff8340777228",
+        "id": "73fa2afa742f5133",
         "type": "tabs",
         "children": [
           {
-            "id": "a9c331b4e6481ee9",
+            "id": "c959b38aa30fe099",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +82,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +99,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md"
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md"
               }
             }
           },
@@ -147,7 +143,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 353.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -160,24 +156,31 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "a9c331b4e6481ee9",
+  "active": "a80eb04947d9c22a",
   "lastOpenFiles": [
-    "3. Languages/7. Python/Machine Learning/Py - ML (Algorithm Analysis).md",
-    "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
     "3. Languages/7. Python/Machine Learning/Py - ML (Linear Regression).md",
     "3. Languages/7. Python/Machine Learning/Py - ML (Neural Networks).md",
     "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
+    "3. Languages/7. Python/pmdarima/Py - pmdarima (Methods).md",
+    "3. Languages/7. Python/statsmodels/Py - statsmodels (Methods).md",
+    "Z. Images/Python/Pandas/auto-arima-print-example.png",
+    "3. Languages/7. Python/pmdarima/Py - pmdarima (Basics).md",
+    "3. Languages/7. Python/statsmodels/Py - statsmodels (Basics).md",
+    "3. Languages/7. Python/pmdarima",
+    "Z. Images/Python/Pandas/moving-average-residuals.png",
+    "Z. Images/Python/Pandas/partial-autocorrelation-function-example.png",
+    "Z. Images/Python/Pandas/autocorrelation-function-example.png",
+    "Z. Images/Machine Learning/train-test-set-time-series.png",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Algorithm Analysis).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
     "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
     "Z. Images/Python/Pandas/shift-time-series-to-stationary.png",
     "Z. Images/Python/Pandas/non-stationary-series-1.png",
     "Z. Images/Python/Pandas/non-stationary-series-2.png",
     "Z. Images/Python/Pandas/stationary-series-1.png",
-    "3. Languages/7. Python/statsmodels/Py - statsmodels (Methods).md",
-    "3. Languages/7. Python/statsmodels/Py - statsmodels (Basics).md",
     "3. Languages/7. Python/statsmodels",
     "Z. Images/Python/Pandas/trends-seasonality-residuals-example.png",
     "3. Languages/7. Python/Pandas/Py - Pandas (Working with Pandas).md",
-    "Z. Images/Python/Pandas/resampling-visual-example.png",
     "3. Languages/7. Python/Pandas/Py - Pandas (Correlations).md",
     "3. Languages/7. Python/Pandas/Py - Pandas (Basics).md",
     "3. Languages/7. Python/Py - Powerful Python One-Liners.md",
@@ -194,19 +197,12 @@
     "3. Languages/2. CSS/CSS - Basics.md",
     "3. Languages/2. CSS/Basics",
     "3. Languages/7. Python/Pandas/Pandas - Filtering, Sorting, Grouping/Py - Pandas (Custom Filtering).md",
-    "3. Languages/7. Python/PySpark/Py - PySpark (Basics).md",
-    "3. Languages/7. Python/PySpark/Py - PySpark (Distributed Systems).md",
-    "Z. Images/Python/Numpy/neural-network-example-3.png",
-    "Z. Images/Python/Numpy/neural-network-example-2.png",
-    "Z. Images/Python/Numpy/neural-network-example.png",
-    "Z. Images/Python/Numpy/prediction-model.png",
     "Z. Images/Python/Pandas",
     "3. Languages/5. Node.js & Express.js/Node.js",
     "3. Languages/7. Python/0. Resources/python_basic_to_intermediate.pdf",
     "3. Languages/7. Python/0. Resources/python_mastery_made_simple.pdf",
     "3. Languages/7. Python/0. Resources/python_140_basic_programs.pdf",
     "3. Languages/7. Python/0. Resources",
-    "3. Languages/4. React.js/0. Resources/react_conditional_rendering.pdf",
     "Untitled.canvas"
   ]
 }
