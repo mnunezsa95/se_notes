@@ -844,8 +844,8 @@ print(ma_mae_value) # 4761.75810998995
 
 ## The Autoregressive Moving Average (ARMA) Model
 - When working with the ARMA model, two orders must be set:
-    - One for Autoregressive, denoted by ppp
-    - One for Moving Average, denoted by qqq
+    - One for Autoregressive, denoted by $p$
+    - One for Moving Average, denoted by $q$
 - A key assumption of the ARMA model is that the time series data is stationary.
     - Conduct an augmented Dickey-Fuller (adfuller) unit root test to check for stationarity:
         - Interpreting the result:

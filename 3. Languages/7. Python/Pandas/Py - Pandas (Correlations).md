@@ -1,4 +1,4 @@
-See [[Py - Introduction to Python]], [[Py - Pandas (Data Structures)]], [[Py - Pandas (DataFrame Object)]], [[Py - Pandas (Series Object)]]
+See [[Py - Introduction to Python]], [[Py - Pandas (Data Structures)]], 
 Documentation
 * [Installing Pandas](https://pandas.pydata.org/docs/getting_started/install.html)
 * [Pandas Documentation](https://pandas.pydata.org/docs/)

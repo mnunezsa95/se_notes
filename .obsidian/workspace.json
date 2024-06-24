@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "73fa2afa742f5133",
+        "id": "0e00f7725c5036cc",
         "type": "tabs",
         "children": [
           {
-            "id": "c959b38aa30fe099",
+            "id": "6404b12ab554aa9c",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -82,7 +82,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
+                "file": "Z. Images/Machine Learning/Time Series/trends-seasonality-residuals-example.png",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +99,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
+                "file": "Z. Images/Machine Learning/Time Series/trends-seasonality-residuals-example.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md"
+                "file": "Z. Images/Machine Learning/Time Series/trends-seasonality-residuals-example.png"
               }
             }
           },
@@ -143,7 +143,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 353.5
+    "width": 290.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -158,51 +158,52 @@
   },
   "active": "a80eb04947d9c22a",
   "lastOpenFiles": [
-    "3. Languages/7. Python/Machine Learning/Py - ML (Linear Regression).md",
-    "3. Languages/7. Python/Machine Learning/Py - ML (Neural Networks).md",
+    "Z. Images/Machine Learning/Time Series/stationary-series-1.png",
+    "Z. Images/Machine Learning/Time Series/shift-time-series-to-stationary.png",
+    "Z. Images/Machine Learning/Time Series/resampling-visual-example.png",
+    "Z. Images/Machine Learning/Time Series/partial-autocorrelation-function-example.png",
+    "Z. Images/Machine Learning/Time Series/non-stationary-series-2.png",
+    "Z. Images/Machine Learning/Time Series/non-stationary-series-1.png",
+    "Z. Images/Machine Learning/Time Series/duplicate-values.png",
+    "Z. Images/Machine Learning/Time Series/moving-average-residuals.png",
+    "Z. Images/Machine Learning/Time Series/autocorrelation-function-example.png",
+    "Z. Images/Machine Learning/Time Series/auto-arima-print-example.png",
+    "3. Languages/7. Python/Machine Learning/Py - ML (ML for Texts).md",
+    "Z. Images/Machine Learning/Time Series",
+    "Z. Images/Machine Learning/ML for Texts/n-gram-visual.png",
+    "Z. Images/Machine Learning/ML for Texts",
+    "3. Languages/7. Python/Basics/Regular Expressions/Py - Regular Expressions (Basics).md",
+    "3. Languages/7. Python/Basics/Regular Expressions",
+    "3. Languages/7. Python/spaCy/Py - spaCy (Methods).md",
+    "3. Languages/7. Python/Natural Language Toolkit (NLTk)/Py - NLTK (Methods).md",
+    "3. Languages/7. Python/spaCy/Py - spaCy (Basics).md",
+    "3. Languages/7. Python/Natural Language Toolkit (NLTk)/Py - NLTK (Basics).md",
+    "3. Languages/7. Python/spaCy",
+    "3. Languages/7. Python/Natural Language Toolkit (NLTk)",
     "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
     "3. Languages/7. Python/pmdarima/Py - pmdarima (Methods).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+    "4. Data Science/Descriptive Statistics/DS - Correlation.md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Correlations).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Linear Regression).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Neural Networks).md",
     "3. Languages/7. Python/statsmodels/Py - statsmodels (Methods).md",
-    "Z. Images/Python/Pandas/auto-arima-print-example.png",
     "3. Languages/7. Python/pmdarima/Py - pmdarima (Basics).md",
     "3. Languages/7. Python/statsmodels/Py - statsmodels (Basics).md",
     "3. Languages/7. Python/pmdarima",
-    "Z. Images/Python/Pandas/moving-average-residuals.png",
-    "Z. Images/Python/Pandas/partial-autocorrelation-function-example.png",
-    "Z. Images/Python/Pandas/autocorrelation-function-example.png",
-    "Z. Images/Machine Learning/train-test-set-time-series.png",
     "3. Languages/7. Python/Machine Learning/Py - ML (Algorithm Analysis).md",
     "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
-    "Z. Images/Python/Pandas/shift-time-series-to-stationary.png",
-    "Z. Images/Python/Pandas/non-stationary-series-1.png",
-    "Z. Images/Python/Pandas/non-stationary-series-2.png",
-    "Z. Images/Python/Pandas/stationary-series-1.png",
     "3. Languages/7. Python/statsmodels",
-    "Z. Images/Python/Pandas/trends-seasonality-residuals-example.png",
     "3. Languages/7. Python/Pandas/Py - Pandas (Working with Pandas).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Correlations).md",
     "3. Languages/7. Python/Pandas/Py - Pandas (Basics).md",
     "3. Languages/7. Python/Py - Powerful Python One-Liners.md",
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Models & Model Comparison).md",
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
     "3. Languages/7. Python/Numpy/Py - NumPy (Matrices).md",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Methods).md",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Vectors).md",
     "3. Languages/7. Python/Machine Learning",
-    "1. General/CSS - Introduction to CSS.md",
-    "1. General/HTML - Introduction to HTML.md",
-    "1. General/Express - Introduction to Express.js.md",
-    "3. Languages/2. CSS/CSS - Basics.md",
     "3. Languages/2. CSS/Basics",
-    "3. Languages/7. Python/Pandas/Pandas - Filtering, Sorting, Grouping/Py - Pandas (Custom Filtering).md",
     "Z. Images/Python/Pandas",
-    "3. Languages/5. Node.js & Express.js/Node.js",
-    "3. Languages/7. Python/0. Resources/python_basic_to_intermediate.pdf",
-    "3. Languages/7. Python/0. Resources/python_mastery_made_simple.pdf",
-    "3. Languages/7. Python/0. Resources/python_140_basic_programs.pdf",
-    "3. Languages/7. Python/0. Resources",
     "Untitled.canvas"
   ]
 }

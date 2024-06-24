@@ -12,19 +12,28 @@ Resources
 
 ---
 # Regular Expression in Python
-
-## Importing `re` Module
-* The `re` module is used to work with regular expressions
-```python
-# Importing the re module
-import re 
-```
-
+## What are Regular Expression?
+* A regular expression is an instrument for finding complex patterns in texts.
+## Understanding Regular Expressions
+* Regular expressions have their own syntax that can describe various combinations of strings
+## Common Tasks using Regular Expressions
+* The most common tasks for analysts include:
+	* Finding a substring within a string
+	* Breaking strings into substrings
+	* Replacing parts of a string with other strings
 ## How Regular Expressions Work
 * Requires two steps:
 	1) Creation of the regular expression pattern 
 	2) Passing the pattern into the methods of the `re` module
 		* Methods are used to 'search', 'replace', 'remove' symbols.
+
+
+## Importing re Module
+* The re module is used to work with regular expressions
+```python
+# Importing the re module
+import re 
+```
 
 ## Basic Regular Expression Patterns
 | Regular Expression | Description                                | Example            | Explanation              |
@@ -41,13 +50,22 @@ import re
 | `*`                | 0 or more instances                        | `a*`               | nothing or a, or aa      |
 | `^`                | Start of string                            | `^a`               | a1234, abcd              |
 | `$`                | End of string                              | `a$`               | 1a, ba                   |
-* Searching for special characters in Regular Expressions requires us to escape the character using a backslash
+
+# Working with Regular Expressions
+### Using Escape Characters in Regular Expressions
+- To search for special characters in Regular Expressions, escape the character using a backslash:
 ```Python
-# Searching for a + in the string
-regexp = '\+' 
+# Searching for a '+' in the string 
+regexp = '\+'
+```
+### Defining a Regular Expression with a Raw String
+- A raw string is defined by placing an `r` before the string:
+- This indicates that the following string is a raw string, meaning that escape sequences are not processed.
+```Python
+print(r'Hello!\n') # Hello!\n`
 ```
 
-#### Examples
+
 * Writing a regular expression that checks whether the string begins with a number, and if it does, matches the number.
 ```Python
 # [0-9] will match numbers 0-9 
@@ -56,31 +74,23 @@ regexp = '\+'
 regexp = '^[0-9]+'
 ```
 
-## Regular Expressions in Python
-* The most common tasks for analysts include:
-	* Finding a substring within a string
-	* Breaking strings into substrings
-	* Replacing parts of a string with other strings
 
-### `re` Methods for Regular Expressions
-
-
-#### `search()`
-* `search(pattern, string)` -- searches for a `pattern` in a `string`, and returns a `match`-type object.
-	* The `match` object includes:
-		* `span` -- a parameter that defines the range of indices matching the pattern
-		* `match` -- a parameter that indicates the value of the substring
-	* Arguments
+# Methods for Regular Expressions
+##### `search()`
+* Searches for a pattern in a string, and returns a match-type object.
+	* Parameters
 		* `pattern` -- the pattern using to search
 		* `string` -- the string searching in
 ```Python
 import re
 
 string='"General Slocum" 15 June 1904 East River human factor'
-print(re.search('\w+', string)) # <re.Match object; span=(1, 8), match='General'>
+print(re.search('\w+', string)) 
+
+# <re.Match object; span=(1, 8), match='General'>
 ```
 
-* `group()` -- returns just the substring that matches the criteria
+* `group()` -- Returns just the substring that matches the criteria
 ```Python
 import re
 
@@ -95,9 +105,9 @@ string = '"General Slocum" 15 June 1904 East River human factor'
 print(re.match('"[A-z ]+"', string).group()) # "General Slocum"
 ```
 
-#### `split()`
-* `split(pattern, string)` -- breaks up a `string` at points where the `pattern` occurs
-	* Arguments
+##### `split()`
+* Breaks up a string at points where the pattern occurs
+	* Parameters
 		* `pattern` -- the pattern using to search
 		* `string` -- the string searching in
 		* `maxsplit=` -- limits the number of times the string is divided
@@ -105,7 +115,8 @@ print(re.match('"[A-z ]+"', string).group()) # "General Slocum"
 import re
 
 string = '"General Slocum" 15 June 1904 East River human factor'
-# splits the string where +1 consecutive numbers occur
+
+# Splits the string where +1 consecutive numbers occur
 print(re.split('\d+', string)) 
 
 # ['"General Slocum" ', ' June ', ' East River human factor']
@@ -115,15 +126,16 @@ print(re.split('\d+', string))
 import re
 
 string = '"General Slocum" 15 June 1904 East River human factor'
-# splits the string where +1 consecutive numbers occur, 1x max
+
+# Splits the string where +1 consecutive numbers occur, 1x max
 print(re.split('\d+', string, maxsplit = 1))
 
 # ['"General Slocum" ', ' June 1904 East River human factor']
 ```
 
-#### `sub()` 
-* `sub(pattern, repl, string)` -- searches for the pattern substring within a string and replaces it with the `repl` (i.e. replace) substring.
-	* Arguments
+##### `sub()` 
+* Searches for the pattern substring within a string and replaces (substitutes) it with the repl (i.e. replacement) substring.
+	* Parameters
 		* `pattern` -- the pattern using to search
 		* `repl` -- the replacement string to be used
 		* `string` -- the string searching in
@@ -132,13 +144,14 @@ import re
 
 string = '"General Slocum" 15 June 1904 East River human factor'
 # Replace any 1+ consecutive digits with empty string
+
 print(re.sub('\d+', '', string)) 
 # "General Slocum" June East River human factor'
 ```
 
-#### `findall()`
-* `findall(pattern, string)` -- returns a list of all substrings in a `string` that match the `pattern`.
-	* Arguments
+##### `findall()`
+* Returns a list of all substrings in a string that match the pattern.
+	* Parameters
 		* `pattern` -- the pattern using to search
 		* `string` -- the string searching in
 ```python
@@ -166,7 +179,7 @@ string = 'sixty-seven drops of rain'
 print(len(re.findall('\w+', string))) # 5
 ```
 
-## Examples
+# Examples
 1. Write a regular expression to find the `<title> </title>` tags and their contents. Print the result as follows: `<title>Tag text</title>`
 ```Python
 import requests
