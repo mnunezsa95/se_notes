@@ -4,18 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "0e00f7725c5036cc",
+        "id": "e910260eb1d2ce04",
         "type": "tabs",
         "children": [
           {
-            "id": "6404b12ab554aa9c",
+            "id": "bcb1e02306fe81ef",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "3. Languages/7. Python/PyTorch/transformers/Py - Transformers (Basics).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6a61613f891c10dd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (ML for Texts).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "60b5d7b95bad5e27",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Languages/7. Python/PyTorch/Py - PyTorch (Basics).md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -42,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "class python",
+                "query": "py - sklearn (methods and classes)",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 276.51103591918945
+    "width": 329.51103591918945
   },
   "right": {
     "id": "b25286fe059f358b",
@@ -82,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Z. Images/Machine Learning/Time Series/trends-seasonality-residuals-example.png",
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (ML for Texts).md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Z. Images/Machine Learning/Time Series/trends-seasonality-residuals-example.png",
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (ML for Texts).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Z. Images/Machine Learning/Time Series/trends-seasonality-residuals-example.png"
+                "file": "3. Languages/7. Python/Machine Learning/Py - ML (ML for Texts).md"
               }
             }
           },
@@ -156,8 +185,24 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "a80eb04947d9c22a",
+  "active": "6a61613f891c10dd",
   "lastOpenFiles": [
+    "3. Languages/7. Python/PyTorch/transformers/Py - Transformers (Methods).md",
+    "3. Languages/7. Python/PyTorch/transformers/Py - Transformers (Basics).md",
+    "3. Languages/7. Python/PyTorch/transformers/Untitled.md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (ML for Texts).md",
+    "3. Languages/7. Python/PyTorch/Py - PyTorch (Basics).md",
+    "3. Languages/7. Python/PyTorch/transformers",
+    "3. Languages/7. Python/Untitled",
+    "3. Languages/7. Python/spaCy/Py - spaCy (Basics).md",
+    "3. Languages/7. Python/PyTorch",
+    "Z. Images/Machine Learning/ML for Texts/embeddings-for-classification.png",
+    "Z. Images/Machine Learning/ML for Texts/word-embeddings.png",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Classes and Methods).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
+    "3. Languages/7. Python/Natural Language Toolkit (NLTk)/Py - NLTK (Methods).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Models & Model Comparison).md",
     "Z. Images/Machine Learning/Time Series/stationary-series-1.png",
     "Z. Images/Machine Learning/Time Series/shift-time-series-to-stationary.png",
     "Z. Images/Machine Learning/Time Series/resampling-visual-example.png",
@@ -166,17 +211,11 @@
     "Z. Images/Machine Learning/Time Series/non-stationary-series-1.png",
     "Z. Images/Machine Learning/Time Series/duplicate-values.png",
     "Z. Images/Machine Learning/Time Series/moving-average-residuals.png",
-    "Z. Images/Machine Learning/Time Series/autocorrelation-function-example.png",
-    "Z. Images/Machine Learning/Time Series/auto-arima-print-example.png",
-    "3. Languages/7. Python/Machine Learning/Py - ML (ML for Texts).md",
     "Z. Images/Machine Learning/Time Series",
-    "Z. Images/Machine Learning/ML for Texts/n-gram-visual.png",
     "Z. Images/Machine Learning/ML for Texts",
     "3. Languages/7. Python/Basics/Regular Expressions/Py - Regular Expressions (Basics).md",
     "3. Languages/7. Python/Basics/Regular Expressions",
     "3. Languages/7. Python/spaCy/Py - spaCy (Methods).md",
-    "3. Languages/7. Python/Natural Language Toolkit (NLTk)/Py - NLTK (Methods).md",
-    "3. Languages/7. Python/spaCy/Py - spaCy (Basics).md",
     "3. Languages/7. Python/Natural Language Toolkit (NLTk)/Py - NLTK (Basics).md",
     "3. Languages/7. Python/spaCy",
     "3. Languages/7. Python/Natural Language Toolkit (NLTk)",
@@ -194,16 +233,6 @@
     "3. Languages/7. Python/Machine Learning/Py - ML (Algorithm Analysis).md",
     "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
     "3. Languages/7. Python/statsmodels",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Working with Pandas).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Basics).md",
-    "3. Languages/7. Python/Py - Powerful Python One-Liners.md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Models & Model Comparison).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
-    "3. Languages/7. Python/Numpy/Py - NumPy (Matrices).md",
-    "3. Languages/7. Python/Machine Learning",
-    "3. Languages/2. CSS/Basics",
-    "Z. Images/Python/Pandas",
     "Untitled.canvas"
   ]
 }

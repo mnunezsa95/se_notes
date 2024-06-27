@@ -12,8 +12,7 @@ Resources
 
 
 ----
-# spaCy
-## What is spaCy?
+# What is spaCy?
 * spaCy is an open-source software library for advanced Natural Language Processing (NLP) in Python. Designed specifically for production use, it is known for its performance, ease of use, and robust ecosystem of tools and resources. Here are some key features and aspects of spaCy:
 	1. **Tokenization**: Efficiently breaks down text into tokens (words, punctuation, etc.).
 	2. **Linguistic Features**: Provides detailed linguistic annotations, including part-of-speech tagging, dependency parsing, named entity recognition (NER), and more.

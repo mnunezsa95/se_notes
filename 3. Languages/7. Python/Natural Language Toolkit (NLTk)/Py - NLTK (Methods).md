@@ -37,6 +37,30 @@ print(wnl.lemmatize('hardrock')) # hardrock
 
 
 # Methods
+
+##### `nltk.download()`
+* Downloads the specified package(s)
+	* `package` -- The package to download
+```Python
+import nltk
+from nltk.corpus import stopwords
+
+nltk.download('stopwords')
+```
+
+
+##### `nltk.corpus.stopwords.words()`
+* Retrieves the stop words for a particular language
+	* Parameters
+		* `language` -- The language for which stop words should be retrieved
+```Python
+import nltk
+from nltk.corpus import stopwords
+
+nltk.download('stopwords')
+stop_words = set(stopwords.words('english'))
+```
+
 ##### `nltk.tokenize.word_tokenize()`
 * Returns a tokenized copy of _text_, using NLTK’s recommended word tokenizer
 	* Parameters
