@@ -720,3 +720,212 @@ ids = tokenizer.encode(
 )
 print(ids) # [101, 2009, 2003, 2200, 102]
 ```
+
+```Python
+# Full Example
+
+import logging
+import numpy as np
+import pandas as pd
+import torch
+import transformers
+
+# Load the dataset
+data = pd.read_csv('/datasets/imdb_reviews_small.tsv', sep='\t')
+# Initialize the tokenizer
+tokenizer = transformers.BertTokenizer.from_pretrained('bert-base-uncased')
+
+# Function to tokenize, pad and create attention masks
+def tokenize_with_bert(texts):
+    ids_list = []
+    attention_mask_list = []
+    min_tokenized_text_length = float('inf')
+    max_tokenized_text_length = 0
+    
+    for text in texts:
+	    # Tokenize the text
+        ids = tokenizer.encode(
+	        text.lower(), 
+	        add_special_tokens=True, 
+	        max_length=512, 
+	        truncation=True
+        )
+        
+        # Identify min and max lengths
+        min_tokenized_text_length = min(min_tokenized_text_length, len(ids))
+        max_tokenized_text_length = max(max_tokenized_text_length, len(ids))
+        
+        # Pad the tokenized text to 512 tokens
+        padded = np.array(ids + [0] * (512 - len(ids)))
+        
+        # Create attention mask
+        attention_mask = np.where(padded != 0, 1, 0)
+        
+        ids_list.append(padded)
+        attention_mask_list.append(attention_mask)
+    
+    print(f'The minimum length of vectors: {min_tokenized_text_length}')
+    print(f'The maximum length of vectors: {max_tokenized_text_length}')
+        
+    return ids_list, attention_mask_list
+
+# Call the function with the dataset's reviews
+ids_list, attention_mask_list = tokenize_with_bert(data['review'])
+```
+
+## BERT Embeddings
+
+### What is Tensor?
+* Tensor is a multidimensional vector that stores numbers in the "long format," allocating 64-bits to each number.
+
+### Tensors
+* Steps:
+	1. Import the tqdm library from tqdm.auto
+	2. Initialize the `BertConfig` configuration and pass a JSON file with the settings
+	3. Initialize the `BertModel` class and pass it a pre-trained model and configuration
+	4. Declare a batch size 
+		* Make it small so that the RAM isn't overwhelmed
+	5. Create a loop for the batches. Use the `tqdm()` function to indicate the progress
+	6. Transform the data into a tensor format using the PyTorch library
+	7. Pass the data and the mask to the model to obtain embeddings for the batch
+	8. Use the **`no_grad()`** (no gradient) function to indicate that gradients are not needed. It will make calculations faster.
+		* In the torch library (gradients are required for the training mode when creating your own BERT model). 
+	9. Extract the required elements from the tensor and add the list of all the embeddings
+	10. Concatenate all of the embeddings in a matrix of features using `np.concatenate()`
+```Python
+# 1. Import the tdqm library
+from tqdm.auto import tqdm
+
+# 2. Initialize the BERT cofiguration
+config = BertConfig.from_pretrained('bert-base-uncased')
+
+# 3. Initialize the BERT model
+model = BertModel.from_pretrained('bert-base-uncased')
+
+# 4. Declare a small batch size
+batch_size = 100
+embeddings = [] 
+
+# 5. Create a loop for batches
+for i in tqdm(range(len(ids_list) // batch_size)):
+	# 6. Transform the data into a tensor format
+	###  Putting together vectors of ids (of tokens) to a tensor
+	ids_batch = torch.LongTensor(
+		ids_list[batch_size*i:batch_size*(i+1)]
+	)
+	
+	# Putting together vectors of attention masks to a tensor
+	attention_mask_batch = torch.LongTensor(
+		attention_mask_list[batch_size*i:batch_size*(i+1)]
+	)
+	
+	# 7 & 8
+	with torch.no_grad():
+        batch_embeddings = model(
+            ids_batch, attention_mask=attention_mask_batch
+        )
+        
+    embeddings.append(batch_embeddings[0][:, 0, :].numpy())
+
+# 10. Concatenate all the embeddings
+features = np.concatenate(embeddings)
+```
+
+```Python
+# Full Example
+
+# --------- Import --------- #
+import numpy as np
+import pandas as pd
+
+import torch
+import transformers
+
+from tqdm.auto import tqdm
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import train_test_split
+
+# --------- Global Variables --------- #
+max_sample_size = 200
+
+# --------- Import and Load Data --------- #
+df_reviews = pd.read_csv(
+	'/datasets/imdb_reviews_200.tsv', sep='\t'
+)
+
+# --------- Pre-processing for BERT --------- #
+tokenizer = transformers.BertTokenizer.from_pretrained(
+	'bert-base-uncased'
+)
+
+ids_list = []
+attention_mask_list = []
+
+max_length = 512
+
+for input_text in df_reviews.iloc[:max_sample_size]['review']:
+    ids = tokenizer.encode(
+	    input_text.lower(), 
+	    add_special_tokens=True, 
+	    truncation=True, 
+	    max_length=max_length
+	)
+    padded = np.array(ids + [0]*(max_length - len(ids)))
+    attention_mask = np.where(padded != 0, 1, 0)
+    ids_list.append(padded)
+    attention_mask_list.append(attention_mask)
+
+# --------- Global Embeddings --------- #
+config = transformers.BertConfig.from_pretrained(
+	'bert-base-uncased'
+)
+model = transformers.BertModel.from_pretrained('bert-base-uncased')
+
+batch_size = 5   
+embeddings = []
+
+device = torch.device(
+	'cuda' if torch.cuda.is_available() else 'cpu'
+)
+
+print(f'Using the {device} device.')
+
+model.to(device)
+
+for i in tqdm(range(len(ids_list) // batch_size)):
+    ids_batch = torch.LongTensor(
+	    ids_list[batch_size*i:batch_size*(i+1)]
+	).to(device)
+    
+    attention_mask_batch = torch.LongTensor(
+	    attention_mask_list[batch_size*i:batch_size*(i+1)]
+    ).to(device)
+    
+    with torch.no_grad():
+        model.eval()
+        batch_embeddings = model(
+	        ids_batch, attention_mask=attention_mask_batch
+	    )
+	    
+    embeddings.append(
+	    batch_embeddings[0][:,0,:].detach().cpu().numpy()
+	)
+
+# --------- Model --------- #
+features = np.concatenate(embeddings)
+target = df_reviews.iloc[:max_sample_size]['pos']
+
+print(features.shape)
+print(target.shape)
+
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.5, random_state=42)
+
+model = LogisticRegression(random_state=12345)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+scores = cross_val_score(model, features, target, cv=5)
+print(scores)
+```

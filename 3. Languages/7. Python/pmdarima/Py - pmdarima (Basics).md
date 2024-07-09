@@ -21,7 +21,7 @@ Resources:
 	- Scikit-learn-esque pipelines to consolidate your estimators and promote productionization
 - Pmdarima wraps [statsmodels](https://github.com/statsmodels/statsmodels/blob/master/statsmodels) under the hood, but is designed with an interface that's familiar to users coming from a scikit-learn background.
 
-# Installing statsmodels
+# Installing pmdarima
 * Statsmodels can be installed with anaconda or pip
 ```bash
 conda config --add channels conda-forge
@@ -33,7 +33,7 @@ conda install pmdarima
 pip install pmdarima
 ```
 
-# Importing statsmodels
+# Importing pmdarima
 ```Python
 import pmdarima as pm
 ```
