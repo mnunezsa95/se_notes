@@ -2,7 +2,7 @@ See:
 * [[Py - Introduction to Python]]
 * [[Py - Pandas (Methods)]]
 * [[Py - NumPy (Methods)]]
-* [[Py - SciPy (Methods)
+* [[Py - SciPy (Methods)]]
 
 Resources
 * Documentation: [Pandas](https://pandas.pydata.org/docs/)
@@ -14,20 +14,20 @@ Resources
 
 ##### `matplotlib.pyplot.figure()`
 * Creates a new figure, or activate an existing figure
-* Arguments
-	* `num=` -- an int or str serving as unique identifier for the figure
-	* `figsize=` -- Width and height in inches
-	* `facecolor=` -- A str identifying the background color
-	* `layout=` -- A str describing the layout mechanism for positioning of plot elements to avoid overlapping Axes decorations
-		* Options: `'constrained'`, `'compressed'`, `'tight'`, `'none'`
+	* Parameters
+		* `num=` -- an int or str serving as unique identifier for the figure
+		* `figsize=` -- Width and height in inches
+		* `facecolor=` -- A str identifying the background color
+		* `layout=` -- A str describing the layout mechanism for positioning of plot elements to avoid overlapping Axes decorations
+			* Options: `'constrained'`, `'compressed'`, `'tight'`, `'none'`
 ```Python
 
 ```
 
 ##### `matplotlib.pyplot.legend()`
 * Places a legend on the Axes
-* Arguments
-	* `legend_names` -> a list of label names; the order of the legend labels in the list will correspond to the order of the columns in the DataFrame
+	* Parameters
+		* `legend_names` -> a list of label names; the order of the legend labels in the list will correspond to the order of the columns in the DataFrame
 ```python
 matplotlib.pyplot.legend(*args, **kwargs)
 ```
@@ -46,10 +46,10 @@ plt.show()
 
 ##### `matplotlib.pyplot.arrow()`
 * Adds an arrow to the axes; draws an arrow from `(x, y)` to `(x + dx, y + dy)`
-* Arguments
-	* `x, y` -- The x and y coordinates of the arrow base
-	* `dx, dy` -- The length of the arrow along x and y direction
-	* `**kwargs` (see documentation)
+	* Parameters
+		* `x, y` -- The x and y coordinates of the arrow base
+		* `dx, dy` -- The length of the arrow along x and y direction
+		* `**kwargs` (see documentation)
 ```Python
 matplotlib.pyplot.arrow(x, y, dx, dy, **kwargs
 ```
@@ -66,4 +66,46 @@ plt.xlabel('Price')
 plt.ylabel('Quality')
 plt.grid(True)
 plt.show()
+```
+
+
+##### `matplotlib.pyplot.imshow()`
+* Display data as an image, i.e., on a 2D regular raster.
+	* Parameters (see complete list of parameters [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html))
+		* `X` -- An array-like or PIL image 
+		* `cmap=` -- A string or color map, representing the Colormap instance or registered colormap name used to map scalar data to colors.
+		* `norm=` -- A string specifying the normalization method used to scale scalar data to the (0, 1) range before mapping to colors using `cmap`.
+```Python
+import numpy as np
+from PIL import Image
+import matplotlib.pyplot as plt
+
+image = Image.open('/datasets/ds_cv_images/face.png')
+array = np.array(image)
+
+plt.imshow(array, cmap='gray')
+plt.colorbar()
+```
+
+##### `matplotlib.pyplot.colorbar()`
+* Adds a colorbar to a plot.
+	* Parameters
+		* `mappable=` -- The `matplotlib.cm.ScalarMappable` (i.e., `AxesImage`, `ContourSet`, etc.) described by this colorbar. 
+		* `cax=` -- Specifies the Axes into which the colorbar will be drawn. 
+			* If `None`, then a new Axes is created and the space for it will be stolen from the Axes(s) specified in `ax`.
+		* `ax=` -- An iterable the represents one or more parent Axes from which space for a new colorbar Axes will be stolen. 
+			* This parameter is only used if `cax` is not set.
+		* `use_gridspec=` -- an optional boolean representing the grid spec
+			* If `cax` is `None`, a new `cax` is created as an instance of Axes. 
+			* If `ax` is positioned with a subplotspec and `use_gridspec` is `True`, then `cax` is also positioned with a subplotspec.
+```Python
+import numpy as np
+from PIL import Image
+import matplotlib.pyplot as plt
+
+image = Image.open('/datasets/ds_cv_images/face.png')
+array = np.array(image)
+
+plt.imshow(array, cmap='gray')
+plt.colorbar()
 ```

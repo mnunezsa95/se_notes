@@ -1,6 +1,11 @@
 See:
 * [[Py - Introduction to Python]]
+* [[Py - PIL (Basics)]]
+* [[Py - PIL (Methods)]]
+* [[Py - TensorFlow (Basics)]]
+* [[Py - TensorFlow (Methods)]]
 * [[Py - Pandas (Basics)]]
+* [[Py - Matplotlib (Methods)]]
 
 Resources:
 * TripleTen Knowledge Base: [Data Science](https://tripleten.netlify.app/)
@@ -376,4 +381,271 @@ Epoch 10/10
 	- ReLU visual:
 		![[relu-activiation-function-visual.png]]
 	* ReLU Formula: $$ReLU(x) = max(0,x)$$
+
+## Fully Connected Neural Networks in Keras
+* A Fully Connected Neural Network is very similar to a single layer neural network. 
+	* To create more than one layer, the `keras.layers.Dense()` more than once.
+```Python
+import pandas as pd
+from tensorflow import keras
+from sklearn.metrics import accuracy_score
+
+df = pd.read_csv('/datasets/train_data_n.csv')
+df['target'] = (df['target'] > df['target'].median()).astype(int)
+features_train = df.drop('target', axis=1)
+target_train = df['target']
+
+df_val = pd.read_csv('/datasets/test_data_n.csv')
+df_val['target'] = (df_val['target'] > df['target'].median()).astype(int)
+features_valid = df_val.drop('target', axis=1)
+target_valid = df_val['target']
+
+model = keras.models.Sequential()
+
+# Adding two layers
+model.add(keras.layers.Dense(units=10, activation='sigmoid'))
+model.add(keras.layers.Dense(units=1, activation='sigmoid'))
+
+# Prepare the model for training
+model.compile(loss='binary_crossentropy', optimizer='sgd', metrics=['acc'])
+
+# Training the model
+model.fit(features_train, target_train, epochs=10, verbose=2,
+          validation_data=(features_valid, target_valid))
+```
+
+
+# Working with Images in Python
+* Python has a dedicated library called Pillow or PIL(Python Imaging Library) for working with images.
+## The Python Imaging Library (PIL)
+### The Image Module
+* The PIL Library has an `Image` module provides a number of factory functions, including functions to load images from files, and to create new images.
+	* The `open()` method is used to load an image in Python
+	* The `NumPy` library can be used to convert the image into an array
+	* The `matplotlib` library can be used to plot the the image
+```Python
+import numpy as np
+from PIL import Image
+
+# Load the image
+image = Image.open('/datasets/ds_cv_images/face.png')
+
+# Convert the image into an array
+array = np.array(image)
+print(array)
+
+# Change the color map of the image
+plt.imshow(array, cmap='gray')
+
+# Plot the image
+plt.colorbar()
+```
+
+```Result
+[[255 255 255 255 237 217 239 255 255 255 255 255 255]
+ [255 255 190  75  29  29  30  81 198 255 255 255 255]
+ [255 147  30  29  29  29  29  29  31 160 255 255 255]
+...
+ [ 29  38 180 255 255 255 255 255 169  35  29  29  29]
+ [ 29  29  29  82 153 174 150  76  29  29  29  29  29]
+ [ 29  29  29  29  29  29  29  29  29  29  29  29  29]]
+```
+
+
+## Black and White Images
+* Black and White images are two-dimensional arrays with cells containing integers from 0 to 255
+* Neural networks learn better when they receive images in the range from 0 to 1 as input.
+```Python
+# Example --- Adjusting color value of the image
+
+import numpy as np
+from PIL import Image
+import matplotlib.pyplot as plt
+
+image = Image.open('/datasets/ds_cv_images/face.png')
+array = np.array(image)
+
+# Repainting the upper left corner of the image black (0), and the lower right corner white (255)
+array[14, 12] = 255
+array[0, 0] = 0
+
+plt.imshow(array, cmap='gray')
+plt.colorbar()
+```
+
+* Neural networks learn better when they receive images in the range from 0 to 1 as input.
+```Python
+# Example --- Change the array input ranges
+
+import numpy as np
+from PIL import Image
+import matplotlib.pyplot as plt
+
+image = Image.open('/datasets/ds_cv_images/face.png')
+array = np.array(image)
+
+# Divide every value in the array by 255
+print(array)
+array = array / 255
+print(array)
+
+plt.imshow(array, cmap='gray')
+plt.colorbar()
+```
+
+```Result
+[[255 255 255 255 237 217 239 255 255 255 255 255 255] [255 255 190 75 29 29 30 81 198 255 255 255 255] [255 147 30 29 29 29 29 29 31 160 255 255 255] [185 29 29 29 29 29 29 29 29 31 198 255 255] [ 61 29 29 29 29 29 29 29 29 29 74 255 255] ...
+[ 30 187 255 234 218 218 218 218 243 174 29 29 29] [ 29 38 180 255 255 255 255 255 169 35 29 29 29] [ 29 29 29 82 153 174 150 76 29 29 29 29 29] [ 29 29 29 29 29 29 29 29 29 29 29 29 29]] 
+
+
+[[1. 1. 1. 1. 0.92941176 0.85098039 0.9372549 1. 1. 1. 1. 1. 1. ] [1. 1. 0.74509804 0.29411765 0.11372549 0.11372549 0.11764706 0.31764706 0.77647059 1. 1. 1. 1. ] [1. 0.57647059 0.11764706 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.12156863 
+...
+[0.11372549 0.14901961 0.70588235 1. 1. 1. 1. 1. 0.6627451 0.1372549 0.11372549 0.11372549 0.11372549] [0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549 0.11372549]]
+```
+
+## Color Images
+* Color images, also known as RGB images, are represented as three-dimensional arrays where each cell contains integers ranging from 0 to 255.
+	* These images consist of three channels: red, green, and blue.
+		* The 1st coordinate is the row ID
+		* The 2nd coordinate is the column ID
+		* The 3rd coordinate is the column Channel
+		![[color-image-composition.png]]
+
+- Three-dimensional arrays (and Images) in NumPy work similarly to two-dimensional arrays.
+	- Each pixel within these arrays stores three numbers, representing the brightness levels of the red, green, and blue channels.
+```Python
+# Creating a two-dimensional array
+
+np.array([[0, 255], [255, 0]])
+
+# Creating a three-dimensional array
+np.array([[[0, 255, 0], [128, 0, 255]], [[12, 89, 0], [5, 89, 245]]])
+```
+
+```Python
+# Example -- Working with an RGB image
+
+# Import libraries
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load the image
+image = Image.open('/datasets/ds_cv_images/cat.jpg')
+
+# Convert the image into an array
+array = np.array(image)
+
+# Print the size of the array (to verify the chanlles are stored in third coordinate)
+print(array.shape) # (300, 400, 3)
+
+# Get the output of the red channel only
+red_channel = array[:, :, 0]
+
+# Print the output of red channel
+print(red_channel)
+
+# Plot the image
+plt.imshow(array)
+
+# Plot the image
+plt.colorbar()
+```
+
+```Result
+# Output of the red channel 
+
+[[115 111 111 ... 119 117 117]
+ [115 113 114 ... 119 118 118]
+ [115 115 117 ... 122 122 122]
+ ...
+ [179 180 176 ... 197 195 197]
+ [176 178 173 ... 197 194 196]
+ [173 174 170 ... 196 195 197]]
+```
+
+
+# Multiclass Classification
+## What is Multiclass Classification?
+* An observation can belong to one of several classes (not just two classes)
+* In a multiclass classification, there are more than one output neurons, where each neuron is responsible for its own class
+		![[multiclass-classification-visual.png]]
+
+## Working with Multiclass Classifications
+* Multiclass classifications utilize the **SoftMax** activation function instead of sigmoid because it ensures that probabilities sum up to 1.
+	- SoftMax takes multiple network outputs and transforms them into probabilities that collectively add up to one.
+	- To apply **SoftMax**, all output values are required.
+	    - The number of neurons in the output layer corresponds to the number of classes, with each output connected to SoftMax.
+	- Formula:
+	    - Each probability is computed by dividing Euler's number raised to the power of the output weight by the sum of all probabilities.$$SoftMax(z_i) = (exp(z_i)) / (sum_i exp(z_i)) $$
+
+## Example: A Multiclass Classification
+* Image the following neural network
+		![[multiclass-classification-visual-softmax.png]]
+	* Calculate the probably of each neuron using the SoftMax activation function
+	$$p_1 = (e_1^z) / (e^z_1 + e^z_2 + e^z_3)$$$$p_2 = (e_2^z) / (e^z_1 + e^z_2 + e^z_3)$$$$p_3 = (e_3^z) / (e^z_1 + e^z_2 + e^z_3)$$
+	* Can be simplified as: 
+		* If z₁ is significantly greater than z₂ and _z₃_, then in formula $e^z_1 / (e^z_1 + e^z_2 + e^z_3)$ the numerator is approximately equal to the denominator, that is $p₁≈1$
+		* If _z₁_ is significantly less than _z₂_ or _z₃_, then in formula $e^z_1 / (e^z_1 + e^z_2 + e^z_3)$ the numerator is much less than the denominator, that is $p₁≈0$ $$p_1 + p_2 + p_3 = SoftMax(z_1) + SoftMax(z_2) + SoftMax(z_3) = (e_1^z) / (e^z_1 + e^z_2 + e^z_3) + (e_2^z) / (e^z_1 + e^z_2 + e^z_3) + (e_3^z) / (e^z_1 + e^z_2 + e^z_3) = 1$$
+
+
+## Multiclass Classification in Keras
+- How does Multiclass Classification work in Keras?
+	- During training, probabilities generated by SoftMax are fed into the cross-entropy function to compute the error.
+	- The gradient descent method is then employed to minimize the loss function.
+	- The only condition for gradient descent to function effectively is that the function must have derivatives with respect to all parameters: weights and biases of the neural network.
+- Training with Multiclass Classification
+	- Transform the features from a 3D array to a 2D table (using NumPy's `reshape()` method)
+		- Why? --> In a fully connected network, the input observations should be the rows of the table, and the whole dataset should be a two-dimensional table.
+	- When creating and adding the layer
+		- Use `activation='softmax'` when creating and adding the layer
+		- The `input_dim=` is the size of the second and third value
+	- When preparing the model for training
+		- Use `loss='sparse_categorical_crossentropy'`
+	- 
+```Python
+from tensorflow import keras
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+features_train = np.load('/datasets/fashion_mnist/train_features.npy')
+target_train = np.load('/datasets/fashion_mnist/train_target.npy')
+features_test = np.load('/datasets/fashion_mnist/test_features.npy')
+target_test = np.load('/datasets/fashion_mnist/test_target.npy')
+
+# Print feature sizes for both samples
+print('Train:', features_train.shape)
+print('Test:', features_test.shape)
+
+# Print the target value for the first image from the training sample
+print('First image class:', target_train[0])
+
+# Output the image in black and white
+plt.imshow(features_train[0], cmap='gray')
+
+# Transform the dataset from a 3D array into a 2D table.
+## 28 * 28 comes from the second and third value of the size
+features_train = features_train.reshape(features_train.shape[0], 28 * 28)
+features_test = features_test.reshape(features_test.shape[0], 28 * 28)
+
+# Create model
+model = keras.models.Sequential()
+
+# Create layer and add the layer
+model.add(
+    keras.layers.Dense(units=10, input_dim=28 * 28, activation='softmax')
+)
+
+# Prepare for training
+model.compile(loss='sparse_categorical_crossentropy', optimizer='sgd', metrics=['acc'])
+
+# Train the model
+model.fit(
+    features_train, 
+    target_train, 
+    epochs=1, 
+    verbose=2,
+    validation_data=(features_test, target_test))
+```
 

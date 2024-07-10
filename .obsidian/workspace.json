@@ -4,31 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "93a24b7c9b4d2594",
+        "id": "35ec9a328379570e",
         "type": "tabs",
         "children": [
           {
-            "id": "5a01f0d30b817ce5",
+            "id": "33b62f69b019a5d0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0ee0b32bf52c6ae0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -98,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,9 +119,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md"
-              }
+              "state": {}
             }
           },
           {
@@ -172,11 +152,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "5a01f0d30b817ce5",
+  "active": "33b62f69b019a5d0",
   "lastOpenFiles": [
+    "3. Languages/7. Python/Pillow/Py - PIL (Methods).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Methods).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
+    "Z. Images/Machine Learning/Computer Vision/multiclass-classification-visual-softmax.png",
+    "Z. Images/Machine Learning/Computer Vision/multiclass-classification-visual.png",
+    "Z. Images/Machine Learning/Computer Vision/color-image-composition.png",
+    "3. Languages/7. Python/Pillow/Py - PIL (Basics).md",
+    "3. Languages/7. Python/TensorFlow/Py - Keras (Basics).md",
+    "3. Languages/7. Python/Pillow",
     "Z. Images/Machine Learning/Computer Vision/relu-activiation-function-visual.png",
     "Untitled.md",
-    "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
     "Z. Images/Machine Learning/Computer Vision/fully-connected-neural-network-sigmoid.png",
     "Z. Images/Machine Learning/Computer Vision/simplified-fully-connected-neural-network.png",
     "Z. Images/Machine Learning/Computer Vision/structure-fully-connected-neural-network.png",
@@ -184,13 +172,8 @@
     "3. Languages/7. Python/TensorFlow/Py - TensorFlow (Methods).md",
     "Z. Images/Machine Learning/Computer Vision/bce-graphical-interpretation.png",
     "Z. Images/Machine Learning/Computer Vision/sigmoid-output-close-to-unity.png",
-    "Z. Images/Machine Learning/Computer Vision/sigmoid-output-close-to-0.png",
-    "Z. Images/Machine Learning/Computer Vision/linear-regression-neural-network.png",
-    "Z. Images/Machine Learning/Computer Vision/logistic-regression-neural-network.png",
-    "Z. Images/Machine Learning/Computer Vision/neural-network-visual-input-ouput.png",
     "Z. Images/Machine Learning/Computer Vision",
     "3. Languages/7. Python/TensorFlow/Py - TensorFlow (Basics).md",
-    "3. Languages/7. Python/TensorFlow/Py - Keras (Basics).md",
     "3. Languages/7. Python/Machine Learning/Py - ML (Neural Networks).md",
     "3. Languages/7. Python/pmdarima/Py - pmdarima (Basics).md",
     "3. Languages/7. Python/TensorFlow",
@@ -215,11 +198,7 @@
     "3. Languages/7. Python/Basics/Regular Expressions/Py - Regular Expressions (Basics).md",
     "3. Languages/7. Python/Basics/Regular Expressions",
     "3. Languages/7. Python/spaCy/Py - spaCy (Methods).md",
-    "3. Languages/7. Python/Natural Language Toolkit (NLTk)/Py - NLTK (Basics).md",
     "3. Languages/7. Python/spaCy",
-    "3. Languages/7. Python/Natural Language Toolkit (NLTk)",
-    "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
-    "3. Languages/7. Python/pmdarima/Py - pmdarima (Methods).md",
     "Untitled.canvas"
   ]
 }
