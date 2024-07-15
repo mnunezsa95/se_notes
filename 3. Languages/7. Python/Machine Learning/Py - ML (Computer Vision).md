@@ -25,6 +25,8 @@ Resources:
 	* [test_features.npy](https://practicum-content.s3.us-west-1.amazonaws.com/data-eng/datasets/test_features.npy)
 	* [test_target.npy](https://practicum-content.s3.us-west-1.amazonaws.com/data-eng/datasets/test_target.npy)
 * GitHub: [The Adam Algorithm](https://gist.github.com/EmilienDupont/aaf429be5705b219aaaf8d691e27ca87/#file-thumbnail-png)
+* Article: [Neural Network Architectures](https://tripleten.com/trainer/data-scientist/lesson/0029e756-b214-4379-9b3f-07616acddecd/)
+* 
 
 
 
@@ -1648,3 +1650,194 @@ for i in range(16):
     plt.tight_layout()
 ```
 
+
+# Example: Convolutional Networks for Fruit Classification
+```Python
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, AvgPool2D, Flatten, Dense
+from tensorflow.keras.optimizers import Adam
+import numpy as np
+
+def load_train(path):
+    datagen = ImageDataGenerator(
+	    horizontal_flip=True, 
+	    vertical_flip=True, 
+	    rescale=1/255
+    )
+    
+    train_datagen_flow = datagen.flow_from_directory(
+        path,
+        target_size=(150, 150),
+        batch_size=16,
+        class_mode='sparse',
+        seed=12345
+    )
+    
+    return train_datagen_flow
+    
+
+def create_model(input_shape=(150, 150, 3)):
+    model = Sequential()
+    optimizer = Adam(learning_rate=0.0001)
+    
+    model.add(
+        Conv2D(
+            filters=6, 
+            kernel_size=(5, 5), 
+            padding='same', 
+            activation='relu',
+            input_shape=input_shape
+        )
+    )
+    
+    model.add(
+        AvgPool2D(
+            pool_size=(2, 2)
+        )
+    )
+    model.add(
+        Conv2D(
+            filters=16, 
+            kernel_size=(5, 5), 
+            padding='valid', 
+            activation='relu'
+        )
+    )
+    model.add(
+        AvgPool2D(
+            pool_size=(2, 2)
+        )
+    )
+    model.add(
+        Conv2D(
+            filters=16, 
+            kernel_size=(5, 5), 
+            padding='valid', 
+            activation='relu'
+        )
+    )
+    model.add(
+        AvgPool2D(
+            pool_size=(2, 2)
+        )
+    )
+    model.add(Flatten())
+    model.add(Dense(64, activation='relu'))
+    model.add(Dense(64, activation='relu'))
+    
+    # The last Dense layer should have 'softmax' activation; the number         of output units should equal the number of classes
+    model.add(Dense(12, activation='softmax'))
+    
+    model.compile(
+	    optimizer=optimizer, 
+	    loss='sparse_categorical_crossentropy', 
+	    metrics=['acc']
+	)
+    
+    return model
+
+def train_model(model, train_data, test_data, batch_size=None, epochs=10, 
+    steps_per_epoch=None, validation_steps=None):
+    
+    if steps_per_epoch is None:
+        steps_per_epoch = len(train_data)
+    if validation_steps is None:
+        validation_steps = len(test_data)
+    
+    model.fit(
+        train_data,
+        validation_data=test_data,
+        batch_size=batch_size,
+        epochs=epochs,
+        steps_per_epoch=steps_per_epoch,
+        validation_steps=validation_steps,
+        verbose=2
+    )
+    
+    return model
+
+if __name__ == "__main__":
+    # Load train and test data
+    train_generator = load_train('/datasets/fruits_small/')
+    test_generator = load_train('/datasets/fruits_small/')
+    
+    # Create the model
+    model = create_model(input_shape=(150, 150, 3))
+    
+    # Train the model
+    trained_model = train_model(model, train_generator, test_generator)
+    
+    # Evaluate the model on the test set
+    test_loss, test_accuracy = trained_model.evaluate(
+	    test_generator, verbose=2
+	)
+    print(f"Test Accuracy: {test_accuracy}")
+    
+    # Check if the accuracy meets the desired threshold
+    if test_accuracy >= 0.90:
+        print("Test accuracy meets the desired threshold.")
+    else:
+        print("Test accuracy does not meet the desired threshold.")
+```
+
+
+# Residual Network (ResNet) Architecture
+## What is ResNet?
+* The ResNet (Residual Network) architecture is a type of deep learning model designed to improve the training of very deep neural networks
+* ResNet is a deep network that applies skip-connections, small convolutions, and bottleneck blocks.
+
+## Basics of the the ResNet Architecture 
+* ResNet uses a much smaller 3×3 filters in each convolutional layers and combines them as a sequence of convolutions.
+* ResNet introduces the concept of residual learning. 
+
+## Residual Learning
+* Each layer learns the residual (difference) $F(x)$ with respect to the input $x$: $$H(x)=F(x)+x$$
+* ResNet uses skip (or shortcut) connections that bypass one or more layers. 
+	* These connections allow the input to be directly added to the output of a few layers later. 
+		* This helps in preserving the gradient flow during back-propagation, making it easier to train very deep networks.
+
+
+## ResNet in Keras
+* Keras in the TensorFlow library has a `ResNet50()` class to work with ResNet Architecture
+	* The `ResNet50()` class has a parameter `include_top=` which sets a fully connected network (_GlobalAveragePooling2D_ and _Dense_) at the top of the ResNet
+		* **GlobalAveragePooling2D** -- acts as a window to the entire tensor. AveragePooling2D returns the average value from a group of pixels inside a channel. 
+			* GlobalAveragePooling2D is used to average the information throughout the image in order to get a pixel with a large number of channels (for example, 512 for ResNet50).
+		* **Dense** -- the fully connected layer responsible for classification.
+
+### Working with ResNet in Keras
+1) Import the libraries
+2) Declare the `ResNet50()` class and provide the parameters
+```Python
+from tensorflow.keras.layers import GlobalAveragePooling2D, Dense
+from tensorflow.keras.models import Sequential
+
+backbone = ResNet50(
+    input_shape=(150, 150, 3), weights='imagenet', include_top=False
+)
+
+model = Sequential()
+model.add(backbone)
+model.add(GlobalAveragePooling2D())
+model.add(Dense(12, activation='softmax'))
+```
+### Using ResNet with a small dataset 
+* If using ResNet with a small dataset, it is guaranteed to overtrain. 
+	* The network will end up getting perfectly accurate predictions on the training set, but it'll get random ones on the test set.
+* A work around:
+	* "Freeze" a part of the network to avoid overtraining and increase the network's learning rate:
+		* Some layers will be left with ImageNet weights and won't be trained with gradient descent. 
+		* The fully connected layer above _`backbone`_ so that the network is able to learn.
+```Python
+backbone = ResNet50(
+    input_shape=(150, 150, 3), weights='imagenet', include_top=False
+)
+
+# freeze ResNet50 with the top removed
+backbone.trainable = False
+
+model = Sequential()
+model.add(backbone)
+model.add(GlobalAveragePooling2D())
+model.add(Dense(12, activation='softmax'))
+```

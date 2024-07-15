@@ -445,3 +445,24 @@ val_datagen_flow = validation_datagen.flow_from_directory(
     seed=12345)
 
 ```
+
+
+##### `keras.applications.resnet.ResNet50()`
+* Instantiates the ResNet50 architecture
+	* Parameters
+		* `input_shape=` (tuple) -- a tuple that specifies the size of the input image.
+		* `classes=` (int) -- the number of neurons in the last fully connected layer where classification takes place.
+		* `weights=` (str) -- sets the initialization of weights
+			* `None` -- (random initialization); randomly initiates weights
+			* `"imagenet"` -- (pre-training on ImageNet); ImageNet is the name of a large image database which was used to train the network to sort pictures into 1000 classes.
+		* `include_top=` (bool) -- specifies whether or not to include a fully-connected layer (_GlobalAveragePooling2D_ and _Dense_) at the top of the network
+```Python
+from tensorflow.keras.applications.resnet import ResNet50
+
+model = ResNet50(
+	input_shape=None,
+	classes=1000,
+	include_top=True,
+	weights='imagenet'
+)
+```
