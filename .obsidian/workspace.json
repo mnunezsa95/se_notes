@@ -4,31 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "f52cdd1f8a5a8032",
+        "id": "ac6f50d4796ddd03",
         "type": "tabs",
         "children": [
           {
-            "id": "68f60813c6bba075",
+            "id": "630af1ddab3ce272",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e562841d3624d8ae",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3. Languages/7. Python/TensorFlow/Py - TensorFlow (Methods).md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -98,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,9 +119,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md"
-              }
+              "state": {}
             }
           },
           {
@@ -172,54 +152,53 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "68f60813c6bba075",
+  "active": "630af1ddab3ce272",
   "lastOpenFiles": [
+    "3. Languages/7. Python/Machine Learning/Py - ML (Unsupervised Learning).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Classes and Methods).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
+    "Z. Images/Machine Learning/isolation-forest.png",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Methods).md",
+    "3. Languages/7. Python/Seaborn/Py - Seaborn (Basics).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Installing and Importing).md",
+    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Graphing).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Plotting).md",
+    "Z. Images/Machine Learning/Unsupervised Learning/boxplot-description.png",
+    "Z. Images/Machine Learning/Unsupervised Learning/various-of-clustering-algorithms.png",
+    "Z. Images/Machine Learning/Unsupervised Learning/elbow-method-example-1.png",
+    "3. Languages/7. Python/Seaborn/Py - Seaborn (Methods).md",
+    "Z. Images/Machine Learning/Unsupervised Learning/seaborn-pairplot-unsupervised-example-1.png",
+    "Z. Images/Machine Learning/Unsupervised Learning/seaborn-pairplot-unsupervised-example-3.png",
+    "Z. Images/Machine Learning/Unsupervised Learning/seaborn-pairplot-unsupervised-example-2.png",
+    "3. Languages/7. Python/TensorFlow/Py - Keras (Basics).md",
+    "3. Languages/7. Python/Seaborn",
     "3. Languages/7. Python/TensorFlow/Py - TensorFlow (Methods).md",
+    "4. Data Science/Machine Learning/ML - Supervised Learning.md",
+    "3. Languages/7. Python/Py - Powerful Python One-Liners.md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Joblib (Joblib Library).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
+    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Models & Model Comparison).md",
+    "Z. Images/Machine Learning/Unsupervised Learning/clustering-visual-video.webm",
+    "Z. Images/Machine Learning/Unsupervised Learning",
+    "4. Data Science/Machine Learning/ML - Machine Learning Basics.md",
+    "3. Languages/7. Python/Python Environments/Py - Creating a Virtual Environment.md",
+    "3. Languages/7. Python/Python Environments/Py - Environmental Variables.md",
     "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
     "3. Languages/7. Python/Machine Learning/Py - ML (Algorithm Analysis).md",
     "Z. Images/Machine Learning/Computer Vision/max-pooling-technique.png",
     "Z. Images/Machine Learning/Computer Vision/convolution-layer-visual.mp4",
     "Z. Images/Machine Learning/Computer Vision/convolution-layer-setting-stride-1.png",
     "Z. Images/Machine Learning/Computer Vision/convolution-layer-setting-stride-2.png",
-    "Z. Images/Machine Learning/Computer Vision/convolution-layer-setting-padding.png",
-    "Z. Images/Machine Learning/Computer Vision/convolution-layer-multi-example.png",
-    "Z. Images/Machine Learning/Computer Vision/2d-convolution-image2.png",
-    "Z. Images/Machine Learning/Computer Vision/2d-convolution-image1.png",
-    "Z. Images/Machine Learning/Computer Vision/2d-convolution-image3.png",
     "Z. Images/Machine Learning/Computer Vision/convolution.mp4",
     "3. Languages/7. Python/Pillow/Py - PIL (Methods).md",
-    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Methods).md",
-    "Z. Images/Machine Learning/Computer Vision/multiclass-classification-visual-softmax.png",
-    "Z. Images/Machine Learning/Computer Vision/multiclass-classification-visual.png",
     "3. Languages/7. Python/Pillow/Py - PIL (Basics).md",
-    "3. Languages/7. Python/TensorFlow/Py - Keras (Basics).md",
     "3. Languages/7. Python/Pillow",
     "Untitled.md",
     "Z. Images/Machine Learning/Computer Vision",
-    "3. Languages/7. Python/TensorFlow/Py - TensorFlow (Basics).md",
-    "3. Languages/7. Python/Machine Learning/Py - ML (Neural Networks).md",
-    "3. Languages/7. Python/pmdarima/Py - pmdarima (Basics).md",
     "3. Languages/7. Python/TensorFlow",
-    "3. Languages/7. Python/Machine Learning/Py - ML (ML for Texts).md",
-    "3. Languages/7. Python/PyTorch/transformers/Py - Transformers (Basics).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Joblib (Joblib Library).md",
-    "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
-    "3. Languages/7. Python/PyTorch/transformers/Py - Transformers (Methods).md",
-    "3. Languages/7. Python/PyTorch/transformers/Untitled.md",
-    "3. Languages/7. Python/PyTorch/Py - PyTorch (Basics).md",
     "3. Languages/7. Python/PyTorch/transformers",
-    "3. Languages/7. Python/Untitled",
-    "3. Languages/7. Python/spaCy/Py - spaCy (Basics).md",
     "3. Languages/7. Python/PyTorch",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Classes and Methods).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
-    "3. Languages/7. Python/Natural Language Toolkit (NLTk)/Py - NLTK (Methods).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Models & Model Comparison).md",
-    "Z. Images/Machine Learning/Time Series",
-    "Z. Images/Machine Learning/ML for Texts",
-    "3. Languages/7. Python/Basics/Regular Expressions/Py - Regular Expressions (Basics).md",
-    "3. Languages/7. Python/spaCy/Py - spaCy (Methods).md",
     "Untitled.canvas"
   ]
 }

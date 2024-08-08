@@ -32,6 +32,29 @@ Resources
 
 ---
 ---
+# Models
+## Model Comparison
+
+| Name                     | Type           | Accuracy | Speed | Accuracy Rank | Speed Rank |
+| ------------------------ | -------------- | -------- | ----- | ------------- | ---------- |
+| `DecisionTreeClassifier` | Classification | Low      | High  | 3             | 2          |
+| `RandomForestClassifier` | Classification | High     | Low   | 1             | 3          |
+| `LogisticRegression`     | Classification | Medium   | High  | 2             | 1          |
+
+| Name                    | Type       | Accuracy | Speed | Accuracy Rank | Speed Rank |
+| ----------------------- | ---------- | -------- | ----- | ------------- | ---------- |
+| `DecisionTreeRegressor` | Regression |          |       |               |            |
+| `RandomForestRegressor` | Regression |          |       |               |            |
+| `LinearRegression`      | Regression |          |       |               |            |
+
+## Model Definitions
+* Decision Tree
+	* A non-parametric supervised learning algorithm, which is utilized for both classification and regression tasks
+* Random Forest 
+	* A commonly used ML algorithm that trains a large quantity of independent tress and makes a decision by voting for both classification and regression tasks
+
+
+---
 
 # Working with Models in Sklearn
 

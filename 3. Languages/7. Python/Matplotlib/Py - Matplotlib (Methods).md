@@ -12,7 +12,45 @@ Resources
 
 ---
 
-##### `matplotlib.pyplot.figure()`
+
+##### `pyplot.boxplot()`
+* Draws a box and whisker plot.
+	* Parameters (see complete list [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html))
+		* `x` (array or sequence) -- The input data
+			* If sequence, boxplot draw for each column in `x`
+		* `whis=` (float) -- The position of the whiskers.
+			* If a float, the lower whisker is at the lowest datum above `Q1 - whis*(Q3-Q1)`, and the upper whisker at the highest datum below `Q3 + whis*(Q3-Q1)`, where Q1 and Q3 are the first and third quartiles. 
+		* `vert=` (bool) -- the position of the whiskers
+			* If `True`, draws vertical boxes. 
+			* If `False`, draw horizontal boxes.
+	* Methods
+		* `get_data()` -- returns the data from a boxplot
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv('/datasets/sales.csv')
+
+plt.boxplot(df['Sales'].values)
+plt.ylabel('Total sales')
+plt.title('Outliers in total sales')
+plt.show()
+```
+
+```Python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('/datasets/sales.csv')
+
+boxplot = plt.boxplot(df['Profit'].values)
+outliers = list(boxplot['fliers'][0].get_data()[1])
+
+df_outliers = df[df["Profit"].isin(outliers)]
+
+print('Number of anomalies: ', len(df_outliers))
+```
+
+##### `pyplot.figure()`
 * Creates a new figure, or activate an existing figure
 	* Parameters
 		* `num=` -- an int or str serving as unique identifier for the figure
@@ -24,7 +62,7 @@ Resources
 
 ```
 
-##### `matplotlib.pyplot.legend()`
+##### `pyplot.legend()`
 * Places a legend on the Axes
 	* Parameters
 		* `legend_names` -> a list of label names; the order of the legend labels in the list will correspond to the order of the columns in the DataFrame
@@ -44,7 +82,7 @@ plt.legend(['CA', 'OR', 'WA'])
 plt.show()
 ```
 
-##### `matplotlib.pyplot.arrow()`
+##### `pyplot.arrow()`
 * Adds an arrow to the axes; draws an arrow from `(x, y)` to `(x + dx, y + dy)`
 	* Parameters
 		* `x, y` -- The x and y coordinates of the arrow base
@@ -69,7 +107,7 @@ plt.show()
 ```
 
 
-##### `matplotlib.pyplot.imshow()`
+##### `pyplot.imshow()`
 * Display data as an image, i.e., on a 2D regular raster.
 	* Parameters (see complete list of parameters [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html))
 		* `X` -- An array-like or PIL image 
@@ -87,7 +125,7 @@ plt.imshow(array, cmap='gray')
 plt.colorbar()
 ```
 
-##### `matplotlib.pyplot.colorbar()`
+##### `pyplot.colorbar()`
 * Adds a colorbar to a plot.
 	* Parameters
 		* `mappable=` -- The `matplotlib.cm.ScalarMappable` (i.e., `AxesImage`, `ContourSet`, etc.) described by this colorbar. 
