@@ -1,8 +1,6 @@
 See 
 * [[Py - Introduction to Python]]
 * [[Py - List Methods]]
-* [[Py - List Comprehension]]
-* [[Py - Lexicographical Order]]
 Resources:
 * 
 

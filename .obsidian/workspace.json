@@ -4,15 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ac6f50d4796ddd03",
+        "id": "cb84b102405faf4c",
         "type": "tabs",
         "children": [
           {
-            "id": "630af1ddab3ce272",
+            "id": "ad0517a125777572",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "3. Languages/6. TypeScript/Basics/TS - Data Types in TypeScript.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TS - Data Types in TypeScript"
             }
           }
         ]
@@ -33,7 +39,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           },
           {
@@ -42,13 +50,15 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "py - sklearn (methods and classes)",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -58,7 +68,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           }
         ],
@@ -66,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 275.5
+    "width": 229.50260543823242
   },
   "right": {
     "id": "b25286fe059f358b",
@@ -82,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "3. Languages/6. TypeScript/Basics/TS - Fundamentals of TypeScript.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for TS - Fundamentals of TypeScript"
             }
           },
           {
@@ -98,9 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "3. Languages/6. TypeScript/Basics/TS - Fundamentals of TypeScript.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from TS - Fundamentals of TypeScript"
             }
           },
           {
@@ -111,7 +129,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -119,7 +139,11 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "3. Languages/6. TypeScript/Basics/TS - Data Types in TypeScript.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of TS - Data Types in TypeScript"
             }
           },
           {
@@ -131,7 +155,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           }
         ],
@@ -139,7 +165,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 290.5
+    "width": 357.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -152,53 +178,54 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "630af1ddab3ce272",
+  "active": "ad0517a125777572",
   "lastOpenFiles": [
+    "3. Languages/6. TypeScript/Basics/TS - Fundamentals of TypeScript.md",
+    "3. Languages/6. TypeScript/Basics/TS - TypeScript Compiler.md",
+    "3. Languages/6. TypeScript/Basics/TS - Data Types in TypeScript.md",
+    "3. Languages/6. TypeScript/Basics/TS - TypeScript T.md",
+    "1. General/TS - Introduction to TypeScript.md",
+    "5. Tools/Google Cloud/5. Configuring Ports with nginx.md",
+    "3. Languages/10. TypeScript/Untitled.md",
+    "3. Languages/6. TypeScript/Basics",
+    "3. Languages/10. TypeScript",
+    "5. Tools/Google Cloud/4. Registering a Domain Name.md",
+    "5. Tools/Google Cloud/3. Set Application to Run Continuously.md",
+    "2. Knowledge/Backend Authentication & Authorization/Identification, Authentication & Authorization.md",
+    "2. Knowledge/Backend Authentication & Authorization/Dealing with Tokens.md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Gradient Descent).md",
+    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
+    "3. Languages/7. Python/Machine Learning/Py - ML (Time Series).md",
+    "3. Languages/7. Python/Pandas/Pandas - Data Types/Py - Pandas (Dates and Times).md",
+    "3. Languages/7. Python/Pandas/Pandas - Data Types/Py - Pandas (Numeric & String Data Types).md",
+    "3. Languages/7. Python/Pandas/Pandas - Data Types/Py - Pandas (Data Casting).md",
+    "3. Languages/7. Python/Pandas/Pandas - Data Types/Py - Pandas (Data Types).md",
+    "3. Languages/3. JavaScript/0. Concept Review/Practice.md",
+    "3. Languages/3. JavaScript/0. Concept Review",
+    "3. Languages/7. Python/Basics/Lists and Tuples/Py - Python Lists.md",
+    "Py - List Comprehension.md",
+    "3. Languages/7. Python/Basics/Lists and Tuples/Py - List Methods.md",
+    "3. Languages/7. Python/Basics/Lists and Tuples/Py - Python Tuples.md",
     "3. Languages/7. Python/Machine Learning/Py - ML (Unsupervised Learning).md",
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Classes and Methods).md",
     "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Custom ML Classes).md",
     "Z. Images/Machine Learning/isolation-forest.png",
-    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Methods).md",
-    "3. Languages/7. Python/Seaborn/Py - Seaborn (Basics).md",
-    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Installing and Importing).md",
-    "3. Languages/7. Python/Matplotlib/Py - Matplotlib (Graphing).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Methods).md",
-    "3. Languages/7. Python/Pandas/Py - Pandas (Plotting).md",
     "Z. Images/Machine Learning/Unsupervised Learning/boxplot-description.png",
     "Z. Images/Machine Learning/Unsupervised Learning/various-of-clustering-algorithms.png",
     "Z. Images/Machine Learning/Unsupervised Learning/elbow-method-example-1.png",
-    "3. Languages/7. Python/Seaborn/Py - Seaborn (Methods).md",
     "Z. Images/Machine Learning/Unsupervised Learning/seaborn-pairplot-unsupervised-example-1.png",
     "Z. Images/Machine Learning/Unsupervised Learning/seaborn-pairplot-unsupervised-example-3.png",
     "Z. Images/Machine Learning/Unsupervised Learning/seaborn-pairplot-unsupervised-example-2.png",
-    "3. Languages/7. Python/TensorFlow/Py - Keras (Basics).md",
     "3. Languages/7. Python/Seaborn",
-    "3. Languages/7. Python/TensorFlow/Py - TensorFlow (Methods).md",
-    "4. Data Science/Machine Learning/ML - Supervised Learning.md",
-    "3. Languages/7. Python/Py - Powerful Python One-Liners.md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Joblib (Joblib Library).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (SciKit Learn Library).md",
-    "3. Languages/7. Python/SciKit-Learn/Py - Sklearn (Models & Model Comparison).md",
     "Z. Images/Machine Learning/Unsupervised Learning/clustering-visual-video.webm",
     "Z. Images/Machine Learning/Unsupervised Learning",
-    "4. Data Science/Machine Learning/ML - Machine Learning Basics.md",
-    "3. Languages/7. Python/Python Environments/Py - Creating a Virtual Environment.md",
-    "3. Languages/7. Python/Python Environments/Py - Environmental Variables.md",
-    "3. Languages/7. Python/Machine Learning/Py - ML (Computer Vision).md",
-    "3. Languages/7. Python/Machine Learning/Py - ML (Algorithm Analysis).md",
     "Z. Images/Machine Learning/Computer Vision/max-pooling-technique.png",
     "Z. Images/Machine Learning/Computer Vision/convolution-layer-visual.mp4",
     "Z. Images/Machine Learning/Computer Vision/convolution-layer-setting-stride-1.png",
     "Z. Images/Machine Learning/Computer Vision/convolution-layer-setting-stride-2.png",
     "Z. Images/Machine Learning/Computer Vision/convolution.mp4",
-    "3. Languages/7. Python/Pillow/Py - PIL (Methods).md",
-    "3. Languages/7. Python/Pillow/Py - PIL (Basics).md",
     "3. Languages/7. Python/Pillow",
-    "Untitled.md",
     "Z. Images/Machine Learning/Computer Vision",
-    "3. Languages/7. Python/TensorFlow",
-    "3. Languages/7. Python/PyTorch/transformers",
-    "3. Languages/7. Python/PyTorch",
     "Untitled.canvas"
   ]
 }
